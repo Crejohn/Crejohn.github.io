@@ -42,77 +42,93 @@
 <body>
   <div class="container-fluid px-0" data-aos="fade" data-aos-delay="1500">
     
-    <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top">
-      <div class="container d-flex align-items-center justify-content-between">
+  <!-- ======= nav-bar ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
 
-        <!--<h1 class="logo"><a href="index.html">Crejohn</a></h1> -->
-        
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="index.html" class="logo"><img src="assets/img/crejohn_logotipo_2.png" alt="" class="img-fluid"></a>
+            <!--<h1 class="logo"><a href="index.html">Crejohn</a></h1> -->
+            
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <a href="index.html" class="logo"><img src="assets/img/crejohn_logotipo_2.png" alt="" class="img-fluid"></a>
 
-        <nav id="navbar" class="navbar">
-          <ul>
-            <li><a class="nav-link scrollto" href="index.html">Home</a></li>
-            <li><a class="nav-link scrollto active" href="about.html">About</a></li>
-            <li><a class="nav-link scrollto" href="gallery.html">Portfolio</a></li>
-            <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          </ul>
-          <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
+          <nav id="navbar" class="navbar">
+            <ul>
+              <li><a class="nav-link scrollto" href="index.html">Home</a></li>
+              <li><a class="nav-link scrollto" href="about.html">About</a></li>
+              <li><a class="nav-link scrollto" href="portfolio.html">Portfolio</a></li>
+              <li><a class="nav-link scrollto active" href="#contact">Contact</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
 
-      </div>
-    </header>
-    <!-- ===== End Header ===== -->
+    </div>
+  </header>
+  <!-- ===== End nav-bar ===== -->
 
     <!-- =======  Main Section ======= -->
     <main id="main" data-aos="fade" data-aos-delay="1500">
 
-      <!-- ======= End Page Header ======= -->
-      <div class="page-header d-flex align-items-center">
+      <!-- ========== Header ========== -->
+      <div class="page-header bg-image-1 d-flex align-items-center" style="background-image: url(assets/img/gallery/gallery_covers/contact_cover.jpg)">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
 
-              <div class="title-box text-center position-relative mb-0">
-                <h3 class="title-a text-light">
-                  Contact
-                </h3>
-                <p class="subtitle-a text-light">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                </p>
-                <div class="line-mf bg-white"></div>
-              </div>
-
             </div>
           </div>
         </div>
+        <!-- ======= Wave Section ======= -->
+        <div class="row">
+          <div class="position-absolute bottom-0 start-50 translate-middle-x px-0">
+            <div class="class px-0 py-0">
+              <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+                <defs>
+                  <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+                </defs>
+                <g class="wave1">
+                  <use xlink:href="#wave-path" x="50" y="3" fill="rgba(91,91,91, .1)">
+                </g>
+                <g class="wave2">
+                  <use xlink:href="#wave-path" x="50" y="0" fill="rgba(91,91,91, .2)">
+                </g>
+                <g class="wave3">
+                  <use xlink:href="#wave-path" x="50" y="9" fill="rgba(91,91,91, .3)">
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <!-- ===== End Wave Section ===== -->
       </div>
       <!-- ===== End Page Header ===== -->
 
       <!-- ======= Contact Section ======= -->
       <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(assets/img/map-image.png)">
         
-          <div class="overlay-mf4"></div>
-          <div class="container">
+          <div class="overlay-mf5"></div>
+
+          <div class="container" data-aos="fade-up">
+
+    <!--  <div class="section-title container position-relative text-white">
+            <h2 class="text-white">Contact</h2>
+            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          </div> -->
 
             <div class="row">
               <div class="col-sm-12">
                 <div class="contact-mf">
-                  <div id="contact" class="box-shadow-full rounded">
+                  <div id="contact" class="box-shadow-full rounded-0">
                     
-                    <div class="title-box-2 mb-0">
-                      <div class="section-title pb-4" data-aos="zoom-out">
-                        <h2>Send me a</h2>
-                        <p>Message</p>
-                      </div>
+                <!-- ======= Same text from above (only to show on small devices) ======= -->
+                    <div class="section-title pb-4 d-block d-lg-none d-xl-none d-xxl-none">
+                      <h2 class="d-flex justify-content-center fw-bold text-uppercase">Contact me</h2>
                     </div>
-
+                <!-- ======= Same text from above (only to show on small devices) ======= -->
                     <div class="row">
                       <div class="col-md-6">
 
                         <div>
-                          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                          <form action="https://formsubmit.co/crejohndesign@gmail.com" method="post">
                             <div class="row">
                               <div class="col-md-12 mb-3">
                                 <div class="form-group">
@@ -134,31 +150,41 @@
                                   <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
                                 </div>
                               </div>
-                              <div class="col-md-12 text-center my-3">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
-                              </div>
-                                <div class="carousel-action col-md-12 text-center">
-                                  <a href="#" class="btn btn-special3 rounded-md text-white">Send Message</a>
+
+                                <!------ Template ------>
+                                <input type="hidden" name="_template" value="table">
+                                <!---- End Template ---->
+
+                                <!---- Disable reCAPTCHA ---->
+                                <input type="hidden" name="_captcha" value="false">
+                                <!---- Disable reCAPTCHA ---->
+
+                                <!---- Thank you Page ---->
+                                <input type="hidden" name="_next" value="https://crejohn.github.io/thank_you.html">
+                                <!---- Thank you Page ---->
+
+                                <!---- submit button ---->
+                                <div class="carousel-action col-md-12 text-center pt-4">
+                                  <button class="btn btn-special3 rounded-3 text-white fw-light" type="submit">Submit</button>
                                 </div>
+                                <!-- End submit button -->
                             </div>
                           </form>
                         </div>
                       </div>
                       <div class="col-md-6">
 
-                        <div class="more-info">
-                          <p class="lead">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolorum dolorem soluta quidem
-                            expedita aperiam aliquid at.
-                            Totam magni ipsum suscipit amet? Autem nemo esse laboriosam ratione nobis
-                            mollitia inventore?
+                        <div class="more-info border border-1 rounded-3 px-3 py-2">
+                          <h4 class="d-flex justify-content-center py-2"><strong>I WANT TO HEAR FROM YOU!</strong></h4>
+                          <br>
+                          <p class="fw-normal fst-italic">
+                            "It doesn't matter where you are, whether you're in the jungle or in a rocket heading to the moon, if you’re curious about an order a project or an awesome idea is beating inside and you want to bring it to life. I'm ready to answer any and all questions you have".
                           </p>
+                          <br>
                           <ul class="list-ico px-0 py-0">
                             <li><i class="bi bi-geo-alt"></i> <span>Caracas, Venezuela</span></li>
                             <li><i class="bi bi-phone"></i> <span>+58 (424)274.0911</span></li>
-                            <li><i class="bi bi-envelope"></i> <span>crejohndesign@gmail.com</span></li>
+                            <li><i class="bi bi-envelope"></i> <span class="fw-semibold">crejohndesign@gmail.com</span></li>
                           </ul>
                         </div>
                       </div>
@@ -167,7 +193,7 @@
                 </div>
               </div>
             </div>
-          </div>
+
       </section>
       <!-- ===== End Contact Section ===== -->
 

@@ -42,20 +42,20 @@
 <body>
   <div class="container-fluid px-0" data-aos="fade" data-aos-delay="1500">
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center justify-content-between">
+    <!-- ======= nav-bar ======= -->
+    <header id="header" class="fixed-top">
+      <div class="container d-flex align-items-center justify-content-between">
 
-      <!--<h1 class="logo"><a href="index.html">Crejohn</a></h1> -->
-      
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="index.html" class="logo"><img src="assets/img/crejohn_logotipo_2.png" alt="" class="img-fluid"></a>
+        <!--<h1 class="logo"><a href="index.html">Crejohn</a></h1> -->
+        
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a href="index.html" class="logo"><img src="assets/img/crejohn_logotipo_2.png" alt="" class="img-fluid"></a>
 
         <nav id="navbar" class="navbar">
           <ul>
             <li><a class="nav-link scrollto" href="index.html">Home</a></li>
             <li><a class="nav-link scrollto" href="about.html">About</a></li>
-            <li><a class="nav-link scrollto active" href="#gallery">Portfolio</a></li>
+            <li><a class="nav-link scrollto active" href="#portfolio">Portfolio</a></li>
             <li><a class="nav-link scrollto" href="contact.html">Contact</a></li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
@@ -63,140 +63,134 @@
 
       </div>
     </header>
-    <!-- ===== End Header ===== -->
+    <!-- ===== End nav-bar ===== -->
 
     <!-- ======= Main Section ======= -->
     <main id="main">
 
-      <!-- ========= Page Header ========= -->
-      <div class="page-header d-flex align-items-center">
+      <!-- ========== Header ========== -->
+      <div class="page-header bg-image-1 d-flex align-items-center" style="background-image: url(assets/img/gallery/gallery_covers/portfolio_cover.jpg)">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
 
-              <div class="title-box text-center position-relative mb-0">
-                <h3 class="title-a text-light">
-                  Portfolio
-                </h3>
-                <p class="subtitle-a text-light">
-                  Let's check out the cool stuff I have done
-                </p>
-                <div class="line-mf bg-white"></div>
-              </div>
-
             </div>
           </div>
         </div>
+        <!-- ======= Wave Section ======= -->
+        <div class="row">
+          <div class="position-absolute bottom-0 start-50 translate-middle-x px-0">
+            <div class="class px-0 py-0">
+              <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+                <defs>
+                  <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+                </defs>
+                <g class="wave1">
+                  <use xlink:href="#wave-path" x="50" y="3" fill="rgba(91,91,91, .1)">
+                </g>
+                <g class="wave2">
+                  <use xlink:href="#wave-path" x="50" y="0" fill="rgba(91,91,91, .2)">
+                </g>
+                <g class="wave3">
+                  <use xlink:href="#wave-path" x="50" y="9" fill="rgba(91,91,91, .3)">
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <!-- ===== End Wave Section ===== -->
       </div>
-      <!-- ======= End Page Header ======= -->
+      <!-- ===== End Page Header ===== -->
       
-      <!-- ======= Gallery Section ======= -->
-      <section id="gallery" class="gallery paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(assets/img/overlay-bg.jpg)">
+      <!-- ======= portfolio Section ======= -->
+      <section id="portfolio" class="gallery paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(assets/img/overlay-bg.jpg)">
 
        <div class="overlay-mf"></div>
-        <div class="container-fluid">
 
-          <div class="row gy-4 justify-content-center">
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
+        <div class="container-fluid" data-aos="fade-up">
+
+    <!--  <div class="section-title container position-relative">
+            <h2>Portfolio</h2>
+          </div>  -->
+
+          <div class="row px-2 gx-1 gy-1 justify-content-center">
+            
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="gallery-item h-100 rounded-0">
                 <img src="assets/img/gallery/gallery_covers/gallery-1.jpg" class="img-fluid" alt="">
-                <div class="gallery-links d-flex align-items-center justify-content-center">
-                  <a href="p_logos.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
+                  <div class="gallery-links d-flex align-items-center justify-content-center">
+                    <a href="p_logo_design.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
               </div>
-            </div><!-- End Gallery Item -->
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="gallery-item h-100 rounded-0">
+                <img src="assets/img/gallery/gallery_covers/gallery-2.jpg" class="img-fluid" alt="">
+                  <div class="gallery-links d-flex align-items-center justify-content-center">
+                    <a href="p_social_media.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="gallery-item h-100 rounded-0">
                 <img src="assets/img/gallery/gallery_covers/gallery-3.jpg" class="img-fluid" alt="">
                 <div class="gallery-links d-flex align-items-center justify-content-center">
-                  <a href="p_social_media.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  <a href="p_photo_editing.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
                 </div>
               </div>
-            </div><!-- End Gallery Item -->
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
-                <img src="assets/img/gallery/gallery_covers/gallery-4.jpg" class="img-fluid" alt="">
-                <div class="gallery-links d-flex align-items-center justify-content-center">
-                  <a href="p_website_design.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Gallery Item -->
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
-                <img src="assets/img/gallery/gallery_covers/gallery-12.jpg" class="img-fluid" alt="">
-                <div class="gallery-links d-flex align-items-center justify-content-center">
-                  <a href="p_graphic_design.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Gallery Item -->            
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
-                <img src="assets/img/gallery/gallery_covers/gallery-5.jpg" class="img-fluid" alt="">
-                <div class="gallery-links d-flex align-items-center justify-content-center">
-                  <a href="p_illustration.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Gallery Item -->
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
-                <img src="assets/img/gallery/gallery_covers/gallery-6.jpg" class="img-fluid" alt="">
-                <div class="gallery-links d-flex align-items-center justify-content-center">
-                  <a href="p_digital_illustration.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Gallery Item -->
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
-                <img src="assets/img/gallery/gallery_covers/gallery-7.jpg" class="img-fluid" alt="">
-                <div class="gallery-links d-flex align-items-center justify-content-center">
-                  <a href="p_mascot_design.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Gallery Item -->
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="gallery-item h-100 rounded-0">
                 <img src="assets/img/gallery/gallery_covers/gallery-8.jpg" class="img-fluid" alt="">
-                <div class="gallery-links d-flex align-items-center justify-content-center">
-                  <a href="p_stationery.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
+                  <div class="gallery-links d-flex align-items-center justify-content-center">
+                    <a href="p_photo_retouch.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
               </div>
-            </div><!-- End Gallery Item -->
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
-                <img src="assets/img/gallery/gallery_covers/gallery-9.jpg" class="img-fluid" alt="">
-                <div class="gallery-links d-flex align-items-center justify-content-center">
-                  <a href="p_flyers.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="gallery-item h-100 rounded-0">
+                <img src="assets/img/gallery/gallery_covers/gallery-4.jpg" class="img-fluid" alt="">
+                  <div class="gallery-links d-flex align-items-center justify-content-center">
+                    <a href="p_website_design.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
               </div>
-            </div><!-- End Gallery Item -->
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
-                <img src="assets/img/gallery/gallery_covers/gallery-10.jpg" class="img-fluid" alt="">
-                <div class="gallery-links d-flex align-items-center justify-content-center">
-                  <a href="p_ui_app_design.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="gallery-item h-100 rounded-0">
+                <img src="assets/img/gallery/gallery_covers/gallery-7.jpg" class="img-fluid" alt="">
+                  <div class="gallery-links d-flex align-items-center justify-content-center">
+                    <a href="p_youtube.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
               </div>
-            </div><!-- End Gallery Item -->
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
-                <img src="assets/img/gallery/gallery_covers/gallery-11.jpg" class="img-fluid" alt="">
-                <div class="gallery-links d-flex align-items-center justify-content-center">
-                  <a href="p_3d_design.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="gallery-item h-100 rounded-0">
+                <img src="assets/img/gallery/gallery_covers/gallery-6.jpg" class="img-fluid" alt="">
+                  <div class="gallery-links d-flex align-items-center justify-content-center">
+                    <a href="p_flyers.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
               </div>
-            </div><!-- End Gallery Item -->
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
-                <img src="assets/img/gallery/gallery_covers/gallery-2.jpg" class="img-fluid" alt="">
-                <div class="gallery-links d-flex align-items-center justify-content-center">
-                  <a href="p_logo_redesign.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="gallery-item h-100 rounded-0">
+                <img src="assets/img/gallery/gallery_covers/gallery-5.jpg" class="img-fluid" alt="">
+                  <div class="gallery-links d-flex align-items-center justify-content-center">
+                    <a href="p_illustration.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
               </div>
-            </div><!-- End Gallery Item -->
+            </div>
+
           </div>
         </div>
       </section>
-      <!-- ===== End Gallery Section ===== -->
+      <!-- ===== End portfolio Section ===== -->
 
     </main>
     <!-- ===== End Main Section ===== -->

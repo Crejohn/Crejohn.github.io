@@ -42,7 +42,7 @@
 <body>
   <div class="container-fluid px-0" data-aos="fade" data-aos-delay="1500">
     
-    <!-- ======= Header ======= -->
+    <!-- ======= nav-bar ======= -->
     <header id="header" class="fixed-top">
       <div class="container d-flex align-items-center justify-content-between">
 
@@ -53,7 +53,7 @@
 
         <nav id="navbar" class="navbar">
           <ul>
-            <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+            <li><a class="nav-link scrollto active" href="#video_wrapper">Home</a></li>
             <li><a class="nav-link scrollto" href="#about">About</a></li>
             <li><a class="nav-link scrollto" href="#gallery">Portfolio</a></li>
             <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
@@ -63,133 +63,119 @@
 
       </div>
     </header>
-    <!-- ===== End Header ===== -->
+    <!-- ===== End nav-bar ===== -->
 
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="hero route bg-image" style="background-image: url(assets/img/hero-bg.jpg)">
-      <div class="overlay-itro"></div>
-      <div class="hero-content display-table">
-        <div class="table-cell">
-          <div class="container">
+    <!-- ======= Video Section ======= -->
+      <div id="video_wrapper" class="carousel slide carousel-fade my-0" data-ride="carousel">
 
-            <!--<p class="display-6 color-d">Hello, I'm</p>-->
-            
-            <h3 class="hero-title mb-0">John Quintero</h3>
-            <p class="hero-subtitle mt-0"><span class="typed" data-typed-items="Graphic Designer, Illustrator, Video Editor, Animator"></span></p>
-            
-            <div class="social-links">
-              <a href="https://www.linkedin.com/in/crejohn" target="linkedin.com" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      <!--  <a href="https://www.instagram.com/crejohndesign" target="instagram.com" class="instagram"><i class="bx bxl-instagram"></i></a>  -->
-            </div>
+   <!-- <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carousel-item" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carousel-item" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carousel-item" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div> -->
+
+
+          <div class="carousel-item active">
+            <video class="video" autoplay loop muted>
+              <source src="assets/img/1.mp4" type="video/mp4">
+            </video>
           </div>
-        </div>
+
+     <!-- <div class="carousel-item">
+            <video class="video" autoplay loop muted>
+              <source src="assets/img/2.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="carousel-item">
+            <video class="video" autoplay loop muted>
+              <source src="assets/img/3.mp4" type="video/mp4">
+            </video>
+          </div> -->
+
+
+            <!-- ======= Wave Section ======= -->
+            <div class="row">
+              <div class="position-absolute bottom-0 start-50 translate-middle-x px-0">
+                <div class="class px-0 py-0">
+                  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+                    <defs>
+                      <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+                    </defs>
+                    <g class="wave1">
+                      <use xlink:href="#wave-path" x="50" y="3" fill="rgba(243,246,244, .1)">
+                    </g>
+                    <g class="wave2">
+                      <use xlink:href="#wave-path" x="50" y="0" fill="rgba(243,246,244, .2)">
+                    </g>
+                    <g class="wave3">
+                      <use xlink:href="#wave-path" x="50" y="9" fill="rgba(243,246,244, .3)">
+                    </g>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <!-- ===== End Wave Section ===== -->
+
+
+<!--    <button class="carousel-control-prev" type="button" data-bs-target="#video_wrapper" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#video_wrapper" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>    -->
+
       </div>
-
-        <!-- ======= Wave Section ======= -->
-          <div class="row position-relative top-100 start-50 translate-middle-x">
-            <div class="class px-0 py-0">
-              <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
-                <defs>
-                  <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
-                </defs>
-                <g class="wave1">
-                  <use xlink:href="#wave-path" x="50" y="3" fill="rgba(113,52,235, .1)">
-                </g>
-                <g class="wave2">
-                  <use xlink:href="#wave-path" x="50" y="0" fill="rgba(113,52,235, .2)">
-                </g>
-                <g class="wave3">
-                  <use xlink:href="#wave-path" x="50" y="9" fill="rgba(113,52,235, .3)">
-                </g>
-              </svg>
-            </div>
-          </div>
-        <!-- ===== End Wave Section ===== -->
-    </section>
-    <!-- ===== End Hero Section ===== -->
+    <!-- ===== End Video Section ===== -->
 
     <!-- =======  Main Section ======= -->
     <main id="main">
 
       <!-- ======= About Section ======= -->
-      <section id="about" class="about paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(assets/img/map-image.png)">
+      <section id="about" class="about paralax-mf footer-paralax bg-image sect-mt4 route" style="background-color: #fff;" style="background-image: url(assets/img/map-image.png)">
 
-       <div class="overlay-mf2"></div>
-        <div class="container">
+          <!--<div class="overlay-mf2"></div> -->
 
-          <div class="container position-relative">
-            
-            <div class="title-box text-center position-relative">
-              <h3 class="title-a text-white">
-                About
-              </h3>
-              <p class="subtitle-a text-white">
-                Let's get to know some info about me
-              </p>
-              <div class="line-mf bg-white"></div>
+          <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+              <h2>About</h2>
             </div>
 
-            <div class="row rounded py-4 px-4 justify-content-center bg-black bg-opacity-75 rounded-4">
+            <div class="row">
 
-
-              <div class="col-lg-12 px-3 py-3 content rounded">
-                <h1 class="mb-0 text-white text-center d-none d-sm-none d-md-none d-lg-block">John Quintero</h1>
-                <h3 class="text-white text-center fw-normal d-none d-sm-none d-md-none d-lg-block">Graphic Designer</h3>
-
-                <!-- ======= Same list from above (only to show on small devices) ======= -->
-                <h1 class="mb-0 text-white text-center d-block d-lg-none d-xl-none d-xxl-none">John Quintero</h1>
-                <h3 class="text-white fw-normal text-center d-block d-lg-none d-xl-none d-xxl-none">Graphic Designer</h3>
-                <!-- ======= Same list from above (only to show on small devices) ======= -->
-                <br>
-                <br>
-                <div class="row">
-                  <div class="col-lg-6 d-none d-sm-none d-md-none d-lg-block">
-                    <ul>
-                      <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>Aug 31 1989</span></li>
-                      <li class="my-0"><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>34</span></li>
-                      <li class="my-0"><i class="bi bi-chevron-right"></i> <strong>Location:</strong> <span>Caracas, Venezuela</span></li>
-                    </ul>
-                  </div>
-                  <div class="col-lg-6 d-none d-sm-none d-md-none d-lg-block">
-                    <ul>
-                      <li class="my-0"><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+58 (424)274.0911</span></li>
-                      <li class="my-0"><i class="bi bi-chevron-right"></i> <strong>e-mail:</strong> <span>crejohndesign@gmail.com</span></li>
-                    </ul>
-                  </div>
+              <div class="gallery col-xl-4 col-lg-6">
+                <div class="gallery-item rounded-0">
+                  <img src="assets/img/profile-1.jpg" class="img-fluid" alt="">
+                    <div class="gallery-links d-flex align-items-center justify-content-center">
+                      <a href="https://www.linkedin.com/in/crejohn" target="linkedin.com" class="details-link"><i class="bi bi-linkedin"></i></a>
+               <!--   <a href="https://www.instagram.com/crejohndesign" target="instagram.com" class="details-link"><i class="bi bi-instagram"></i></a> -->
+                    </div>
                 </div>
-                <!-- ======= Same row/list from above (only to show on small devices) ======= -->
-                <div class="row d-block d-lg-none d-xl-none d-xxl-none">
-                  <div class="col-lg-6">
-                    <ul>
-                      <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>Aug 31 1989</span></li>
-                      <li class="my-0"><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>34</span></li>
-                      <li class="my-0"><i class="bi bi-chevron-right"></i> <strong>Location:</strong> <span>Caracas, Venezuela</span></li>
-                      <li class="my-0"><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+58(424)274.0911</span></li>
-                      <li class="my-0"><i class="bi bi-chevron-right"></i> <strong>e-mail:</strong> <span>crejohndesign@gmail.com</span></li>
-                    </ul>
-                  </div>
-                </div>
-                <!-- ======= Same row/list from above (only to show on small devices) ======= -->
-                <br>
-                <p class="text-center">
-                  Hi, I'm John Quintero, a Graphic Designer born and currently based in Venezuela.
-                  <br>
-                  I specialize in branding and visual identity design, with special interests in illustration, web design, motion design and video editing.
-                </p>
-                <br>
-                <div class="carousel-action d-none d-sm-none d-md-none d-lg-block">
-                  <a href="about.html" class="btn btn-success rounded-3 fw-light">more info</a>
-                </div>
-                <!-- ======= Same button from above (only to show centered on small devices) ======= -->
-                <div class="carousel-action d-flex justify-content-center d-block d-lg-none d-xl-none d-xxl-none">
-                  <a href="about.html" class="btn btn-success rounded-3 fw-light">more info</a>
-                </div>
-                <!-- ======= Same button from above (only to show centered on small devices) ======= -->
               </div>
+
+              <div class=" col-xl-8 col-lg-6 content">
+              <h3 class="hero-title mb-0 mt-lg-0 mt-4 d-flex justify-content-lg-start justify-content-center">John Quintero</h3>
+              <p class="d-flex justify-content-lg-start justify-content-center"><!-- I'm&nbsp --><span class="typed hero-subtitle mt-0 d-flex justify-content-lg-start justify-content-center" data-typed-items="I'm a Graphic Designer, I'm an Illustrator, and I also do some motion graphics and video editing"></span></p>
+              <p class="my-0">
+                I'm passionate about creating meaningful and stunning designs that makes impacts on people's minds. Each project I work on I strive not only on creating visually appealing designs but to communicate the message effectively.
+                <br>
+                <br>
+                "A a picture paints a thousand words". I believe a good design can change one, hundreds or even thousands of peoples perspectives of the world. We live in times where people struggles more and more to communicate their thoughts, ideas and to be listen to, a technologycal era where more than 75% of the population uses a smartphone and they're easily to distract with graphic and audiovisual content. We're surrounded with so much content and information which makes graphic design even more important than it ever was to send a lasting long message.
+              </p>
+                </div>
+                <br>
+                <div class="carousel-action d-block d-lg-block d-md-block d-sm-block pt-5 text-center">
+                  <a href="about.html" class="btn btn-success rounded-3 fw-light">more info</a>
+                </div>
+              </div>
+
             </div>
 
           </div>
-        </div>
 
       </section>
       <!-- ===== End About Section ===== -->
@@ -198,49 +184,52 @@
       <section id="gallery" class="gallery paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(assets/img/overlay-bg.jpg)">
 
        <div class="overlay-mf"></div>
-        <div class="container-fluid pb-5">
+        <div class="container-fluid" data-aos="fade-up">
 
-          <div class="title-box text-center position-relative">
-            <h3 class="title-a" style="color: #7134eb;">
-              Portfolio
-            </h3>
-            <p class="subtitle-a" style="color: #7134eb;">
-              Works done over the years in different areas
-            </p>
-            <div class="line-mf"></div>
+          <div class="section-title container position-relative">
+            <h2>Portfolio</h2>
           </div>
 
-          <div class="row gy-4 justify-content-center">
+          <div class="row px-2 gx-1 gy-1 justify-content-center">
             
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-              <div class="gallery-item h-100">
+              <div class="gallery-item h-100 rounded-0">
                 <img src="assets/img/gallery/gallery_covers/gallery-1.jpg" class="img-fluid" alt="">
                   <div class="gallery-links d-flex align-items-center justify-content-center">
-                    <a href="p_logos.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    <a href="p_logo_design.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
                   </div>
               </div>
             </div>
 
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-              <div class="gallery-item h-100">
-                <img src="assets/img/gallery/gallery_covers/gallery-3.jpg" class="img-fluid" alt="">
+              <div class="gallery-item h-100 rounded-0">
+                <img src="assets/img/gallery/gallery_covers/gallery-2.jpg" class="img-fluid" alt="">
                   <div class="gallery-links d-flex align-items-center justify-content-center">
                     <a href="p_social_media.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
                   </div>
               </div>
             </div>
 
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
-                <img src="assets/img/gallery/gallery_covers/gallery-12.jpg" class="img-fluid" alt="">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="gallery-item h-100 rounded-0">
+                <img src="assets/img/gallery/gallery_covers/gallery-3.jpg" class="img-fluid" alt="">
                 <div class="gallery-links d-flex align-items-center justify-content-center">
-                  <a href="p_graphic_design.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  <a href="p_photo_editing.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
                 </div>
               </div>
             </div>
 
-            <div class="d-none d-sm-block col-xl-3 col-lg-6 col-md-6 col-sm-6">
-              <div class="gallery-item h-100">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="gallery-item h-100 rounded-0">
+                <img src="assets/img/gallery/gallery_covers/gallery-8.jpg" class="img-fluid" alt="">
+                  <div class="gallery-links d-flex align-items-center justify-content-center">
+                    <a href="p_photo_retouch.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="gallery-item h-100 rounded-0">
                 <img src="assets/img/gallery/gallery_covers/gallery-4.jpg" class="img-fluid" alt="">
                   <div class="gallery-links d-flex align-items-center justify-content-center">
                     <a href="p_website_design.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
@@ -248,8 +237,26 @@
               </div>
             </div>
 
-            <div class="d-none d-sm block d-sm-none d-md-block d-md-none d-lg-block d-lg-none d-xl-block col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="gallery-item h-100 rounded-0">
+                <img src="assets/img/gallery/gallery_covers/gallery-7.jpg" class="img-fluid" alt="">
+                  <div class="gallery-links d-flex align-items-center justify-content-center">
+                    <a href="p_youtube.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="gallery-item h-100 rounded-0">
+                <img src="assets/img/gallery/gallery_covers/gallery-6.jpg" class="img-fluid" alt="">
+                  <div class="gallery-links d-flex align-items-center justify-content-center">
+                    <a href="p_flyers.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+              <div class="gallery-item h-100 rounded-0">
                 <img src="assets/img/gallery/gallery_covers/gallery-5.jpg" class="img-fluid" alt="">
                   <div class="gallery-links d-flex align-items-center justify-content-center">
                     <a href="p_illustration.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
@@ -257,67 +264,33 @@
               </div>
             </div>
 
-            <div class="d-none d-sm block d-sm-none d-md-block d-md-none d-lg-block d-lg-none d-xl-block col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
-                <img src="assets/img/gallery/gallery_covers/gallery-6.jpg" class="img-fluid" alt="">
-                  <div class="gallery-links d-flex align-items-center justify-content-center">
-                    <a href="p_digital_illustration.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                  </div>
-              </div>
-            </div>
-
-            <div class="d-none d-sm block d-sm-none d-md-block d-md-none d-lg-block d-lg-none d-xl-block col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
-                <img src="assets/img/gallery/gallery_covers/gallery-7.jpg" class="img-fluid" alt="">
-                  <div class="gallery-links d-flex align-items-center justify-content-center">
-                    <a href="p_mascot_design.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                  </div>
-              </div>
-            </div>
-
-            <div class="d-none d-sm block d-sm-none d-md-block d-md-none d-lg-block d-lg-none d-xl-block col-xl-3 col-lg-4 col-md-6">
-              <div class="gallery-item h-100">
-                <img src="assets/img/gallery/gallery_covers/gallery-8.jpg" class="img-fluid" alt="">
-                  <div class="gallery-links d-flex align-items-center justify-content-center">
-                    <a href="p_website_design.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                  </div>
-              </div>
-            </div>
           </div>
-
         </div>
-              <div class="carousel-action col-md-12 text-center">
-                <a href="portfolio.html" class="btn btn-special1 border rounded-3 text-white fw-light">more</a>
-              </div>
-
+             <!-- Uncomment to use button for more portfolio options
+                  <div class="carousel-action col-md-12 text-center">
+                    <a href="portfolio.html" class="btn btn-special1 border rounded-3 text-white fw-light">more</a>
+                  </div>
+              Uncomment to use button for more portfolio options -->
       </section>
       <!-- ===== End Portfolio Section ===== -->
+
 
       <!-- ======= Contact Section ======= -->
       <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(assets/img/map-image.png)">
         
-          <div class="overlay-mf4"></div>
-          <div class="container">
+          <div class="overlay-mf5"></div>
 
-          <div class="title-box text-center position-relative mb-0">
-            <h3 class="title-a text-light">
-              Contact
-            </h3>
-            <p class="subtitle-a text-light">
-              Get in touch with me
-            </p>
-            <div class="line-mf bg-white"></div>
+          <div class="container" data-aos="fade-up">
+
+          <div class="section-title container position-relative text-white pb-0">
+            <h2 class="text-white">Contact</h2>
           </div>
 
             <div class="row">
               <div class="col-sm-12">
                 <div class="contact-mf">
-                  <div id="contact" class="box-shadow-full rounded-4">
+                  <div id="contact" class="box-shadow-full rounded-0">
                     
-                    <div class="section-title pb-4 d-none d-sm-none d-md-none d-lg-block">
-                      <h2 class="fw-bold">CONTACT ME</h2>
-                    </div>
-
                 <!-- ======= Same text from above (only to show on small devices) ======= -->
                     <div class="section-title pb-4 d-block d-lg-none d-xl-none d-xxl-none">
                       <h2 class="d-flex justify-content-center fw-bold text-uppercase">Contact me</h2>
@@ -363,7 +336,7 @@
                                 <!---- Thank you Page ---->
 
                                 <!---- submit button ---->
-                                <div class="carousel-action col-md-12 text-center pt-4 pb-4">
+                                <div class="carousel-action col-md-12 text-center pt-4">
                                   <button class="btn btn-special3 rounded-3 text-white fw-light" type="submit">Submit</button>
                                 </div>
                                 <!-- End submit button -->
@@ -373,7 +346,7 @@
                       </div>
                       <div class="col-md-6">
 
-                        <div class="more-info border border-1 rounded-4 px-3 py-2">
+                        <div class="more-info border border-1 rounded-3 px-3 py-2">
                           <h4 class="d-flex justify-content-center py-2"><strong>I WANT TO HEAR FROM YOU!</strong></h4>
                           <br>
                           <p class="fw-normal fst-italic">
@@ -418,7 +391,6 @@
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   </div>
-    
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -430,6 +402,7 @@
   <script src="assets/js/popper.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
   <script src="assets/js/owl.carousel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
