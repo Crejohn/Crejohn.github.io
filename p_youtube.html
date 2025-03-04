@@ -18,7 +18,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Vendor CSS Files -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
@@ -31,163 +30,97 @@
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
-<div id="preloader">
-  <div class="line"></div>
-</div>
+  <!--
+    <div id="preloader">
+      <div class="line"></div>
+    </div>
+  -->
 
 <body>
 
-    <!-- ======= nav-bar ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center justify-content-between">
-
-      <!--<h1 class="logo"><a href="index.html">Crejohn</a></h1> -->
-      
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="index.html" class="logo"><img src="assets/img/crejohn_logotipo_2.png" alt="" class="img-fluid"></a>
-
-        <nav id="navbar" class="navbar">
-          <ul>
-            <li><a class="nav-link scrollto" href="index.html">Home</a></li>
-            <li><a class="nav-link scrollto" href="about.html">About</a></li>
-            <li><a class="nav-link scrollto active" href="portfolio.html">Portfolio</a></li>
-            <li><a class="nav-link scrollto" href="contact.html">Contact</a></li>
-          </ul>
-          <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
-
-    </div>
-  </header>
-    <!-- ===== End nav-bar ===== -->
-
-
+  <!--
   <main id="main" data-aos="fade" data-aos-delay="1500">
+  -->
 
-      <!-- ========== Header ========== -->
-      <div class="page-header bg-image-1 d-flex align-items-center" style="background-image: url(assets/img/gallery/gallery_covers/youtube_thumbnail_cover.jpg)">
-        <div class="container position-relative">
-          <div class="row d-flex justify-content-center">
-            <div class="col-lg-6 text-center">
-
-            </div>
-          </div>
-        </div>
-        <!-- ======= Wave Section ======= -->
-        <div class="row">
-          <div class="position-absolute bottom-0 start-50 translate-middle-x px-0">
-            <div class="class px-0 py-0">
-              <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
-                <defs>
-                  <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
-                </defs>
-                <g class="wave1">
-                  <use xlink:href="#wave-path" x="50" y="3" fill="rgba(91,91,91, .1)">
-                </g>
-                <g class="wave2">
-                  <use xlink:href="#wave-path" x="50" y="0" fill="rgba(91,91,91, .2)">
-                </g>
-                <g class="wave3">
-                  <use xlink:href="#wave-path" x="50" y="9" fill="rgba(91,91,91, .3)">
-                </g>
-              </svg>
-            </div>
-          </div>
-        </div>
-        <!-- ===== End Wave Section ===== -->
-      </div>
-      <!-- ===== End Page Header ===== -->
+  <main id="main">
 
     <!-- ======= Gallery Single Section ======= -->
-    <section id="gallery-single" class="gallery-single paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(assets/img/overlay-bg.jpg)" data-aos="fade" data-aos-delay="1500">
+    <section id="gallery-single" class="gallery-single paralax-mf footer-paralax bg-image-2 sect-mt4 route" style="background-image: url(assets/img/overlay-bg.jpg)">
 
       <div class="overlay-mf"></div>
 
-        <div class="gallery-block compact-gallery">
-            
-            <div class="container-fluid" data-aos="fade-up">
+            <div class="container-fluid position-relative">
 
-      <!--  <div class="section-title container position-relative">
-            <h2 class="text-capitalize">Youtube<br>thumbnails</h2>
-            </div>  -->
+                  <div class="row d-flex align-items-center justify-content-center">
 
-            <div class="row px-2 gx-0 row-cols-auto row-gap-0">
+                    <div class="col-lg-9 px-4">
+                      <div class="portfolio-details-slider swiper">
 
-                <div class="gallery item zoom-on-hover col-xl-4 col-lg-4 col-md-12 col-sm-12 d-flex align-items-center">
-                    <a class="lightbox" href="assets/img/gallery/youtube/youtube_1.jpg">
-                        <img class="img-fluid image" src="assets/img/gallery/youtube/youtube_1.jpg">
-                    </a>
-                </div>
+                        <div id="carousel-images" class="carousel slide" data-bs-ride="carousel">
 
-                <div class="gallery item zoom-on-hover col-xl-4 col-lg-4 col-md-12 col-sm-12 d-flex align-items-center">
-                    <a class="lightbox" href="assets/img/gallery/youtube/youtube_2.jpg">
-                        <img class="img-fluid image" src="assets/img/gallery/youtube/youtube_2.jpg">
-                    </a>
-                </div>
+                          <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carousel-images" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carousel-images" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carousel-images" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carousel-images" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#carousel-images" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                            <button type="button" data-bs-target="#carousel-images" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                            <button type="button" data-bs-target="#carousel-images" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                            <button type="button" data-bs-target="#carousel-images" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                          </div>
 
-                <div class="gallery item zoom-on-hover col-xl-4 col-lg-4 col-md-12 col-sm-12 d-flex align-items-center">
-                    <a class="lightbox" href="assets/img/gallery/youtube/youtube_3.jpg">
-                        <img class="img-fluid image" src="assets/img/gallery/youtube/youtube_3.jpg">
-                    </a>
-                </div>
+                          <div class="carousel-inner">
+                            <div class="carousel-item active">
+                              <img src="assets/img/gallery/youtube/youtube_1.jpg" class="d-block w-auto" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                              <img src="assets/img/gallery/youtube/youtube_2.jpg" class="d-block w-auto" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                              <img src="assets/img/gallery/youtube/youtube_3.jpg" class="d-block w-auto" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                              <img src="assets/img/gallery/youtube/youtube_4.jpg" class="d-block w-auto" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                              <img src="assets/img/gallery/youtube/youtube_5.jpg" class="d-block w-auto" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                              <img src="assets/img/gallery/youtube/youtube_6.jpg" class="d-block w-auto" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                              <img src="assets/img/gallery/youtube/youtube_7.jpg" class="d-block w-auto" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                              <img src="assets/img/gallery/youtube/youtube_8.jpg" class="d-block w-auto" alt="...">
+                            </div>
+                          </div>
 
-                <div class="gallery item zoom-on-hover col-xl-4 col-lg-4 col-md-12 col-sm-12 d-flex align-items-center">
-                    <a class="lightbox" href="assets/img/gallery/youtube/youtube_4.jpg">
-                        <img class="img-fluid image" src="assets/img/gallery/youtube/youtube_4.jpg">
-                    </a>
-                </div>
+                          <button class="carousel-control-prev" type="button" data-bs-target="#carousel-images" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                          </button>
 
-                <div class="gallery item zoom-on-hover col-xl-4 col-lg-4 col-md-12 col-sm-12 d-flex align-items-center">
-                    <a class="lightbox" href="assets/img/gallery/youtube/youtube_5.jpg">
-                        <img class="img-fluid image" src="assets/img/gallery/youtube/youtube_5.jpg">
-                    </a>
-                </div>
+                          <button class="carousel-control-next" type="button" data-bs-target="#carousel-images" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                          </button>
 
-                <div class="gallery item zoom-on-hover col-xl-4 col-lg-4 col-md-12 col-sm-12 d-flex align-items-center">
-                    <a class="lightbox" href="assets/img/gallery/youtube/youtube_6.jpg">
-                        <img class="img-fluid image" src="assets/img/gallery/youtube/youtube_6.jpg">
-                    </a>
-                </div>
+                        </div>
 
-                <div class="gallery item zoom-on-hover col-xl-4 col-lg-4 col-md-12 col-sm-12 d-flex align-items-center">
-                    <a class="lightbox" href="assets/img/gallery/youtube/youtube_7.jpg">
-                        <img class="img-fluid image" src="assets/img/gallery/youtube/youtube_7.jpg">
-                    </a>
-                </div>
+                        <div class="swiper-pagination"></div>
+                      </div>
+                    </div>
 
-                <div class="gallery item zoom-on-hover col-xl-4 col-lg-4 col-md-12 col-sm-12 d-flex align-items-center">
-                    <a class="lightbox" href="assets/img/gallery/youtube/youtube_8.jpg">
-                        <img class="img-fluid image" src="assets/img/gallery/youtube/youtube_8.jpg">
-                    </a>
-                </div>
+
+                  </div>
 
             </div>
-
-            </div>
-        </div>
 
     </section>
     <!-- ===== End Gallery Single Section ===== -->
 
   </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="social-links mb-3">
-            <a href="https://www.linkedin.com/in/crejohn/" target="linkedin.com" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            <a href="https://www.instagram.com/crejohndesign/" target="instagram.com" class="instagram"><i class="bx bxl-instagram"></i></a>
-      </div>
-      <div class="copyright">
-        &copy; Copyright <strong><span>BootstrapMade</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer>
-  <!-- ===== End Footer ===== -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

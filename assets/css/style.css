@@ -22,7 +22,7 @@
     scroll-behavior: smooth;
 }
 body {
-    background-color: #000000;
+    background-color: #ffffff;
     color: #444444;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -85,6 +85,14 @@ a:hover {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+}
+.bg-image-2 {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+    overflow: visible;
 }
 @media (max-width: 1024px) {
     .bg-image {
@@ -1315,9 +1323,9 @@ section {
     text-transform: uppercase;
 }
 .carousel-caption p {
-    background: #8fc93c;
-    padding: 10px 20px;
-    font-size: 20px;
+    background: #5623cc;
+    padding: 5px 10px;
+    font-size: 15px;
     font-weight: 300;
 }
 .carousel-action {
