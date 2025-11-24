@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Design Extras</title>
+  <meta name="viewport" content="width=width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="../../assets/menu/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <style>
+    /* Estilos del loader */
+    .loading {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .loading:before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #23272A;
+      z-index: 9998;
+    }
+
+    .loader {
+      color: #fff;
+      font-family: Consolas, Menlo, Monaco, monospace;
+      font-weight: bold;
+      font-size: 5vh;
+      opacity: 0.8;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      background: transparent;
+    }
+
+    .loader span {
+      display: inline-block;
+      animation: pulse 0.4s alternate infinite ease-in-out;
+    }
+
+    .loader span:nth-child(odd) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes pulse {
+      to {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+    }
+  </style>
+</head>
+<body class="loading">
+  <!-- Loader -->
+  <div class="loader"><span>{</span><span>}</span></div>
+
+  <!-- Contenido principal -->
+  <div class="container">
+    <div class="item" data-image="./images/spec_design_1920x1080.jpg">
+      <div class="quote">
+        <p><span>Give me six hours to chop down a tree and I will spend the first four sharpening the axe.</span><br><span>Abraham Lincoln</span></p>
+      </div>
+    </div>
+    <!-- El siguiente item estaba deshabilitado y ahora se habilita -->
+    <div class="item" data-image="./images/ui_app_design_1920x1080.jpg">
+      <div class="quote">
+        <p><span>There is nothing impossible to him who will try.</span><br><span>Alexander the Great</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script src="./script.js"></script>
+    <!-- Back Button -->
+    <div class="back-button" id="backButton">
+      <span>
+        <!-- Icono Back de Flaticon CDN -->
+        <img src="https://cdn-icons-png.flaticon.com/512/2099/2099238.png" alt="Back icon" width="24" height="24" />
+      </span>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const loader = document.querySelector('.loader');
+        const body = document.body;
+      
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            loader.style.opacity = '0';
+            loader.style.visibility = 'hidden';
+            body.classList.remove('loading');
+          }, 500);
+        });
+      });
+    </script>
+</body>
+</html>

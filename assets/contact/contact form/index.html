@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Matrix-inspired contact form with typing animation">
+  <title>Contact</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;1,400" rel="stylesheet">
+  <style>
+    /* Estilos del loader */
+    .loading {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .loading:before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #23272A;
+      z-index: 9998;
+    }
+
+    .loader {
+      color: #fff;
+      font-family: Consolas, Menlo, Monaco, monospace;
+      font-weight: bold;
+      font-size: 5vh;
+      opacity: 0.8;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      background: transparent;
+    }
+
+    .loader span {
+      display: inline-block;
+      animation: pulse 0.4s alternate infinite ease-in-out;
+    }
+
+    .loader span:nth-child(odd) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes pulse {
+      to {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+    }
+  </style>
+</head>
+<body class="loading">
+  <!-- Loader -->
+  <div class="loader">
+    <span>{</span><span>}</span>
+  </div>
+
+  <!-- Menu flotante -->
+  <header>
+    <div class="inner">
+      <nav>
+        <div class="dropholder">
+          <div class="dropdown">
+            <div id="iconbox">
+              <div class="icon-container" id="homepic">
+                <i class="fas fa-home ic" id="pic1"></i>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="codepic">
+                <i class="fas fa-user ic" id="pic2"></i>
+                <ul class="menu code-menu">
+                  <li data-frame="aboutme-frame"><i class="fas fa-user-circle"></i> About me</li>
+                  <li data-frame="timeline-frame"><i class="fas fa-history"></i> Timeline</li>
+                </ul>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="workpic">
+                <i class="fas fa-laptop-code ic" id="pic3"></i>
+                <ul class="menu work-menu">
+                  <li data-frame="portfolio-frame"><i class="fas fa-laptop-code"></i> Portfolio</li>
+                  <li data-frame="logo-frame"><i class="fas fa-paint-brush"></i> Logo Design</li>
+                  <li data-frame="graphic-frame"><i class="fas fa-pencil-alt"></i> Graphic Design</li>
+                  <li data-frame="website-frame"><i class="fas fa-globe"></i> Website</li>
+                  <li data-frame="social-frame"><i class="fas fa-share-alt"></i> Social Media</li>
+                  <li data-frame="illustration-frame"><i class="fas fa-pen-fancy"></i> Hand-Drawn Illustrations</li>
+              <li data-frame="video-frame" style="display:none;"><i class="fas fa-video"></i> Video Editing</li>
+                </ul>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="studypic">
+                <i class="fas fa-envelope ic" id="pic4"></i>
+                <ul class="menu study-menu">
+                  <li data-frame="contact-frame"><i class="fas fa-paper-plane"></i> Contact</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div id="canvas-container">
+    <audio id="typeSound" src="https://assets.mixkit.co/sfx/preview/mixkit-keyboard-typing-1386.mp3" preload="auto"></audio>
+  </div>
+
+  <!-- Contact form (integrated with Formspree) -->
+  <main class="contact-frame">
+    <section class="contact-container">
+      <!-- Formspree form: action uses the provided Formspree endpoint -->
+      <form id="contactForm" action="https://formspree.io/f/mdkpppdy" method="POST" accept-charset="UTF-8" autocomplete="on">
+        <fieldset aria-hidden="false" style="border:0;padding:0;margin:0;">
+          <label for="name" class="sr-only">Nombre</label>
+          <input id="name" name="name" type="text" placeholder="Tu nombre" />
+
+          <label for="email" class="sr-only">Correo electrónico</label>
+          <input id="email" name="email" type="email" placeholder="Tu correo" required />
+
+          <label for="subject" class="sr-only">Asunto</label>
+          <input id="subject" name="subject" type="text" placeholder="Asunto (opcional)" />
+
+          <label for="message" class="sr-only">Mensaje</label>
+          <textarea id="message" name="message" placeholder="Escribe tu mensaje" rows="6" required></textarea>
+
+          <!-- Optional: Formspree supports a _replyto field, but email is already named email above -->
+          <button type="submit">Enviar</button>
+        </fieldset>
+      </form>
+    </section>
+  </main>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script src="./script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loader = document.querySelector('.loader');
+      
+      window.addEventListener('load', function() {
+        // Ocultar el loader cuando la página termine de cargar
+        loader.style.opacity = '0';
+        loader.style.visibility = 'hidden';
+        document.body.classList.remove('loading');
+      });
+    });
+  </script>
+</body>
+</html>
