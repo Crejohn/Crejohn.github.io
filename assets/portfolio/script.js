@@ -36,7 +36,13 @@ function contractPanel() {
 // Función para ocultar el dropholder al hacer clic en un item
 function hideDropholderOnItemClick() {
     document.querySelectorAll('.item').forEach(item => {
-        item.addEventListener('click', () => {
+        item.addEventListener('click', (e) => {
+            // Si este item es el marketplace y está deshabilitado, ignorar
+            // el click para que la barra de menú no se oculte.
+            if (item === marketplaceItem && marketplaceDisabled) {
+                e.stopPropagation();
+                return;
+            }
             if (isFullyExpanded && item.classList.contains('fully-expanded')) {
                 const dropholder = document.querySelector('.dropholder');
                 if (dropholder) {

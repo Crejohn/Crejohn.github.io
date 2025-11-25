@@ -309,7 +309,7 @@ a { text-decoration: none; }
 
 .box .content.active { 
   top: 230px; 
-  height: auto;
+  height: 394px;
   max-height: calc(100% - 300px);
 }
 
