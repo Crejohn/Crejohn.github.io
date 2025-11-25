@@ -411,6 +411,9 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (f2 && isVisible(f2)) { setTitle('Cartelera'); return; }
 
 			const accountEl = document.getElementById('account');
+			// If the account overlay or the original account view is visible, show 'Cuenta'
+			const account2El = document.getElementById('account_2');
+			if (account2El && isVisible(account2El)) { setTitle('Cuenta'); return; }
 			if (accountEl && isVisible(accountEl)) { setTitle('Cuenta'); return; }
 			const formatoEl = document.getElementById('formato');
 			if (formatoEl && isVisible(formatoEl)) { setTitle('Formato'); return; }
@@ -1016,6 +1019,14 @@ document.addEventListener('DOMContentLoaded', function () {
 						// animate in like other overlays (form_3 uses this sequence)
 						void overlay.offsetWidth;
 						overlay.classList.add('in');
+						// Ensure header reflects that this is the account overlay (Cuenta)
+						try {
+							const headerH1 = document.querySelector('header h1');
+							if (headerH1) {
+								const strong = headerH1.querySelector('strong');
+								if (strong) strong.textContent = 'Cuenta'; else headerH1.textContent = 'Cuenta';
+							}
+						} catch (e) {}
 						// make original account not interactive while overlay is open
 						try { setHidden(accountDiv, true); accountDiv.style.pointerEvents = 'none'; } catch (e) {}
 						// wire header back button to close the overlay and restore the original
