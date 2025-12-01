@@ -228,7 +228,8 @@ a { text-decoration: none; }
   padding: 5px; 
   text-transform: uppercase; 
   margin-top: 7px;
-  border-radius: 6px;
+  border-radius: 10px;
+  width: 140px;
 }
 .topbar grupo b { letter-spacing: -.5px; font-size: 13px;}
 
