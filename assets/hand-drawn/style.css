@@ -1,0 +1,257 @@
+/* Cuando se oculta .lg-components, expandir el área de la imagen */
+.lg-outer.lg-expanded {
+  height: 100vh !important;
+}
+/* Back Button Styles */
+/* Eliminado estilos de back-button */
+/* Ocultar componentes de lightGallery excepto sub-html y toggle */
+.hide-lg-comp {
+  display: none !important;
+}
+/* Animación slide+fade para thumbnails */
+.lg-thumb-outer {
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1), opacity 0.3s cubic-bezier(.4,0,.2,1);
+  transform: translateY(0);
+  opacity: 1;
+}
+.lg-thumb-outer.lg-thumb-hidden {
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Estilos del menú flotante */
+header {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 1000;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+header .inner {
+  max-width: 1060px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+nav {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  width: 240px;
+  height: 44.72px;
+  pointer-events: none;
+}
+
+.dropholder {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  animation: move 3s ease-in-out infinite;
+  pointer-events: auto;
+}
+
+.dropdown {
+  background: transparent;
+  pointer-events: auto;
+}
+
+.icon-container,
+.menu,
+.menu li,
+.separator,
+.ic {
+  pointer-events: auto;
+}
+
+@keyframes move {
+  0%, 100% { transform: translateY(-7.45px); }
+  50% { transform: translateY(0); }
+}
+
+/* Ocultar TODAS las barras de desplazamiento cuando lightgallery está activo */
+body.lg-on {
+  overflow: hidden !important;
+  padding-right: 0 !important;
+  touch-action: none;
+}
+
+main {
+  width: 100%;
+  padding: 0;
+}
+
+section {
+  width: 100%;
+  padding: 0;
+}
+
+/* Container principal igual a photo_editing */
+#gallery-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  justify-content: stretch;
+  align-items: stretch;
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+/* Media query for tablet devices */
+@media screen and (max-width: 968px) {
+  #gallery-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 576px) {
+  #gallery-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gallery-container {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Main visible image styles */
+.gallery-container > a:first-child {
+  position: relative;
+  width: 100%;
+  padding-top: 70%; /* igual a photo_editing */
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+}
+
+.gallery-container > a:first-child::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-container > a:first-child:hover::before {
+  opacity: 0;
+}
+
+/* Base image styles */
+.gallery-container > a > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hidden images with proper positioning */
+.hidden-image {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: none !important;
+  transition: opacity 0.3s ease-out !important;
+  z-index: -1 !important;
+}
+
+.hidden-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* Thumbnails in lightGallery */
+.lg-outer .lg-thumb-item {
+  border-radius: 0;
+  will-change: border-color;
+  transition: border-color 0.25s ease;
+  cursor: pointer !important;
+}
+
+.lg-outer .lg-thumb-item.active,
+.lg-outer .lg-thumb-item:hover {
+  border-color: #800ac9;
+}
+
+/* Override for lightGallery active state */
+.lg-outer .hidden-image {
+  position: static !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  z-index: auto !important;
+}
+
+/* lightGallery custom styles */
+.lg-backdrop {
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 9999 !important;
+}
+
+.lg-toolbar, .lg-sub-html {
+  background: rgba(13, 10, 10, 0.6) !important;
+}
+
+/* Asegurar que el contenedor de lightgallery no cause scroll */
+.lg-container {
+  position: fixed !important;
+  inset: 0 !important;
+  overflow: hidden !important;
+  z-index: 10000 !important;
+}
+
+.lg-outer {
+  z-index: 10000 !important;
+  overflow: hidden !important;
+}
+
+.lg-inner {
+  overflow: hidden !important;
+}
+
+/* Deshabilitar interacción con contenedores cuando lightgallery está activo */
+body.lg-on .gallery-container {
+  pointer-events: auto !important;
+}
+
+body.lg-on #gallery-container {
+  pointer-events: auto !important;
+}

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Timeline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../../../favicon.png" type="image/png">
+  <link rel="stylesheet" href="./style.css">
+  <!-- Use the same FontAwesome version as the main menu to avoid icon mismatches -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- v4-shims: allows legacy `fa` classes to work with FontAwesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/4.7.0/css/v4-shims.css">
+  <!-- FontAwesome old version for the project icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../../assets/menu/style.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <style>
+    /* Estilos del loader */
+    .loading {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .loading:before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #23272A;
+      z-index: 9998;
+    }
+
+    .loader {
+      color: #fff;
+      font-family: Consolas, Menlo, Monaco, monospace;
+      font-weight: bold;
+      font-size: 5vh;
+      opacity: 0.8;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      background: transparent;
+    }
+
+    .loader span {
+      display: inline-block;
+      animation: pulse 0.4s alternate infinite ease-in-out;
+    }
+
+    .loader span:nth-child(odd) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes pulse {
+      to {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+    }
+  </style>
+</head>
+<body class="loading">
+  <!-- Loader -->
+  <div class="loader">
+    <span>{</span><span>}</span>
+  </div>
+
+  <header>
+    <div class="inner">
+      <nav>
+        <div class="dropholder">
+          <div class="dropdown">
+            <div id="iconbox">
+              <div class="icon-container" id="homepic">
+                <i class="fas fa-home ic" id="pic1" onclick="window.location.href='../../../index.html'"></i>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="codepic">
+                <i class="fas fa-user ic" id="pic2"></i>
+                <ul class="menu code-menu">
+                  <li data-frame="aboutme-frame" onclick="window.location.href='../about/index.html'"><i class="fas fa-user-circle"></i> About me</li>
+                  <li data-frame="timeline-frame" onclick="window.location.href='index.html'"><i class="fas fa-history"></i> Timeline</li>
+                </ul>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="workpic">
+                <i class="fas fa-laptop-code ic" id="pic3"></i>
+                <ul class="menu work-menu">
+                  <li data-frame="portfolio-frame" onclick="window.location.href='../../portfolio/index.html'"><i class="fas fa-laptop-code"></i> Portfolio</li>
+                  <li data-frame="logo-frame" onclick="window.location.href='../../logo_design/index.html'"><i class="fas fa-paint-brush"></i> Logo Design</li>
+                  <li data-frame="graphic-frame" onclick="window.location.href='../../graphic_design/index.html'"><i class="fas fa-pencil-alt"></i> Graphic Design</li>
+                  <li data-frame="website-frame" onclick="window.location.href='../../websites/index.html'"><i class="fas fa-globe"></i> Website</li>
+                  <li data-frame="social-frame" onclick="window.location.href='../../social_media/index.html'"><i class="fas fa-share-alt"></i> Social Media</li>
+                  <li data-frame="illustration-frame" onclick="window.location.href='../../hand-drawn/index.html'"><i class="fas fa-pen-fancy"></i> Hand-Drawn Illustrations</li>
+              <li data-frame="video-frame" onclick="window.location.href='../../video_editing/index.html'" style="display:none;"><i class="fas fa-video"></i> Video Editing</li>
+                </ul>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="studypic">
+                <i class="fas fa-envelope ic" id="pic4"></i>
+                <ul class="menu study-menu">
+                  <li data-frame="contact-frame" onclick="window.location.href='../../contact/contact form/index.html'"><i class="fas fa-paper-plane"></i> Contact</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+<!-- partial:index.partial.html -->
+<div id="pagination">
+  <button data-slide="0" class="active"></button>
+  <button data-slide="1"></button>
+</div>
+<div class="container" id="quotes-container">
+  <div class="item" data-image="./images/birth.png" style="background-image: url('./images/birth.png');">
+    <div class="box">
+      <p>The world was forever changed with my arrival (said no one ever).<br><br> The exact details are a bit hazy (I was, admittedly, the center of attention!... because I was crying out loud), but reliable sources confirm my arrival was met with cheers, tears, and a strong desire on my behalf for a pacifier and a nap. <br><br>I showed up without an instruction manual and I've been winging it beautifully ever since. <br><br> <span>Birth</span></p>
+    </div>
+  </div>
+  <div class="item" data-image="./images/high_school_graduation.png" style="background-image: url('./images/high_school_graduation.png');">
+  <div class="box">
+      <p>Crossed the 'High School Finish Line,' only to discover it was just a checkpoint from Elementary School and the next level would be equally longer and harder. <br><br> The power-ups were more expensive, and the instruction manual was missing. They call it 'commencement,' which is a fancy word for 'being gently launched into the void of your own choices. <br><br> <span>High School Graduation</span></p>
+    </div>
+  </div>
+  <div class="item" data-image="./images/college_graduation.png" style="background-image: url('./images/college_graduation.png');">
+  <div class="box">
+      <p>After years of all-nighters and questionable life choices, I was handed a piece of paper proclaiming me an 'expert' in my field. As they handed me a diploma, they said, 'This opens a lot of doors!' What they didn't say was that most of those doors led to Narnia.; I was hoping for at least a secret passageway.<br><br>They told us to throw our caps in the air as a symbol of our accomplishment. What they didn't tell us was that it was also a metaphor for all the job applications we'd soon be throwing into a void. The caps, at least, came back down.<br><br>My brother spent the time calculating how much my tuition could have been if he had invested it on Counter-Strike. <br><br> <span>College Graduation</span></p>
+    </div>
+  </div>
+  <div class="item" data-image="./images/first_job.png" style="background-image: url('./images/first_job.png');">
+  <div class="box">
+      <p>My first job as a Graphic Designer... Where I was officially given the power to decide if a brand's soul was Helvetica or Comic Sans.<br><br>I didn't just choose colors and fonts; I worked with a creative director and mentor who later on became my best friend, we both developed a mind-reading skill, and a master of saying 'The file is on its way' while still rendering it.<br><br>it was a masterclass in alchemy: turning 12 cups of coffee into brand identities. I managed to make projects from start to finish, which mostly meant herding feedback from different people into one single and actually usable, coherent design that pleased no one perfectly but everyone just enough.<br><br>I was an image editor, and brand therapist, guiding companies through their visual identity crises one poorly-spaced flyer at a time.<br><br><span>My first Job! ...As a professional Graphic Designer</span></p>
+    </div>
+  </div>
+  <div class="item" data-image="./images/radio_show.png" style="background-image: url('./images/radio_show.png');">
+  <div class="box">
+      <p>My official title was Graphic Designer, but I was also the unofficial 'Button Whisperer.' I didn't just make things look pretty; I was also tasked with the UX/UI of mobile apps, which is a fancy way of saying I spent half my time deciding if a menu should slide in from the left or the right, and the other half defending those decisions to people who thought 'user-friendly' meant 'everything is magically finished and ready to use'.<br><br>My job became a strange blend of psychology, schizophrenia and pixel-pushing. This meant my brain was constantly switching contexts: at one point I was carefully analyzing a user's interface to be intuitive and seamless, the next I was designing a banner ad that screamed 'CLICK HERE!' in 72-point font having my coffee mug next to me and immediately after that I was obsessing at crafting over the emotional weight of a font.<br><br>My sidekick weekend project was a radio show where my official title was 'Designer & Production Assistant. I learned that working on a weekend radio show meant being a creative Swiss Army knife. By day, a pixel-pusher; by weekend, I was the guardian of lost coffee mugs for sleep-deprived hosts. I was essentially a "creative janitor".<br><br>My duties included creating the logo of the show to make it look vastly more popular than it was, to fetching coffee and assuring the host that yes, you could totally hear the 'passion' in their voice, and not just the fact we were 10 minutes behind schedule.<br><br><span>Surfing through the world of UX/UI</span></p>
+    </div>
+  </div>
+  <div class="item" data-image="./images/second_job.png" style="background-image: url('./images/second_job.png');">
+  <div class="box">
+      <p>My job was to provide the creative spark for a thermo-electric maintenance company. I'd spend my days designing sleek, dynamic brochures about turbine repair for international associates, while secretly hoping my computer wouldn't black out from the very power instability the company was meant to fix.<br><br>There's a special kind of irony in designing a vibrant, full-color brochure about preventing power outages, only to have your computer crash and lose all your work because of a... well, you get it. My designs promised energy reliability to the world, while my reality was praying the building's own electric system held up long enough for me to export the final PDF.<br><br>While working with international engineers who spoke in technical jargon, my job was to turn their 50-page reports into a three-slide presentation that wouldn't put the clients to sleep. I wasn't just a designer; I was a corporate coma-prevention specialist.<br><br>it felt more like 'International Ambassador of Clip Art.' I'd have high-stakes meetings with global associates about presentations, where the fate of multi-million-dollar contracts seemingly rested on my choice between two nearly identical shades of blue. We were solving the world's energy problems, one perfectly aligned flowchart at a time.<br><br><span>The Power of the Thermo-electricity</span></p>
+    </div>
+  </div>
+  <div class="item" data-image="./images/another_job.png" style="background-image: url('./images/another_job.png');">
+  <div class="box">
+      <p>While the country was sinking (as if this were something new), I was debating between standing in line for a day at a supermarket or conquering the world. Then a job opportunity presented itself (not really, it was me who found it).<br><br>My job at this time was part graphic designer, part "cartographic liar." I was the one who made the event venue map look sleek and navigable on the website, carefully placing the bathrooms and concession stands. The reality, which I knew but chose to hide, was that attending the actual event meant a 500-person bottleneck and a line for the restroom longer than the band's greatest hit.<br><br>In essence, my art was the first and last thing a customer saw. I designed the vibrant social media ads that fueled the 'I HAVE TO GO' panic-buying impulse, and then I designed the clean, minimalist ticket they bought, a tiny monument to their life choices. My designs guided them from FOMO to a physical piece of paper that basically said, 'No refunds. Enjoy the mosh pit.'<br><br>I was the silent partner in every concert-goer's journey. I crafted the beautiful key art that made them fall in love with an event, and then I designed the ticket they'd later frantically at stores. My work was responsible for both their initial excitement and their peak pre-show anxiety. I wasn't just a designer; I was an emotional orchestrator, a reality distortion field. I'd find a photo and, through graphic design, turn it into a vibrant festival utopia.<br><br><span>Selling dreams to the people</span></p>
+    </div>
+  </div>
+  <div class="item" data-image="./images/third_job.png" style="background-image: url('./images/third_job.png');">
+  <div class="box">
+      <p>When my adventure in the entertainment world came to an end, a job finally knocked on my door (not literally, I got a call! at least this time the job actually found me). My mission was to make healthy living look irresistible, which is a fancy way of saying I was a 'visual sweetener.' I'd take a slogan like 'The empowering journey of kale' and turn it into a landing page so sleek, you'd almost forget you were essentially buying powdered grass. My real skill was using the exact same shade of green to sell a 30-day detox and a 'guilt-free' chocolate bar that tasted like chalk.<br><br>I wasn't just a designer; I was a platform psychologist. Adapting our graphic line for Kajabi and Shopify meant understanding the subtle difference between a 'I-want-to-invest-in-my-wellness' customer and a 'I-want-a-quick-fix' customer. Testing a design's functionality really meant asking, 'Does this button look like it will magically melt belly fat?' If the click-through rate was high, the answer was yes.<br><br>There's a special creative challenge in making a 'Liver-Cleansing Elixir' look appetizing to someone scrolling through pictures of pizza. I was the Chief Paradox Creator, using wholesome stock photos to sell the intense, internal chaos of a three-day cleanse. (The real detox was my browser history, filled with 'wellness stock photos' and 'before-and-after mockups.')<br><br>My designs weren't just tested for functionality, but for their 'vibe.' Does this font look more 'plant-based and zen' or 'gym-rat powerful'? I became an expert in A/B testing for auras, tweaking a gradient until it perfectly whispered 'health guru' instead of screaming 'snake oil salesman.' It was less about pixels and more about placebo.<br><br>In the end, I was a digital alchemist. My task was to transmute vague claims like 'boosts vitality' into compelling logos and social media ads, proving that with the right font, you can sell anything. The real nutritional value was always in the aesthetics.<br><br><span>Fifty Shades of Green: A healthy diet era</span></p>
+    </div>
+  </div>
+  <div class="item" data-image="./images/freelance_job.png" style="background-image: url('./images/freelance_job.png');">
+    <div class="box">
+      <p>When my time at the nutritional health company expired, which, ironically, offered health to its clients while its employees lost what little mental health they had left. I decided to move along and work on my own.<br><br>Ah, freelancing... It's the glorious freedom of being your own boss, which mostly means having the freedom to argue with your pillow and yourself about why you shouldn't buy that coffee until after you've invoiced the client who's been 'checking in with accounting' to finally pay you.<br><br>Freelancing has given me a wide-ranging portfolio. One day I'm crafting a luxury brand identity for a bespoke artisanal candle company, and the next I'm designing a flyer for a local dog groomer that's 80% a photo of a startled-looking Shih Tzu in a raincoat. I'm a creative chameleon, adapting to the budget and vision of anyone with an email address.<br><br>The best part of freelancing is the feedback loop. It's a magical process where you send a meticulously crafted design, and the client responds with a 3-word email typed on a phone: 'needs more Design.' Then you spend two hours trying to decipher if 'Design' means a color, a new font, or a spiritual awakening.<br><br>Despite not being closed to working within a company, it pretty much seems we've reached a point where HR makes their selections from a cereal box. It's truly heartwarming to witness the innovative strides in the field of HR within the luminous borders of my homeland, Narnia.<br><br>While many companies in less enlightened realms struggle with archaic concepts like 'meritocracy' or 'skills-based hiring,' it appears Narnia has embraced a refreshingly whimsical, almost democratic approach to talent acquisition. The sheer genius lies in reducing the complex, nuanced process of identifying potential to a simple, random selection which starts with the question: 'What are your salary expectations?'.<br><br>It perfectly bypasses the cumbersome necessity for in-depth interviews, portfolio reviews, or the general unpleasantness of objective evaluation. After all, who needs a structured behavioral assessment when you can just find the shiny toy at the bottom of the box? This method guarantees one thing above all else: a wonderfully unpredictable, and undoubtedly diverse, array of employees who are certainly no more qualified than the person next to them. Truly, other nations should take note; it's a masterclass in how to manage expectations right down to zero.<br><br><span>Memoirs: From Cradle to Freelance<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAn Unauthorized Autobiography</span></p>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+
+<nav class="timeline-menu">
+  <ul>
+    <li class="list active-icon" data-index="0">
+      <a href="#">
+        <span class="icon">
+          <i class="fas fa-baby-carriage" aria-hidden="true"></i>
+        </span>
+        <span class="text">1989</span>
+      </a>
+    </li>
+    <li class="list" data-index="1">
+      <a href="#">
+        <span class="icon">
+          <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+        </span>
+        <span class="text">2006</span>
+      </a>
+    </li>
+    <li class="list" data-index="2">
+      <a href="#">
+        <span class="icon">
+          <i class="fas fa-user-graduate" aria-hidden="true"></i>
+        </span>
+        <span class="text">2011</span>
+      </a>
+    </li>
+    <li class="list" data-index="3">
+      <a href="#">
+        <span class="icon">
+          <i class="fas fa-briefcase" aria-hidden="true"></i>
+        </span>
+        <span class="text">2012</span>
+      </a>
+    </li>
+    <li class="list" data-index="4">
+      <a href="#">
+        <span class="icon">
+          <i class="fas fa-laptop-code" aria-hidden="true"></i>
+        </span>
+        <span class="text">2015</span>
+      </a>
+    </li>
+    <li class="list" data-index="5">
+      <a href="#">
+        <span class="icon">
+          <i class="fas fa-bolt" aria-hidden="true"></i>
+        </span>
+        <span class="text">2016</span>
+      </a>
+    </li>
+    <li class="list" data-index="6">
+      <a href="#">
+        <span class="icon">
+          <i class="fas fa-ticket-alt" aria-hidden="true"></i>
+        </span>
+        <span class="text">2019</span>
+      </a>
+    </li>
+    <li class="list" data-index="7">
+      <a href="#">
+        <span class="icon">
+          <i class="fas fa-utensils" aria-hidden="true"></i>
+        </span>
+        <span class="text">2021</span>
+      </a>
+    </li>
+    <li class="list" data-index="8">
+      <a href="#">
+        <span class="icon">
+          <i class="fas fa-cloud" aria-hidden="true"></i>
+        </span>
+        <span class="text">2025</span>
+      </a>
+    </li>
+  </ul>
+  <div class="indicator"></div>
+</nav>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src="./script.js"></script>
+<script src="../../../assets/menu/script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const loader = document.querySelector('.loader');
+    
+    window.addEventListener('load', function() {
+      // Ocultar el loader cuando la página termine de cargar
+      loader.style.opacity = '0';
+      loader.style.visibility = 'hidden';
+      document.body.classList.remove('loading');
+    });
+  });
+</script>
+</body>
+</html>

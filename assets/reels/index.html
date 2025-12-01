@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../favicon.png" type="image/png">
+  <title>Reels</title>
+  <!-- lightGallery CDN CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/css/lightgallery-bundle.min.css" />
+  <link rel="stylesheet" href="../loader.css" />
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="../../assets/menu/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <style>
+    /* Estilos del loader */
+    .loading {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .loading:before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #23272A;
+      z-index: 9998;
+    }
+
+    .loader {
+      color: #fff;
+      font-family: Consolas, Menlo, Monaco, monospace;
+      font-weight: bold;
+      font-size: 5vh;
+      opacity: 0.8;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      background: transparent;
+    }
+
+    .loader span {
+      display: inline-block;
+      animation: pulse 0.4s alternate infinite ease-in-out;
+    }
+
+    .loader span:nth-child(odd) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes pulse {
+      to {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+    }
+  </style>
+</head>
+<body class="loading">
+
+  <!-- Loader -->
+  <div class="loader">
+    <span>{</span><span>}</span>
+  </div>
+
+  
+
+  <!-- Menu flotante -->
+  <header style="display:none">
+    <div class="inner">
+      <nav>
+        <div class="dropholder">
+          <div class="dropdown">
+            <div id="iconbox">
+              <div class="icon-container" id="homepic">
+                <i class="fas fa-home ic" id="pic1"></i>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="codepic">
+                <i class="fas fa-user ic" id="pic2"></i>
+                <ul class="menu code-menu">
+                  <li data-frame="aboutme-frame"><i class="fas fa-user-circle"></i> About me</li>
+                  <li data-frame="timeline-frame"><i class="fas fa-history"></i> Timeline</li>
+                </ul>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="workpic">
+                <i class="fas fa-laptop-code ic" id="pic3"></i>
+                <ul class="menu work-menu">
+                  <li data-frame="portfolio-frame"><i class="fas fa-laptop-code"></i> Portfolio</li>
+                  <li data-frame="logo-frame"><i class="fas fa-paint-brush"></i> Logo Design</li>
+                  <li data-frame="graphic-frame"><i class="fas fa-pencil-alt"></i> Graphic Design</li>
+                  <li data-frame="website-frame"><i class="fas fa-globe"></i> Website</li>
+                  <li data-frame="social-frame"><i class="fas fa-share-alt"></i> Social Media</li>
+                  <li data-frame="illustration-frame"><i class="fas fa-pen-fancy"></i> Hand-Drawn Illustrations</li>
+                  <li data-frame="video-frame"><i class="fas fa-video"></i> Video Editing</li>
+                </ul>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="studypic">
+                <i class="fas fa-envelope ic" id="pic4"></i>
+                <ul class="menu study-menu">
+                  <li data-frame="contact-frame"><i class="fas fa-paper-plane"></i> Contact</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div id="gallery-container">
+        <!-- Back Button dentro de gallery-container -->
+        <div class="back-button" id="backButton">
+          <span>
+            <img src="https://cdn-icons-png.flaticon.com/512/2099/2099238.png" alt="Back icon" width="24" height="24" />
+          </span>
+        </div>
+        <div class="gallery-container" id="gallery1">
+          <a
+            data-lg-size="1280-720"
+            data-video='{"source": [{"src": "./videos/burger.mp4", "type": "video/mp4"}], "attributes": {"preload": false, "playsinline": true, "controls": true, "autoplay": true}}'
+            data-poster="./covers/burger.jpg"
+            data-sub-html="<h4>Video 1</h4><p>Monster Double Burger</p>"
+          >
+            <img width="300" height="100" class="img-responsive" src="./covers/burger.jpg" />
+          </a>
+        </div>
+        <div class="gallery-container" id="gallery2">
+          <a
+            data-lg-size="1280-720"
+            data-video='{"source": [{"src": "./videos/ice_cream.mp4", "type": "video/mp4"}], "attributes": {"preload": false, "playsinline": true, "controls": true, "autoplay": true}}'
+            data-poster="./covers/ice_cream.jpg"
+            data-sub-html="<h4>Video 2</h4><p>Wonderland Ice Cream</p>"
+          >
+            <img width="300" height="100" class="img-responsive" src="./covers/ice_cream.jpg" />
+          </a>
+        </div>
+        <div class="gallery-container" id="gallery3">
+          <a
+            data-lg-size="1280-720"
+            data-video='{"source": [{"src": "./videos/veterinarian.mp4", "type": "video/mp4"}], "attributes": {"preload": false, "playsinline": true, "controls": true, "autoplay": true}}'
+            data-poster="./covers/veterinarian.jpg"
+            data-sub-html="<h4>Video 3</h4><p>Pet Preventive Care</p>"
+          >
+            <img width="300" height="100" class="img-responsive" src="./covers/veterinarian.jpg" />
+          </a>
+        </div>
+        <div class="gallery-container" id="gallery4">
+          <a
+            data-lg-size="1280-720"
+            data-video='{"source": [{"src": "./videos/bakery.mp4", "type": "video/mp4"}], "attributes": {"preload": false, "playsinline": true, "controls": true, "autoplay": true}}'
+            data-poster="./covers/bakery.jpg"
+            data-sub-html="<h4>Video 4</h4><p>Welcome to the best bakery in town</p>"
+          >
+            <img width="300" height="100" class="img-responsive" src="./covers/bakery.jpg" />
+          </a>
+        </div>
+        <div class="gallery-container" id="gallery5">
+          <a
+            data-lg-size="1280-720"
+            data-video='{"source": [{"src": "./videos/dentist.mp4", "type": "video/mp4"}], "attributes": {"preload": false, "playsinline": true, "controls": true, "autoplay": true}}'
+            data-poster="./covers/dentist.jpg"
+            data-sub-html="<h4>Video 5</h4><p>Dentist care and hygiene</p>"
+          >
+            <img width="300" height="100" class="img-responsive" src="./covers/dentist.jpg" />
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <!-- lightGallery CDN JS -->
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/lightgallery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/thumbnail/lg-thumbnail.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/zoom/lg-zoom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/fullscreen/lg-fullscreen.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/share/lg-share.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/autoplay/lg-autoplay.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/rotate/lg-rotate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/video/lg-video.min.js"></script>
+  <script src="./script.js"></script>
+  <script src="../../assets/menu/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loader = document.querySelector('.loader');
+      window.addEventListener('load', function() {
+        loader.style.opacity = '0';
+        loader.style.visibility = 'hidden';
+        document.body.classList.remove('loading');
+      });
+      // La inicialización de lightGallery se realiza en assets/hand-drawn/script.js -> initGallery()
+    });
+  </script>
+</body>
+</html>
