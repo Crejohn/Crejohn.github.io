@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>About</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../../../favicon.png" type="image/png">
+  <link rel="stylesheet" href="./style.css">
+  <!-- Use the same FontAwesome version as the main menu to avoid icon mismatches -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- v4-shims: allows legacy `fa` classes to work with FontAwesome 5 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/4.7.0/css/v4-shims.css">
+  <!-- FontAwesome old version for the project icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../../assets/menu/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,500,700&display=swap" rel="stylesheet">
+  <style>
+    /* Estilos del loader */
+    .loading {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .loading:before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #23272A;
+      z-index: 9998;
+    }
+
+    .loader {
+      color: #fff;
+      font-family: Consolas, Menlo, Monaco, monospace;
+      font-weight: bold;
+      font-size: 5vh;
+      opacity: 0.8;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      background: transparent;
+    }
+
+    .loader span {
+      display: inline-block;
+      animation: pulse 0.4s alternate infinite ease-in-out;
+    }
+
+    .loader span:nth-child(odd) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes pulse {
+      to {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+    }
+    /* PDF modal styles */
+    .pdf-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.75);z-index:10000}
+    .pdf-modal[aria-hidden="false"]{display:flex}
+    .pdf-modal-content{width:90%;height:90%;background:#fff;border-radius:6px;overflow:hidden;position:relative;box-shadow:0 8px 24px rgba(0,0,0,0.5)}
+  /* keep the button in the DOM but visually hide it */
+  .pdf-modal-close{position:absolute;top:8px;right:8px;background:transparent;border:none;color:#111;font-size:1.6rem;cursor:pointer;padding:6px 10px;display:none}
+    .pdf-modal iframe{width:100%;height:100%;border:0;display:block}
+    @media(max-width:600px){.pdf-modal-content{width:98%;height:92%}}
+  </style>
+</head>
+<body class="loading">
+  <video id="bg-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+    <source src="./videos/universe.mp4" type="video/mp4">
+    Tu navegador no soporta la reproducción de video.
+  </video>
+  <!-- Loader -->
+  <div class="loader">
+    <span>{</span><span>}</span>
+  </div>
+
+  <header>
+    <div class="inner">
+      <nav>
+        <div class="dropholder">
+          <div class="dropdown">
+            <div id="iconbox">
+              <div class="icon-container" id="homepic">
+                <i class="fas fa-home ic" id="pic1" onclick="window.location.href='../../../index.html'"></i>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="codepic">
+                <i class="fas fa-user ic" id="pic2"></i>
+                <ul class="menu code-menu">
+                  <li data-frame="aboutme-frame" onclick="window.location.href='index.html'"><i class="fas fa-user-circle"></i> About me</li>
+                  <li data-frame="timeline-frame" onclick="window.location.href='../timeline/index.html'"><i class="fas fa-history"></i> Timeline</li>
+                </ul>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="workpic">
+                <i class="fas fa-laptop-code ic" id="pic3"></i>
+                <ul class="menu work-menu">
+                  <li data-frame="portfolio-frame" onclick="window.location.href='../../portfolio/index.html'"><i class="fas fa-laptop-code"></i> Portfolio</li>
+                  <li data-frame="logo-frame" onclick="window.location.href='../../logo_design/index.html'"><i class="fas fa-paint-brush"></i> Logo Design</li>
+                  <li data-frame="graphic-frame" onclick="window.location.href='../../graphic_design/index.html'"><i class="fas fa-pencil-alt"></i> Graphic Design</li>
+                  <li data-frame="website-frame" onclick="window.location.href='../../websites/index.html'"><i class="fas fa-globe"></i> Website</li>
+                  <li data-frame="social-frame" onclick="window.location.href='../../social_media/index.html'"><i class="fas fa-share-alt"></i> Social Media</li>
+                  <li data-frame="illustration-frame" onclick="window.location.href='../../hand-drawn/index.html'"><i class="fas fa-pen-fancy"></i> Hand-Drawn Illustrations</li>
+              <li data-frame="video-frame" onclick="window.location.href='../../video_editing/index.html'" style="display:none;"><i class="fas fa-video"></i> Video Editing</li>
+                </ul>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="studypic">
+                <i class="fas fa-envelope ic" id="pic4"></i>
+                <ul class="menu study-menu">
+                  <li data-frame="contact-frame" onclick="window.location.href='../../contact/contact form/index.html'"><i class="fas fa-paper-plane"></i> Contact</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+<!-- partial:index.partial.html -->
+<div id="full-container" class="box">
+  <div class="top-img">
+    <video autoplay muted loop playsinline aria-label="Fondo animado" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <source src="./videos/stars.mp4" type="video/mp4">
+      Tu navegador no soporta la reproducción de video.
+    </video>
+  </div>
+  
+  <a href="#" class="angle-down">
+    <i class="fa fa-angle-double-down"></i>
+  </a>
+  
+  <div class="topbar">
+    <div class="topbar-img">
+      <img src="images/crejohn_mascot.jpg">
+<!-- <div class="color"></div> -->
+    </div>
+
+    <nombre>John<b>Quintero</b></nombre>
+    <frase>I do graphics, <b>illustrations, </b>web designs, UX/UI and other nice visual stuff.</frase>
+    <a href="#" class="download-link open-pdf" data-pdf="./files/john_quintero_resume_2025.pdf" style="text-decoration:none;color:inherit;" aria-label="Abrir archivo Graphic Designer en modal">
+      <grupo>Graphic <b>Designer</b> </grupo>
+    </a>
+  </div>
+
+  <div class="datos">
+    <dato><i class="fa fa-user"></i> Graphic Designer</dato>
+    <dato><i class="fa fa-map-marker"></i> Caracas, Venezuela.</dato>
+    <dato><i class="fa fa-briefcase"></i> Available</dato>
+    <dato><i class="fa fa-calendar"></i> 08/31/1989</dato>
+  <dato><i class="fa fa-phone"></i> <a href="https://wa.me/584242740911" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;" aria-label="Enviar mensaje por WhatsApp al +58 424 2740911">(+58) 424-2740911</a></dato>
+  <dato><i class="fa fa-envelope"></i> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=crejohndesign@gmail.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;" aria-label="Enviar correo a crejohndesign@gmail.com (abrir en Gmail)">crejohndesign@gmail.com</a></dato>
+  </div>
+
+<div class="content">
+    <div class="txt">
+      <div class="titulo"><b>A Long-expected journey</b></div><br><b>Hark, brave adventurer, and lend thine ear to the tale of a spirit forged in the fires of creativity!</b> a craftsman whose journey through the realms of visual artistry has been as epic and intricate as the forging of the greatest artifacts of legend themselves. I am a weaver of light and shadow, a master of pigments and pixels, and my path has been one of unwavering dedication to the art of design, imbued with a drive for perfection <i>that echoes the steadfastness of a staunch company of allies.</i><br><br>
+
+      My origins lie in the sun-drenched lands of Caracas, Venezuela, where I first drew breath and began to perceive the world through the discerning eye of an artist. My tongue is nimble in the common speech of Spanish, my native tongue, and I converse with ease in the English tongue, a skill useful for parley across many borders. My formal training, akin to the lore imparted in the ancient libraries of knowledge, saw me earn a <a href="">Graphic Design Associate's Degree</a> from the esteemed IUTIRLA. This foundational scroll granted me not only the wisdom of design principles but also the keen intellect for problem-solving. Yet, my thirst for knowledge, like the ever-flowing rivers of my craft, led me to further studies at Posa Studio Creativo, where I mastered the arcane arts of Dreamweaver CC and After Effects CC in the year 2013, adding potent spells to my creative arsenal.<br><br>
+      Now, let us speak of the trials and triumphs, <u>the epic quests of my work experience,</u>where I journeyed forth, blade of creativity in hand, through the years.<br><br>
+
+      <b>My first great adventure began in the year 2012,</b> when I entered the hallowed halls of Bunker Publicitario, an Ad Agency, a fortress of creativity where visions were forged and campaigns launched like arrows from the bows of master archers. There, I stood as a guardian of brands and a sculptor of identities. It was in this realm that I first learned to forge the very essence of a brand, selecting the vibrant palette of colors and the noble typography that would represent their spirit. I crafted advertising materials, from mighty banners to swift flyers, for both printed scrolls and the nascent digital screens. With my skills in illustration and photo editing, I manipulated images, breathing life into them for various media. This was a time of immense growth, where I oversaw projects from their glimmer of conception to their final, glorious delivery, ever mindful of the deadlines that loomed like foes on the horizon.<br><br>
+
+      <div class="titulo"><b>A Graphic Designer's Journey</b><br><br></div><b>As the moon waxed and waned in the year 2015,</b> my path led me to <a href="">Koiosoft,</a> a land of app and software development, a realm where digital wonders were spun and new pathways to knowledge and connection were charted. As a <a href="">Graphic Designer</a>, I plunged into the depths of UX/UI design, helping to shape the very interfaces of mobile applications, ensuring their beauty and ease of use, a craft akin to designing the intricate pathways of a great subterranean city. In this same year, my talents extended to a noble <a href="">Project Collab</a> known as "Estilo de Vida", broadcast on radio streaming media. Here, as a <i>Graphic Designer and Production Assistant</i> for entertainment, I delved into graphic design, research, and the crucial setup of equipment, much like preparing for a great expedition.<br><br>
+
+      When my journey in Koiosoft drew to its close, I then turned my gaze to the realm of <a href="">GSM Venezuela,</a>, a domain devoted to the arcane workings of thermo-electric maintenance. Here, bearing the title of Graphic Designer, I fashioned both digital and printed graphic pieces, creating visual messages that resonated with national and international allies alike. My tireless efforts ensured communication as clear as the purest mountain spring, and presentations so compelling they could sway councils as effectively as a well-placed argument in the hallowed halls of a great sanctuary. During this same period, another Project Collab called "InVoga" beckoned in the years 2016 and 2017, its call reaching me through the ether of TV streaming media. Once more, I served as a Graphic Designer and Production Assistant, applying my honed skills to the artistry of graphic design, the diligent pursuit of research, and the meticulous setup of equipment, ensuring that the broadcasts were as captivating and enchanting as a bard's most treasured tale.<br><br>
+      Then, from the year 2019, I ventured into the vibrant domain of <a href="">Ticketmundo,</a> <u>a hub of Entertainment.</u> I charted courses and paths, designing maps that guided patrons to event locations, much like a seasoned ranger navigating the wilds. I also adapted graphic art for the bustling social media realms and the ever-expanding web, crafting digital tickets that were portals to joy.<br><br>
+
+      The year 2021, marking a new cycle of the sun, brought my quest to the nourishing fields of <a href="">NutriWhite,</a> <b>a verdant land dedicated to the vital essence of Nutritional health.</b> There, my task was akin to a master craftsman shaping rare materials, to implement and test designs across many formats and platforms, ensuring their flawless adaptation, much like fitting a masterpiece of craftsmanship perfectly to its wearer. I was the architect of noble logos, the scribe of compelling presentations, and the painter of vibrant advertising campaigns, creating social media designs that shimmered like stars and adapting artwork for digital outposts like Kajabi and Shopify, weaving intricate graphic lines into their very digital tapestries. My skills in the ancient arts of photo editing, the keen eye of video editing proved invaluable here, complementing my enduring interests in the intricate pathways of UX/UI and the boundless expanses of web platforms.<br><br>
+
+      Despite of the shadow which has stretched across my homeland from decades, a time of arduous trials and dwindling hope, much like the perilous journey towards <b>the desolate plains of trial itself.</b> The very air of my homeland, grown heavy with unforeseen tribulations, has made the quest for job opportunities a daunting one seemingly beyond reach, each vacant position as a fortified tower loaded with adversaries stopping anyone from growing and moving forward.<br><br>
+    
+      <h1>Epilogue</h1><br>
+      
+      <l><i class="fa fa-pen"></i>
+      Since the year 2022, In this darkened age, my resolve has been tested, yet it has not faltered. My skills, honed through years of diligent practice, my mastery and arcane knowledge of multiple tools; are the precious artifacts I wield against the encroaching gloom. I navigate the digital world with the stealth of a ranger, seeking out every glimmer of work, every beacon of creation. Though the road is long and beset by scarcity, my spirit, like that of a true companion, remains unbroken. I continue to craft visual wonders, for even in the shadow of the deepest shadow where i'm at, the light of art can yet pierce the darkest clouds, proving that creativity, like hope, can endure against all odds.<br></l><br>
+      
+      <div class="gg">
+  <l id="like-btn" style="cursor:pointer;"><i class="fa fa-check"></i><span id="like-count" style="margin-left:4px;font-weight:500;">0</span> Like</l><br>
+  <l id="dislike-btn" style="cursor:pointer;"><i class="fa fa-remove"></i>Dislike</l><br>
+      </div><br>
+      <h1>Disclaimer</h1><br>
+      <div class="qq">The narrative style of this professional history employs creative and dramatic metaphors inspired by the literary genre of epic fantasy. It is a work of personal expression and is not an adaptation, fan-fiction, or derivative work of The Lord of the Rings or any specific copyrighted fictional universe. All references to companies, projects, and professional roles are entirely factual. </div>
+
+    </div>
+  </div>
+
+  <registro>Crejohn<b> Design</b></registro>
+</div>
+
+<!-- Botones de scroll -->
+<div id="pagination">
+  <button class="active" data-slide="0"></button>
+  <button data-slide="1"></button>
+</div>
+
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src="./script.js"></script>
+<script src="../../../assets/menu/script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const loader = document.querySelector('.loader');
+    window.addEventListener('load', function() {
+      loader.style.opacity = '0';
+      loader.style.visibility = 'hidden';
+      document.body.classList.remove('loading');
+    });
+
+    // Like/Dislike button logic
+    const likeBtn = document.getElementById('like-btn');
+    const dislikeBtn = document.getElementById('dislike-btn');
+    const likeCount = document.getElementById('like-count');
+    // Persist like count in localStorage
+    let count = parseInt(localStorage.getItem('about_like_count') || '0', 10);
+    likeCount.textContent = count;
+    likeBtn.addEventListener('click', function() {
+      count++;
+      likeCount.textContent = count;
+      localStorage.setItem('about_like_count', count);
+    });
+    // Dislike button click (no contador)
+    dislikeBtn.addEventListener('click', function() {
+      // Puedes agregar aquí una acción visual si lo deseas
+      dislikeBtn.classList.add('active');
+      setTimeout(function(){
+        dislikeBtn.classList.remove('active');
+      }, 200);
+    });
+  });
+</script>
+<!-- PDF modal markup and script -->
+<div id="pdf-modal" class="pdf-modal" aria-hidden="true">
+  <div class="pdf-modal-content" role="dialog" aria-modal="true" aria-label="PDF Viewer">
+    <button class="pdf-modal-close" aria-label="Cerrar visor PDF">✕</button>
+    <iframe id="pdf-frame" src="" title="PDF Viewer"></iframe>
+  </div>
+</div>
+<script>
+  (function(){
+    const openers = document.querySelectorAll('.open-pdf');
+    const modal = document.getElementById('pdf-modal');
+    const frame = document.getElementById('pdf-frame');
+    const closeBtn = modal.querySelector('.pdf-modal-close');
+
+    function openPDF(url){
+      if(!url) return;
+      frame.src = url;
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+      // focus close for accessibility
+      closeBtn.focus();
+    }
+
+    function closePDF(){
+      modal.setAttribute('aria-hidden','true');
+      // remove src to stop PDF from playing and free memory
+      frame.src = '';
+      document.body.style.overflow = '';
+    }
+
+    openers.forEach(function(op){
+      op.addEventListener('click', function(e){
+        e.preventDefault();
+        const file = op.getAttribute('data-pdf');
+        openPDF(file);
+      });
+    });
+
+    // Close handlers
+    closeBtn.addEventListener('click', closePDF);
+    modal.addEventListener('click', function(e){
+      if(e.target === modal) closePDF();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false'){
+        closePDF();
+      }
+    });
+  })();
+</script>
+</body>
+</html>
