@@ -1,5 +1,15 @@
 $(function(){
   //Global Vars
+  // Navegación al portfolio cuando el cursor se acerca al borde izquierdo
+  // Copiado del comportamiento usado en el proyecto "websites"
+  document.body.addEventListener('mousemove', function(e) {
+      if (e.clientX < 30) {
+          if (window.self === window.top) {
+              window.location.href = '../portfolio/index.html';
+          }
+      }
+  });
+
   // Mostrar overlay-bg.jpg al abrir el proyecto smartphone
   if ($('.iphoneMock').length) {
     $('body').find('.overlay-bg').remove();
@@ -219,7 +229,33 @@ $('#total-time').on('click', function() {
         $('body').append($anchor);
         $anchor.find('.close-video-btn').on('click', closeAll);
       }
+      /* imagen popup modal para botón personalizado */
+      if (!$('#image-popup-modal').length){
+        var $imgpop = $(
+          '<div id="image-popup-modal" aria-hidden="true" style="overflow:hidden;">' +
+            '<div class="modal-inner" style="overflow:hidden; position:relative;">' +
+              '<div class="modal-content" style="max-height:80vh; overflow-y:auto; padding-right:10px;">' +
+                '<div style="padding:20px; color:#333; box-sizing:border-box;">' +
+                  '<p><strong>1. Company Overview: Cinex</strong><br/><br/>Cinex is one of Venezuela\'s leading cinema chains, a pioneer in the entertainment industry with a history spanning decades. Known for introducing advanced cinematic technologies like 4D and VIP experiences to the region, Cinex operates numerous complexes nationwide, focusing on delivering premium movie-going experiences through innovation and digital integration.</p>' +
+                  '<p><strong>2. Project Case Study: The Cinex Mobile App (2015)</strong><br/><br/><strong>Executive Summary</strong><br/><br/>In 2015, I served as the Lead UX/UI Designer for the end-to-end design of the Cinex mobile application. This project was a collaborative effort between my agency and the Cinex corporate team to modernize the ticket-purchasing experience and streamline digital engagement for cinema-goers.</p>' +
+                  '<p><strong>My Role &amp; Responsibilities</strong><br/><br/>As the primary designer on the project, I was responsible for the structural foundation and visual identity of the app. My work bridged the gap between business requirements and technical execution.</p>' +
+                  '<p><strong>Information Architecture &amp; Wireframing:</strong><br/><br/>Designed the blueprint for the entire user journey, ensuring a frictionless path from movie selection to checkout.</p>' +
+                  '<p><strong>UX/UI Design:</strong><br/><br/>Created high-fidelity interfaces for all application screens, focusing on brand consistency, readability, and intuitive navigation.</p>' +
+                  '<p><strong>Stakeholder Management:</strong><br/><br/>Led design reviews and collaborative workshops with the Cinex executive team to align the app’s functionality with their commercial goals.</p>' +
+                  '<p><strong>Cross-Functional Collaboration:</strong><br/><br/>Worked in an Agile environment alongside developers and webmasters to ensure design feasibility and technical integrity.</p>' +
+                  '<p><strong>The Outcome</strong><br/><br/>I successfully drove the graphic development to its final stages, delivering a comprehensive design system and a fully mapped-out user experience before my departure. The result was a robust, user-centric application that redefined how Cinex customers interacted with the brand on mobile.</p>' +
+                '</div>' +
+              '</div>' +
+              '<div class="close-image-btn" role="button" aria-label="Cerrar" style="position:absolute; top:8px; right:16px;">✕</div>' +
+            '</div>' +
+          '</div>'
+        );
+        $('body').append($imgpop);
+        $imgpop.find('.close-image-btn').on('click', closeImageModal);
+        $imgpop.on('click', function(e){ if (e.target.id === 'image-popup-modal') closeImageModal(); });
+      }
     }
+
 
     function createVideoEl(src){
       var v = $('<video>', { id: 'smartphone-local-video', src: src, controls: true, autoplay: true, playsinline: true }).css({ width: '100%', height: '100%', display: 'block', 'object-fit': 'cover' });
@@ -232,6 +268,143 @@ $('#total-time').on('click', function() {
         } catch(err) { console.warn('Video play/pause failed', err); }
       });
       return v;
+    }
+
+    function closeImageModal(){
+      // handle overlay if present (anchor animation)
+      try{
+        var $ov = $('#smartphone-image-overlay');
+        var $container = $('#left-image-btn').closest('.custom-button-container');
+        if ($ov && $ov.length && $container && $container.length){
+          var triRect = $container.data('triRect');
+          try{
+            if (!triRect || typeof triRect.left === 'undefined'){
+              var cRectForInit = $container[0].getBoundingClientRect();
+              triRect = { left: cRectForInit.left + cRectForInit.width/2 - 12,
+                          top: cRectForInit.top + cRectForInit.height/2 - 12,
+                          width: 24, height: 24 };
+            }
+          }catch(e){ triRect = null; }
+
+          try{ $container.removeClass('-clicked'); }catch(e){}
+
+          // animate overlay back to small rect
+          requestAnimationFrame(function(){
+            setTimeout(function(){
+              $ov.css({ left: triRect.left + 'px', top: triRect.top + 'px',
+                        width: triRect.width + 'px', height: triRect.height + 'px',
+                        opacity: 0 });
+            }, 8);
+          });
+
+          $ov.one('transitionend.smartphoneImageClose', function(evt){
+            try{ $ov.remove(); }catch(e){}
+            try{ $(window).off('resize.smartphoneImage scroll.smartphoneImage'); }catch(e){}
+          });
+
+          $('#image-popup-modal').removeClass('active').attr('aria-hidden','true');
+          return; // done
+        }
+      }catch(e){}
+
+      // fallback: just hide center modal
+      $('#image-popup-modal').removeClass('active').attr('aria-hidden','true');
+    }
+
+    function openImageAnchor(){
+      ensureModals();
+      closeAll();
+      var $container = $('#left-image-btn').closest('.custom-button-container');
+      var triRect = null;
+      try { triRect = $container[0].getBoundingClientRect(); } catch(e) { triRect = null; }
+      try { $container.addClass('-clicked'); } catch(e) {}
+      try { $container.data('triRect', triRect); } catch(e) {}
+
+      var $overlay = $('#smartphone-image-overlay');
+      if ($overlay.length) $overlay.remove();
+      $overlay = $('<div id="smartphone-image-overlay"></div>');
+      var initRect;
+      try { if (triRect) initRect = triRect;
+            else initRect = $container[0].getBoundingClientRect(); } catch(e) { initRect = $container[0].getBoundingClientRect(); }
+
+      $overlay.css({
+        position: 'fixed',
+        left: initRect.left + 'px',
+        top: initRect.top + 'px',
+        width: initRect.width + 'px',
+        height: initRect.height + 'px',
+        overflow: 'hidden',
+        background: '#fff',
+        'z-index': 100000,
+        display: 'block',
+        'border-radius': '4px',
+        opacity: 0
+      });
+      $('body').append($overlay);
+
+      // add close control inside overlay, styled same as video.
+      var $overlayClose = $('<div class="close-video-btn" role="button" aria-label="Cerrar">✕</div>');
+      // position top-right identical to video overlay close
+      $overlayClose.css({ position: 'absolute', top: '8px', right: '18px', 'z-index': 100002, cursor: 'pointer', 'margin-right': '4px' });
+      $overlay.append($overlayClose);
+      $overlayClose.on('click', function(e){ e.stopPropagation(); closeImageModal(); });
+
+      var $content = $('<div class="image-overlay-content" style="position:relative;z-index:1;max-height:100%; overflow-y:auto;">' +
+                       '<div style="padding:20px; color:#333; box-sizing:border-box;">' +
+                       '<p><strong>Cinex</strong><br/><br/>Cinex is one of Venezuela\'s leading cinema chains, a pioneer in the entertainment industry with a history spanning decades. Known for introducing advanced cinematic technologies like 4D and VIP experiences to the region, Cinex operates numerous complexes nationwide, focusing on delivering premium movie-going experiences through innovation and digital integration.</p>' +
+                       '<p><br/><strong>The Cinex Mobile App</strong><br/><br/>In 2015, I served as the Lead UX/UI Designer for the end-to-end design of the Cinex mobile application. This project was a collaborative effort between my agency and the Cinex corporate team to modernize the ticket-purchasing experience and streamline digital engagement for cinema-goers.</p><br/>' +
+                       '<p><strong>My Role &amp; Responsibilities</strong><br/><br/>As the primary designer on the project, I was responsible for the structural foundation and visual identity of the app. My work bridged the gap between business requirements and technical execution.</p><br/>' +
+                       '<p><strong>Information Architecture &amp; Wireframing:</strong><br/><br/>Designed the blueprint for the entire user journey, ensuring a frictionless path from movie selection to checkout.</p><br/>' +
+                       '<p><strong>UX/UI Design:</strong><br/><br/>Created high-fidelity interfaces for all application screens, focusing on brand consistency, readability, and intuitive navigation.</p><br/>' +
+                       '<p><strong>Stakeholder Management:</strong><br/><br/>Led design reviews and collaborative workshops with the Cinex executive team to align the app’s functionality with their commercial goals.</p><br/>' +
+                       '<p><strong>Cross-Functional Collaboration:</strong><br/><br/>Worked in an Agile environment alongside developers and webmasters to ensure design feasibility and technical integrity.</p><br/>' +
+                       '<p><strong>The Outcome</strong><br/><br/>I successfully drove the graphic development to its final stages, delivering a comprehensive design system and a fully mapped-out user experience before my departure. The result was a robust, user-centric application that redefined how Cinex customers interacted with the brand on mobile.</p>' +
+                       '</div>' +
+                       '</div>');
+      $overlay.append($content);
+
+      var finalW = 500, finalH = 281.25;
+      var cRect = $container[0].getBoundingClientRect();
+      var finalLeft = cRect.left + (cRect.width / 2) - (finalW / 2);
+      var finalTop = cRect.top + (cRect.height / 2) - (finalH / 2);
+
+      var overlayTransitionDuration = '0.6s';
+      var overlayTransitionTiming = 'ease';
+      var overlayTransition = 'left ' + overlayTransitionDuration + ' ' + overlayTransitionTiming +
+                              ', top ' + overlayTransitionDuration + ' ' + overlayTransitionTiming +
+                              ', width ' + overlayTransitionDuration + ' ' + overlayTransitionTiming +
+                              ', height ' + overlayTransitionDuration + ' ' + overlayTransitionTiming +
+                              ', opacity ' + overlayTransitionDuration + ' ' + overlayTransitionTiming;
+      $overlay.css('transition', overlayTransition);
+
+      requestAnimationFrame(function(){
+        setTimeout(function(){
+          $overlay.css({ left: finalLeft + 'px', top: finalTop + 'px',
+                        width: finalW + 'px', height: finalH + 'px',
+                        opacity: 1 });
+        }, 8);
+      });
+
+      function repositionOverlayImmediate(){
+        var cRect2 = $container[0].getBoundingClientRect();
+        var fLeft = cRect2.left + (cRect2.width / 2) - (finalW / 2);
+        var fTop = cRect2.top + (cRect2.height / 2) - (finalH / 2);
+        var oldTransition = $overlay.css('transition');
+        $overlay.css('transition', 'none');
+        $overlay.css({ left: fLeft + 'px', top: fTop + 'px' });
+        requestAnimationFrame(function(){ $overlay.css('transition', overlayTransition); });
+      }
+      $(window).on('resize.smartphoneImage scroll.smartphoneImage', repositionOverlayImmediate);
+      $container.data('imageOverlay', $overlay);
+    }
+
+    function openImageModal(){
+      ensureModals();
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width >= 1280) openImageAnchor();
+      else {
+        $('#image-popup-modal').addClass('active').attr('aria-hidden','false');
+      }
     }
 
     function openCenter(){
@@ -352,6 +525,8 @@ $('#total-time').on('click', function() {
     }
 
     function closeAll(){
+      // ensure any image popup is also closed/animated back
+      try { closeImageModal(); } catch(e) {}
       // If an overlay expansion exists, animate it back to the triangle before removing
       try {
         var $ov = $('#smartphone-video-overlay');
@@ -428,6 +603,8 @@ $('#total-time').on('click', function() {
 
     // Click handler: open anchor on large screens, center on smaller
     $playButton.on('click', function(e){ e.preventDefault(); e.stopPropagation(); $('.play-button-container').addClass('-clicked'); var width = window.innerWidth || document.documentElement.clientWidth; if (width >= 1280) openAnchor(); else openCenter(); });
+    // image button opens its own popup
+    $("#left-image-btn").on('click', function(e){ e.preventDefault(); e.stopPropagation(); openImageModal(); });
 
     // Click fuera deshabilitado: el video solo se cierra con el botón de cierre.
     // Antes: el handler cerraba el video al hacer click fuera. Se deja comentado
@@ -1908,7 +2085,7 @@ function encendido() {
     $('.interactionInfo').removeClass('hidden'); // Muestra la información de interacción
     // Quitar la clase preload-hidden del botón izquierdo para activar su animación de entrada
     // prefer removing preload-hidden and also add reusable show class
-    $('#left-floating-btn').removeClass('preload-hidden').addClass('show');
+    $('#left-floating-btn, #left-image-btn').removeClass('preload-hidden').addClass('show');
     $('.iphone').removeClass('initAnimation').addClass('powerOn'); // Añade la clase powerOn
     setTimeout(() => {
       $('.iphone').removeClass('powerOn').addClass('arrhe'); // Añade la clase arrhe después de 2 segundos
@@ -3015,4 +3192,35 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
-})();
+})();// === Floating menu navigation handlers ===
+$(function(){
+  // home icon redirects to root
+  $("#pic1").click(function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    window.location.href = '../../index.html';
+  });
+
+  // menu item clicks
+  $(".menu li").click(function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    const frameId = $(this).attr('data-frame');
+    if (frameId) {
+      let url = '';
+      switch(frameId) {
+        case 'portfolio-frame': url = '../portfolio/index.html'; break;
+        case 'logo-frame': url = '../logo_design/index.html'; break;
+        case 'graphic-frame': url = '../graphic_design/index.html'; break;
+        case 'website-frame': url = '../websites/index.html'; break;
+        case 'social-frame': url = '../social_media/index.html'; break;
+        case 'illustration-frame': url = '../hand-drawn/index.html'; break;
+        case 'video-frame': url = '../video_editing/index.html'; break;
+        case 'aboutme-frame': url = '../about/about/index.html'; break;
+        case 'timeline-frame': url = '../about/timeline/index.html'; break;
+        case 'contact-frame': url = '../contact/contact form/index.html'; break;
+      }
+      if (url) window.location.href = url;
+    }
+  });
+});

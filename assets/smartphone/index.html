@@ -4,10 +4,87 @@
   <meta charset="UTF-8">
   <title>Cinex app</title>
   <link rel="icon" href="../../favicon.png" type="image/png">
+  <link rel="stylesheet" href="../../assets/menu/style.css">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Loader styles (moved below other rules to avoid Roboto override) -->
+  <link rel="stylesheet" href="../../assets/loader.css">
+  <style>
+    /* override menu global body flex for this page */
+    body { display: block !important; min-height: 100vh !important; overflow-y: auto !important; }
+    header { position: fixed; top: 0; left: 0; width: 100%; z-index: 10000; }
+    /* push floating menu down a bit to mimic spacing in other projects */
+    .dropholder { top: 20px !important; }
+    /* ensure smartphone section is not hidden or shifted by header */
+    section.iphoneMock { margin-top: 0 !important; padding-top: 60px !important; }
+    /* Specific loader font to override broad `body * { font-family: Roboto }` in style.css */
+    /* Apply both while loading and as a persistent, high-specificity rule so the
+       braces stay monospaced even when classes change during iframe transitions. */
+    body.loading .loader,
+    body.loading .loader span {
+      font-family: Consolas, Menlo, Monaco, monospace;
+      font-weight: bold;
+    }
+    /* Stronger rule to persist monospace regardless of other global selectors */
+    html body .loader,
+    html body .loader span {
+      font-family: Consolas, Menlo, Monaco, monospace !important;
+      font-weight: bold !important;
+    }
+  </style>
 
 </head>
-<body>
+<body class="loading">
+  <!-- Loader -->
+  <div class="loader">
+    <span>{</span><span>}</span>
+  </div>
+
+  <!-- Menu flotante -->
+  <header>
+    <div class="inner">
+      <nav>
+        <div class="dropholder">
+          <div class="dropdown">
+            <div id="iconbox">
+              <div class="icon-container" id="homepic">
+                <i class="fas fa-home ic" id="pic1" onclick="window.location.href='../../index.html'"></i>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="codepic">
+                <i class="fas fa-user ic" id="pic2"></i>
+                <ul class="menu code-menu">
+                  <li data-frame="aboutme-frame" onclick="window.location.href='../about/about/index.html'"><i class="fas fa-user-circle"></i> About me</li>
+                  <li data-frame="timeline-frame" onclick="window.location.href='../about/timeline/index.html'"><i class="fas fa-history"></i> Timeline</li>
+                </ul>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="workpic">
+                <i class="fas fa-laptop-code ic" id="pic3"></i>
+                <ul class="menu work-menu">
+                  <li data-frame="portfolio-frame" onclick="window.location.href='../portfolio/index.html'"><i class="fas fa-laptop-code"></i> Portfolio</li>
+                  <li data-frame="logo-frame" onclick="window.location.href='../logo_design/index.html'"><i class="fas fa-paint-brush"></i> Brand Identity</li>
+                  <li data-frame="graphic-frame" onclick="window.location.href='../graphic_design/index.html'"><i class="fas fa-pencil-alt"></i> Graphic Design</li>
+                  <li data-frame="website-frame" onclick="window.location.href='../websites/index.html'"><i class="fas fa-globe"></i> Website</li>
+                  <li data-frame="social-frame" onclick="window.location.href='../social_media/index.html'"><i class="fas fa-share-alt"></i> Social Media</li>
+                  <li data-frame="appdesigns-frame" onclick="window.location.href='index.html'"><i class="fas fa-mobile-alt"></i> App Design</li>
+                  
+                  <li data-frame="video-frame" onclick="window.location.href='../video_editing/index.html'" style="display:none;"><i class="fas fa-video"></i> Video Editing</li>
+                </ul>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="studypic">
+                <i class="fas fa-envelope ic" id="pic4"></i>
+                <ul class="menu study-menu">
+                  <li data-frame="contact-frame" onclick="window.location.href='../contact/contact form/index.html'"><i class="fas fa-paper-plane"></i> Contact</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
 
   <!-- Botón fijo en la izquierda del body (fuera de .iphoneMock) -->
   <!-- iPhone 12 -->
@@ -15,7 +92,14 @@
     <div class="container">
       <!-- Áreas invisibles izquierda/derecha para comportarse como márgenes/zonas sin afectar el contenido central -->
       <div class="left-area" aria-hidden="true">
-        <!-- El botón se mantiene dentro de esta área; el área en sí es transparente e inactiva -->
+        <!-- nuevo botón personalizable a la izquierda del reproductor -->
+        <div class="custom-button-container">
+          <a id="left-image-btn" class="play-button preload-hidden has-image" href="#" aria-label="Botón con imagen" title="Botón con imagen" role="button">
+            <!-- se estableció imagen fija desde carpeta cinex/images -->
+            <img src="cinex/images/cinex.jpg" alt="cinex" class="custom-img" />
+          </a>
+        </div>
+        <!-- El botón de reproducción existente -->
         <div class="play-button-container">
           <a id="left-floating-btn" class="play-button preload-hidden" data-local-src="app_video/cinex_app.mp4" aria-label="Abrir video" title="Abrir video" role="button">
             <div class="play-button__triangle">
@@ -678,24 +762,30 @@
 
   <div class="interactionInfo hidden d-flex justify-content-center">
     <button class="botonGirar">
-      <div class="button-outer" data-front="Carcasa" data-back="Pantalla"></div>
+      <div class="button-outer" data-front="Backover" data-back="Screen"></div>
     </button>
     <button class="botonBloquear">
-      <div class="button-outer" data-front="Bloquear" data-back="Desbloquear"></div>
+      <div class="button-outer" data-front="Lock" data-back="Unlock"></div>
     </button>
   </div>
 
   </section>
-  <!-- Back Button -->
+  <!-- Back Button (hidden) - removed from DOM to prevent display -->
+  <!--
   <div class="back-button" id="backButton">
     <span>
       <img src="https://cdn-icons-png.flaticon.com/512/2099/2099238.png" alt="Back icon" width="24" height="24" />
     </span>
   </div>
+  -->
 
   <script src='https://use.fontawesome.com/15af25ac7b.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><script  src="./script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Loader logic (adds/removes .loading) -->
+  <script src="../../assets/loader.js"></script>
+  <script src="../../assets/menu/script.js"></script>
+  <script  src="./script.js"></script>
 
 </body>
 </html>

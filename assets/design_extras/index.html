@@ -61,6 +61,58 @@
   <!-- Loader -->
   <div class="loader"><span>{</span><span>}</span></div>
 
+  <!-- Menú flotante -->
+  <header id="main-header">
+    <div class="inner">
+      <nav>
+        <div class="dropholder">
+          <div class="dropdown">
+            <div id="iconbox">
+              <div class="icon-container" id="homepic">
+                <i class="fas fa-home ic" id="pic1" onclick="window.location.href='../../index.html'"></i>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="codepic">
+                <i class="fas fa-user ic" id="pic2"></i>
+                <ul class="menu code-menu">
+                  <li data-frame="aboutme-frame" onclick="window.location.href='../about/about/index.html'"><i class="fas fa-user-circle"></i> About me</li>
+                  <li data-frame="timeline-frame" onclick="window.location.href='../about/timeline/index.html'"><i class="fas fa-history"></i> Timeline</li>
+                </ul>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="workpic">
+                <i class="fas fa-laptop-code ic" id="pic3"></i>
+                <ul class="menu work-menu">
+                  <li data-frame="portfolio-frame" onclick="window.location.href='../portfolio/index.html'"><i class="fas fa-laptop-code"></i> Portfolio</li>
+                  <li data-frame="logo-frame" onclick="window.location.href='../logo_design/index.html'"><i class="fas fa-paint-brush"></i> Brand Identity</li>
+                  <li data-frame="graphic-frame" onclick="window.location.href='../graphic_design/index.html'"><i class="fas fa-pencil-alt"></i> Graphic Design</li>
+                  <li data-frame="website-frame" onclick="window.location.href='../websites/index.html'"><i class="fas fa-globe"></i> Website</li>
+                  <li data-frame="social-frame" onclick="window.location.href='../social_media/index.html'"><i class="fas fa-share-alt"></i> Social Media</li>
+                  <li data-frame="appdesigns-frame" onclick="window.location.href='../smartphone/index.html'"><i class="fas fa-mobile-alt"></i> App Design</li>
+                  <li data-frame="video-frame" onclick="window.location.href='../video_editing/index.html'" style="display:none;"><i class="fas fa-video"></i> Video Editing</li>
+                </ul>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="studypic">
+                <i class="fas fa-envelope ic" id="pic4"></i>
+                <ul class="menu study-menu">
+                  <li data-frame="contact-frame" onclick="window.location.href='../contact/contact form/index.html'"><i class="fas fa-paper-plane"></i> Contact</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <script>
+    // hide header when rendered inside an iframe (embedded in graphic_design)
+    if (window.self !== window.top) {
+      const hdr = document.getElementById('main-header');
+      if (hdr) hdr.style.display = 'none';
+    }
+  </script>
+
   <!-- Contenido principal -->
   <div class="container">
     <div class="item" data-image="./images/spec_design_1920x1080.jpg">
@@ -69,7 +121,7 @@
       </div>
     </div>
     <!-- El siguiente item estaba deshabilitado y ahora se habilita -->
-    <div class="item" data-image="./images/ui_app_design_1920x1080.jpg">
+    <div class="item" data-image="./images/hand-drawn_1920x1080.jpg">
       <div class="quote">
         <p><span>There is nothing impossible to him who will try.</span><br><span>Alexander the Great</span></p>
       </div>

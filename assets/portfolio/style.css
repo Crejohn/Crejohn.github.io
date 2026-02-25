@@ -199,6 +199,16 @@ nav {
   display: block;
 }
 
+/* When an item's gallery iframe is visible we hide its cover image
+   and the quote text so only the iframe content is shown. */
+.item.iframe-open {
+  background-image: none !important;
+}
+
+.item.iframe-open .quote {
+  display: none !important;
+}
+
 .quote p span:not(:first-child) {
   font-size: 1.2rem;
   font-weight: bold;

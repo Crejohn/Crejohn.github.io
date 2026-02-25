@@ -1,10 +1,16 @@
-// Eliminada funcionalidad de Back Button
+// Back Button functionality integrated below
 // Variables globales
 let currentHoveredIcon = null;
 let isOverMenu = false;
 
 // Inicializar cuando el documento esté listo
 $(document).ready(function(){
+  const embedded = window.self !== window.top;
+  if (embedded) {
+    // remove header to hide floating menu
+    const hdr = document.getElementById('main-header');
+    if (hdr) hdr.remove();
+  }
   // Agregar el evento de mousemove para la navegación al portfolio
   document.body.addEventListener('mousemove', function(e) {
       // Si el mouse está cerca del borde izquierdo (por ejemplo, < 30px)
@@ -16,8 +22,10 @@ $(document).ready(function(){
       }
   });
 
-  // Inicializar funcionalidad de iconos
-  initMenu();
+  // Inicializar funcionalidad de iconos solo si no estamos embebidos
+  if (!embedded) {
+    initMenu();
+  }
   
   // Cerrar menús al hacer clic fuera
   $(document).click(function(e){
@@ -331,6 +339,40 @@ function clearGlobalToggleState() {
     if (typeof console !== 'undefined' && console.warn) console.warn('clearGlobalToggleState error', err);
   }
 }
+
+// Back-button integration copied from flyer
+document.addEventListener('DOMContentLoaded', function() {
+  const backButton = document.getElementById('backButton');
+  if (backButton) {
+    // Ajustar posición respecto a la barra deslizadora
+    function adjustButtonPosition() {
+      const galleryContainer = document.querySelector('.main .container') || document.getElementById('gallery-container');
+      if (galleryContainer && backButton) {
+        const hasScrollbar = galleryContainer.scrollHeight > galleryContainer.clientHeight;
+        if (hasScrollbar) {
+          backButton.style.right = '15px';
+        } else {
+          backButton.style.right = '0px';
+        }
+      }
+    }
+    adjustButtonPosition();
+    window.addEventListener('resize', adjustButtonPosition);
+    const observer = new MutationObserver(adjustButtonPosition);
+    observer.observe(document.body, { childList: true, subtree: true });
+    backButton.addEventListener('click', function() {
+      if (window.self === window.top) {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = '../graphic_design/index.html';
+        }
+      } else {
+        window.parent.postMessage({ action: 'closeGallery' }, '*');
+      }
+    });
+  }
+});
 
 // Escuchar cambios de pantalla completa para limpiar el estado si el usuario
 // entra o sale del modo full-screen y evitar que quede registrado.

@@ -1,5 +1,12 @@
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
+    // si estamos embebidos, ocultamos/quitamos el header y saltamos la configuración del menú
+    const embedded = window.self !== window.top;
+    if (embedded) {
+        const hdr = document.getElementById('main-header');
+        if (hdr) hdr.remove();
+    }
+
     // Inicializar las imágenes de fondo
     const items = document.querySelectorAll('.item');
     let loadedImages = 0;
@@ -32,7 +39,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 imagesLoaded[index] = true;
                 loadedImages++;
                 
-                // Si todas las imágenes están cargadas, animar aparición
+                checkAllImages();
+            };
+            // even if an image fails to load, proceed to avoid stuck state
+            img.onerror = function() {
+                console.warn('Failed to load image:', imageUrl);
+                imagesLoaded[index] = false;
+                loadedImages++;
+                checkAllImages();
+            };
+
+            function checkAllImages() {
                 if (loadedImages === items.length) {
                     // Primero el item de la izquierda
                     setTimeout(() => {
@@ -47,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         initializeItems();
                     }, 500);
                 }
-            };
+            }
             img.src = imageUrl;
         }
     });
@@ -358,8 +375,8 @@ function initializeItems() {
                         galleryContainer.style.opacity = '1'; // mostrar el fondo inmediatamente
 
                         const iframe = document.createElement('iframe');
-                        // Abrir el proyecto smartphone en el iframe
-                        iframe.src = '../smartphone/index.html';
+                        // Abrir el proyecto hand-drawn en el iframe
+                        iframe.src = '../hand-drawn/index.html';
                         iframe.style.width = '100%';
                         iframe.style.height = '100%';
                         iframe.style.border = 'none';

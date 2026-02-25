@@ -8,7 +8,8 @@ let marketplaceItem = null;
 let marketplaceDisabled = true; // cambiar a false para habilitar
 
 // Función para contraer el panel expandido
-function contractPanel() {
+// si `showQuote` es true, el quote volverá a mostrarse inmediatamente
+function contractPanel(showQuote = false) {
     if (expandedItem) {
         // Remover el contenido de gallery si existe
         const galleryContent = expandedItem.querySelector('.gallery-content');
@@ -19,12 +20,20 @@ function contractPanel() {
                 galleryContent.remove();
             }, 200);
         }
-            // Ocultar el texto .quote manualmente
-            const quote = expandedItem.querySelector('.quote');
-            if (quote) {
+        // Manejar el texto .quote
+        const quote = expandedItem.querySelector('.quote');
+        if (quote) {
+            if (showQuote) {
+                // restaurar estilos inline para hacerlo visible
+                quote.style.opacity = '';
+                quote.style.transform = '';
+            } else {
                 quote.style.opacity = '0';
                 quote.style.transform = 'translate(-50%, 50%)';
             }
+        }
+        // also undo any iframe-open state
+        expandedItem.classList.remove('iframe-open');
         expandedItem.classList.remove('expanded');
         expandedItem.classList.remove('fully-expanded');
         expandedItem.classList.remove('clicked');
@@ -110,7 +119,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         } else if (item === document.querySelector('.item:nth-child(4)')) {
                             iframe.src = '../social_media/index.html';
                         } else if (item === document.querySelector('.item:nth-child(5)')) {
-                            iframe.src = '../hand-drawn/index.html';
+                            // changed to point at the smartphone project instead of hand-drawn
+                            iframe.src = '../smartphone/index.html';
                         } else if (item === document.querySelector('.item:nth-child(6)')) {
                             // Cambiado para cargar la página de marketplace
                             // Ruta relativa desde assets/portfolio -> assets/marketplace/index.html
@@ -124,6 +134,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         // Asegurarnos de que la animación se aplique después de que el iframe se cargue
                         iframe.onload = function() {
                             galleryContainer.style.opacity = '1';
+                            // hide cover/quote only when iframe content is actually ready
+                            item.classList.add('iframe-open');
                         };
                         galleryContainer.appendChild(iframe);
                         
@@ -150,7 +162,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     }, 200);
                                 }
                                 expandedItem.classList.remove('clicked');
-                                contractPanel();
+                                // ensure any hide‑styles are cleaned up
+                                expandedItem.classList.remove('iframe-open');
+                                contractPanel(true);
                             }
                         });
                         galleryContainer.appendChild(leftHoverArea);
@@ -239,6 +253,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (galleryContent) {
                         galleryContent.remove();
                     }
+                    // also clear iframe-open state for this item
+                    item.classList.remove('iframe-open');
                     // Iniciamos el timer después de contraer
                     clearTimeout(inactivityTimer);
                     inactivityTimer = setTimeout(() => {
@@ -282,6 +298,22 @@ function notifyGalleryIframeToClose() {
     if (iframe && iframe.contentWindow) {
         iframe.contentWindow.postMessage({ action: 'closeGallery' }, '*');
     }
+    // also proactively close on parent side in case iframe doesn't respond
+    // remove any iframe-open from all items just in case
+    document.querySelectorAll('.item.iframe-open').forEach(i => i.classList.remove('iframe-open'));
+    if (expandedItem) {
+        const galleryContent = expandedItem.querySelector('.gallery-content');
+        if (galleryContent) {
+            galleryContent.style.opacity = '0';
+            galleryContent.style.transition = 'opacity 0.2s ease-out';
+            setTimeout(() => {
+                galleryContent.remove();
+            }, 200);
+        }
+        expandedItem.classList.remove('clicked');
+        // queremos que el quote reaparezca cuando el panel se contrae
+        contractPanel(true);
+    }
 }
 
 document.body.addEventListener('mousemove', function(e) {
@@ -294,7 +326,9 @@ document.body.addEventListener('mousemove', function(e) {
 
 // Escuchar mensaje del iframe para cerrar el panel
 window.addEventListener('message', function(event) {
-    if (event.data && event.data.action === 'closeIframeFromGallery') {
+    if (event.data && (event.data.action === 'closeIframeFromGallery' || event.data.action === 'closeGallery')) {
+        // limpiar cualquier clase iframe-open residual
+        document.querySelectorAll('.item.iframe-open').forEach(i => i.classList.remove('iframe-open'));
         // Si hay un item expandido y está clickeado, quitar la clase y eliminar el iframe
         if (expandedItem && expandedItem.classList.contains('clicked')) {
             expandedItem.classList.remove('clicked');
@@ -303,7 +337,7 @@ window.addEventListener('message', function(event) {
                 galleryContent.remove();
             }
         }
-        contractPanel(); // Contraer el panel inmediatamente
+        contractPanel(true); // Contraer el panel inmediatamente y restaurar el quote
     }
 });
 
