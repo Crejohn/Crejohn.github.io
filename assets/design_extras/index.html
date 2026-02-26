@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Design Extras</title>
+  <meta name="viewport" content="width=width=device-width, initial-scale=1">
+  <link rel="icon" href="../../favicon.png" type="image/png">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="../../assets/menu/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <style>
+    /* Estilos del loader */
+    .loading {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .loading:before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #23272A;
+      z-index: 9998;
+    }
+
+    .loader {
+      color: #fff;
+      font-family: Consolas, Menlo, Monaco, monospace;
+      font-weight: bold;
+      font-size: 5vh;
+      opacity: 0.8;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      background: transparent;
+    }
+
+    .loader span {
+      display: inline-block;
+      animation: pulse 0.4s alternate infinite ease-in-out;
+    }
+
+    .loader span:nth-child(odd) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes pulse {
+      to {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+    }
+  </style>
+</head>
+<body class="loading">
+  <!-- Loader -->
+  <div class="loader"><span>{</span><span>}</span></div>
+
+  <!-- Menú flotante -->
+  <header id="main-header">
+    <div class="inner">
+      <nav>
+        <div class="dropholder">
+          <div class="dropdown">
+            <div id="iconbox">
+              <div class="icon-container" id="homepic">
+                <i class="fas fa-home ic" id="pic1" onclick="window.location.href='../../index.html'"></i>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="codepic">
+                <i class="fas fa-user ic" id="pic2"></i>
+                <ul class="menu code-menu">
+                  <li data-frame="aboutme-frame" onclick="window.location.href='../about/about/index.html'"><i class="fas fa-user-circle"></i> About me</li>
+                  <li data-frame="timeline-frame" onclick="window.location.href='../about/timeline/index.html'"><i class="fas fa-history"></i> Timeline</li>
+                </ul>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="workpic">
+                <i class="fas fa-laptop-code ic" id="pic3"></i>
+                <ul class="menu work-menu">
+                  <li data-frame="portfolio-frame" onclick="window.location.href='../portfolio/index.html'"><i class="fas fa-laptop-code"></i> Portfolio</li>
+                  <li data-frame="logo-frame" onclick="window.location.href='../logo_design/index.html'"><i class="fas fa-paint-brush"></i> Brand Identity</li>
+                  <li data-frame="graphic-frame" onclick="window.location.href='../graphic_design/index.html'"><i class="fas fa-pencil-alt"></i> Graphic Design</li>
+                  <li data-frame="website-frame" onclick="window.location.href='../websites/index.html'"><i class="fas fa-globe"></i> Website</li>
+                  <li data-frame="social-frame" onclick="window.location.href='../social_media/index.html'"><i class="fas fa-share-alt"></i> Social Media</li>
+                  <li data-frame="appdesigns-frame" onclick="window.location.href='../smartphone/index.html'"><i class="fas fa-mobile-alt"></i> App Design</li>
+                  <li data-frame="video-frame" onclick="window.location.href='../video_editing/index.html'" style="display:none;"><i class="fas fa-video"></i> Video Editing</li>
+                </ul>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="studypic">
+                <i class="fas fa-envelope ic" id="pic4"></i>
+                <ul class="menu study-menu">
+                  <li data-frame="contact-frame" onclick="window.location.href='../contact/contact form/index.html'"><i class="fas fa-paper-plane"></i> Contact</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <script>
+    // hide header when rendered inside an iframe (embedded in graphic_design)
+    if (window.self !== window.top) {
+      const hdr = document.getElementById('main-header');
+      if (hdr) hdr.style.display = 'none';
+    }
+  </script>
+
+  <!-- Contenido principal -->
+  <div class="container">
+    <div class="item" data-image="./images/spec_design.jpg">
+      <div class="quote">
+        <p><span>Give me six hours to chop down a tree and I will spend the first four sharpening the axe.</span><br><span>Abraham Lincoln</span></p>
+      </div>
+    </div>
+    <!-- El siguiente item estaba deshabilitado y ahora se habilita -->
+    <div class="item" data-image="./images/hand-drawn.jpg">
+      <div class="quote">
+        <p><span>There is nothing impossible to him who will try.</span><br><span>Alexander the Great</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script src="./script.js"></script>
+    <!-- Back Button -->
+    <div class="back-button" id="backButton">
+      <span>
+        <!-- Icono Back de Flaticon CDN -->
+        <img src="https://cdn-icons-png.flaticon.com/512/2099/2099238.png" alt="Back icon" width="24" height="24" />
+      </span>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const loader = document.querySelector('.loader');
+        const body = document.body;
+      
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            loader.style.opacity = '0';
+            loader.style.visibility = 'hidden';
+            body.classList.remove('loading');
+          }, 500);
+        });
+      });
+    </script>
+</body>
+</html>
