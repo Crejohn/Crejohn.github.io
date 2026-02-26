@@ -1,0 +1,732 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+:root {
+  --bkg: #111;
+  --white: #eeeeee;
+  --accent: #0cbcd3;
+  --easing: 0.6s cubic-bezier(0.3, -0.01, 0.06, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Asap, sans-serif;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+/* Aplicar sombra solo al contenido principal, no al menú */
+.container {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  background: #111;
+  position: relative;
+  overflow: hidden;
+  gap: 0;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+  }
+}
+
+.item {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  /* Reducir la oscuridad por defecto: se suaviza el filtro para evitar que
+     las imágenes queden completamente negras en hosts remotos o con baja
+     luminancia. Las versiones expandida/clicked mantienen brillo mayor. */
+  filter: saturate(20%) brightness(0.72);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.item:hover {
+  filter: saturate(100%) brightness(1);
+}
+
+/* Cuando el hover proviene del menú (icono), aplicar el mismo filtro que :hover */
+.item.hovered-by-menu {
+  filter: saturate(100%) brightness(1);
+}
+
+.item.expanded {
+  z-index: 2;
+  flex: 3;
+  filter: saturate(120%) brightness(1);
+}
+
+.item.expanded + .item,
+.item:has(+ .expanded) {
+  flex: 0.5;
+}
+
+.item.fully-expanded {
+  cursor: pointer;
+}
+
+.item.clicked {
+  z-index: 3;
+  flex: 5;
+  filter: saturate(150%) brightness(1);
+}
+
+.item.clicked + .item,
+.item:has(+ .clicked) {
+  flex: 0.3;
+}
+
+.item.extra-expanded {
+  z-index: 3;
+  flex: 5.5;
+  filter: saturate(150%) brightness(1);
+}
+
+.item.extra-expanded + .item,
+.item:has(+ .extra-expanded) {
+  flex: 0.25;
+}
+
+@media (min-width: 1024px) {
+  .item.expanded {
+    flex: 4;
+  }
+  
+  .item.expanded + .item,
+  .item:has(+ .expanded) {
+    flex: 0.4;
+  }
+  
+  .item.clicked {
+    flex: 6;
+  }
+  
+  .item.clicked + .item,
+  .item:has(+ .clicked) {
+    flex: 0.2;
+  }
+  
+  .item.extra-expanded {
+    flex: 6.6;
+  }
+  
+  .item.extra-expanded + .item,
+  .item:has(+ .extra-expanded) {
+    flex: 0.15;
+  }
+}
+
+.item:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Overlay suavizado: reduce la opacidad en la parte superior para que las
+     imágenes de fondo sigan siendo visibles, especialmente en miniaturas. */
+  background: linear-gradient(25deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  z-index: 1;
+}
+
+/* Overlay blanco que aparece SOLO cuando el item está expandido (primer y segundo click).
+   Debe estar debajo del texto (.box) y encima de la imagen de fondo. */
+.item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(36, 36, 36, 0.8); /* blanco al 80% */
+  opacity: 0;
+  /* Fade in/out suave del overlay */
+  transition: opacity 360ms ease, visibility 360ms ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.item.expanded::after,
+.item.extra-expanded::after {
+  opacity: 1;
+}
+
+.item:not(:last-child) {
+  border-right: 1px solid #ccc;
+  animation: borderPulse 5s infinite;
+}
+
+@media (min-width: 1024px) {
+  .item:not(:last-child) {
+    /* mantener el borde derecho explícito en pantallas grandes */
+    border-right: 1px solid #ccc;
+  }
+}
+
+/* Reemplazo de .quote por .box: cajas normales con margen interno de 10px
+   cuando el item está expandido. Se elimina la decoración con comillas grandes
+   y se simplifica el layout para evitar separaciones exageradas. */
+.box {
+  position: absolute;
+  color: #fff;
+  /* Centrado por defecto (no expandido) con ancho ajustado para mantener
+     un pequeño margen visual. */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 40px);
+  max-width: 40vw;
+  opacity: 0;
+  /* Transitions para que el texto y la caja hagan fade-in/out y el color cambie suavemente */
+  transition: opacity 360ms ease, color 360ms ease, transform 360ms ease;
+  text-align: center;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px; /* pequeño acolchado interior */
+  pointer-events: none; /* evitar interacciones cuando está oculto */
+  z-index: 3; /* asegurar que el texto esté por encima del overlay blanco */
+}
+
+@media (min-width: 512px) {
+  .box {
+    left: 50%;
+    top: 50%;
+    width: calc(100% - 60px);
+    max-width: 30vw;
+    right: 0;
+    bottom: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .box {
+    left: 50%;
+    top: 50%;
+    width: calc(100% - 80px);
+    max-width: 22vw;
+    right: 0;
+    bottom: auto;
+  }
+}
+
+.box p {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0 0 0.6rem 0;
+  font-size: 15px;
+  word-wrap: break-word;
+  font-style: normal; /* más neutral que 'italic' para reducir sensación de distancia */
+  text-align: left;
+  pointer-events: auto; /* permitir seleccionar texto */
+  text-align: justify;
+}
+
+.box span {
+  position: relative;
+  display: block;
+  margin-top: 0.6rem;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0;
+}
+
+@media (min-width: 512px) {
+  .box span {
+    padding-right: 0.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .box span {
+    padding-right: 0.5rem;
+  }
+}
+
+.item.expanded .box span,
+.item.clicked .box span {
+  padding-right: 0.5rem;
+}
+
+.box span:before {
+  content: "—";
+  margin-right: 0.6rem;
+}
+
+.item.expanded .box,
+.item.clicked .box {
+  /* Hacer que la caja ocupe el área del item con 10px de margen (inset)
+     Esto asegura exactamente 10px de separación respecto al borde del item
+     independientemente de cuánto se expanda. */
+  opacity: 1;
+  left: 10px;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  transform: none;
+  width: auto;
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  pointer-events: auto;
+  color: #ffffff; /* texto negro cuando el item está expandido */
+}
+
+/* Asegurar que también cuando esté extra-expanded el texto sea negro */
+.item.extra-expanded .box {
+  color: #ffffff;
+}
+
+@keyframes borderPulse {
+  0%, 100% {
+    border-color: #cccccc;
+  }
+  25%, 75% {
+    border-color: rgba(204, 204, 255, 0.9);
+  }
+  50% {
+    border-color: rgba(204, 204, 255, 0.5);
+  }
+}
+
+/* Estilos para el header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 10px;
+}
+
+header .inner {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.dropdown {
+  background: transparent;
+  pointer-events: auto;
+}
+
+.icon-container,
+.menu,
+.menu li,
+.separator,
+.ic {
+  pointer-events: auto;
+}
+
+/* Renombrar la clase menu del timeline para evitar conflictos */
+.timeline-menu {
+  width: 100%;
+  height: 70px;
+  background-color: var(--white);
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  z-index: 10;
+  /* quitar margin-top para evitar separaciones inesperadas en pantallas pequeñas */
+  margin-top: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.timeline-menu ul {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  display: flex; /* Usar flex para control fino en móviles/desktops */
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  padding: 0 !important;
+  gap: 0;
+}
+
+.timeline-menu ul li {
+  position: relative;
+  height: 70px;
+  z-index: 2;
+  transition: transform 0.6s cubic-bezier(0.3, -0.01, 0.06, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  will-change: transform;
+  /* Por defecto dejar que los items crezcan de forma uniforme en pantallas grandes */
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.timeline-menu ul li a {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-menu ul li a .icon {
+  position: relative;
+  display: block;
+  line-height: 75px;
+  font-size: 1.3rem;
+  text-align: center;
+  color: var(--bkg);
+  transition: var(--easing), opacity 0.25s ease-in-out;
+  /* Los iconos inactivos tienen opacidad reducida (25%). */
+  opacity: 0.25;
+  z-index: 10;
+}
+
+.timeline-menu ul li.active a .icon {
+  transform: translateY(-42px);
+  color: var(--white);
+  /* Icono activo: opacidad al 100% */
+  opacity: 1;
+}
+
+/* Hover: aumentar opacidad a 50% solo para íconos que NO están activos. */
+.timeline-menu ul li:not(.active):hover a .icon {
+  opacity: 0.5;
+}
+
+/* Cuando el hover proviene del item (panel), hacer que el icono correspondiente
+   aumente su opacidad igual que al pasar el cursor sobre el icono. */
+.timeline-menu ul li.hovered-by-item:not(.active) a .icon {
+  opacity: 0.5;
+}
+
+.timeline-menu ul li a .text {
+  position: absolute;
+  font-size: 0.75rem;
+  color: var(--bkg);
+  transition: var(--easing);
+  opacity: 0;
+  transform: translateY(20px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+.timeline-menu ul li.active a .text {
+  opacity: 1;
+  transform: translateY(9px);
+}
+
+.timeline-menu .indicator {
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 45px;
+  height: 55px;
+  background: var(--bkg);
+  transition: transform 0.6s cubic-bezier(0.3, -0.01, 0.06, 1), opacity 0.3s ease;
+  transform: translateX(0);
+  opacity: 0;
+  will-change: transform, opacity;
+  clip-path: polygon(0% 25%, 50% 0%, 100% 25%, 100% 100%, 0% 100%);
+  border: none;
+  box-shadow: none;
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.timeline-menu .indicator::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  background: #773ae5;
+  clip-path: polygon(0% 25%, 50% 0%, 100% 25%, 100% 100%, 0% 100%);
+  z-index: 2;
+  border-radius: 6px;
+}
+
+.timeline-menu .indicator.visible {
+  opacity: 1;
+}
+
+.indicator::after {
+  display: none;
+}
+
+/* Breakpoint: laptops and below - permitir scroll horizontal controlado */
+@media (max-width: 1024px) {
+  .timeline-menu {
+    overflow-x: visible;
+  }
+
+  .timeline-menu ul {
+    /* Forzar a que los items se dispongan horizontalmente en una fila larga */
+    width: max-content;
+    margin: 0;
+    padding: 0; /* eliminar padding que podía desplazar el ul dentro del contenedor */
+  }
+
+  .timeline-menu ul li {
+    /* En pantallas pequeñas usar un ancho fijo para evitar quiebre */
+    flex: 0 0 70px;
+    min-width: 70px;
+    height: 64px;
+  }
+
+  .timeline-menu ul li a .icon {
+    line-height: 64px;
+    font-size: 1.3rem;
+  }
+
+  .timeline-menu ul li a .text {
+    font-size: 0.7rem;
+  }
+}
+
+/* Breakpoint: tablets (md) - ajustar alturas y tamaños */
+@media (max-width: 768px) {
+  .timeline-menu {
+    height: 64px;
+  }
+
+  .timeline-menu ul li {
+    flex: 0 0 64px;
+    min-width: 64px;
+    height: 60px;
+  }
+
+  .timeline-menu ul li a .icon {
+    line-height: 60px;
+    font-size: 1.1rem;
+  }
+
+  .timeline-menu .indicator {
+    top: -45%;
+    width: 40px;
+    height: 50px;
+  }
+
+  /* Ajuste específico para tablets (md) - centrar verticalmente el icono activo dentro del indicador
+     El valor original de translateY(-40px) es demasiado alto para la altura reducida del indicador en md. */
+  .timeline-menu ul li.active a .icon {
+    transform: translateY(-34px);
+  }
+}
+
+/* Breakpoint: small screens (sm) - ocultar textos largos para mantener estructura */
+@media (max-width: 640px) {
+  .timeline-menu {
+    height: 56px;
+    margin-top: 6px;
+  }
+
+  .timeline-menu ul li {
+    flex: 0 0 56px;
+    min-width: 56px;
+    height: 56px;
+  }
+
+  .timeline-menu ul li a .icon {
+    line-height: 56px;
+    font-size: 1rem;
+  }
+
+  /* Ocultar el texto para evitar que el menú se rompa por ancho */
+  .timeline-menu ul li a .text {
+    display: none;
+  }
+
+  .timeline-menu .indicator {
+    top: -40%;
+    width: 36px;
+    height: 44px;
+  }
+}
+
+/* Breakpoints for larger desktop sizes: xl (>=1280) and 2xl (>=1536) */
+@media (min-width: 1280px) {
+  .timeline-menu ul li {
+    flex: 1 1 auto;
+  }
+  /* XL screens (>=1280px): usar iconos ligeramente más pequeños en desktops */
+  .timeline-menu ul li a .icon {
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .timeline-menu ul li a .icon {
+    font-size: 1.4rem;
+  }
+}
+
+/* Ocultar todo el proyecto en pantallas pequeñas (sm: <= 640px) */
+@media (max-width: 640px) {
+  /* Ocultar la galería y el menú para modelos sm */
+  .container,
+  .timeline-menu,
+  #pagination,
+  header {
+    display: none !important;
+  }
+
+  /* Si quieres mostrar un mensaje alternativo, descomenta y personaliza
+  .mobile-hidden-message { display:block; } */
+}
+
+/* Estilos para los botones de scroll */
+#pagination {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 6;
+}
+
+#pagination button {
+    display: block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    width: 16px;
+    height: 16px;
+    background-color: #FFFFFF;
+    border-radius: 100%;
+    padding: 0;
+    margin: 30px 0;
+    cursor: pointer;
+    position: relative;
+    opacity: 0.2;
+    transition: opacity 0.2s ease-in-out;
+    outline: none;
+}
+
+#pagination button:hover {
+    opacity: 0.5;
+}
+
+#pagination button.active {
+    opacity: 1;
+}
+
+@keyframes buttonAppear {
+    from {
+        width: 100%;
+        height: 100%;
+        opacity: 0.2;
+    }
+    to {
+        width: 300%;
+        height: 300%;
+        opacity: 1;
+    }
+}
+
+@keyframes buttonHide {
+    from {
+        width: 300%;
+        height: 300%;
+        opacity: 1;
+    }
+    to {
+        width: 100%;
+        height: 100%;
+        opacity: 0.2;
+    }
+}
+
+#pagination button:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: 1px solid #FFFFFF;
+    border-radius: 100%;
+    opacity: 0.2;
+}
+
+#pagination button.active:before {
+    animation: buttonAppear 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+#pagination button:not(.active):before {
+    animation: buttonHide 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@media screen and (max-width: 1024px) {
+  /* En pantallas más pequeñas ocultamos la caja por defecto para mantener
+     la UI limpia; la mostramos sólo cuando el item está expandido. */
+  .box { display: none; }
+  .item.expanded .box,
+  .item.clicked .box { display: flex; }
+}
+
+.timeline-menu ul li,
+.timeline-menu ul li a,
+.timeline-menu ul li .icon {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Fix específico: algunas imágenes remotas (últimas 3) son muy oscuras o devuelven
+   contenido con bajo brillo; aumentamos brillo y reducimos el overlay solo para
+   esos items para que no aparezcan en negro. Usa nth-child (1-based). */
+
+
+.container .item:nth-child(7):before,
+.container .item:nth-child(8):before,
+.container .item:nth-child(9):before {
+  background: linear-gradient(25deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0));
+}
+
+/* Asegurar que al hacer hover estas tres últimas items respondan igual que el resto */
+.container .item:nth-child(7):hover,
+.container .item:nth-child(8):hover,
+.container .item:nth-child(9):hover {
+  /* Coincidir con .item:hover */
+  filter: saturate(100%) brightness(1) !important;
+}
+
+/* Línea solicitada: mantener texto blanco en segundo click (extra-expanded) */
+.item.extra-expanded .box { color: #ffffff; } /* LINEA_ADDED */
