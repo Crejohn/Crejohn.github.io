@@ -1,0 +1,51 @@
+/* Loader común para todos los proyectos */
+.loader {
+  color: #fff;
+  font-family: Consolas, Menlo, Monaco, monospace;
+  font-weight: bold;
+  font-size: 5vh;
+  opacity: 1; /* Cambiado de 0.8 a 1 para hacer el loader completamente opaco */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background-color: #23272A; /* Mismo color de fondo que el proyecto inicial */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: none;
+}
+
+.loader span {
+  display: inline-block;
+  animation: pulse 0.4s alternate infinite ease-in-out;
+}
+
+.loader span:nth-child(odd) {
+  animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+  to {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+}
+
+/* Clase para controlar la visibilidad del loader */
+.loading {
+  overflow: hidden;
+}
+
+.loading .loader {
+  opacity: 1;
+  visibility: visible;
+}
+
+.loaded .loader {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
