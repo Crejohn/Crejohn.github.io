@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../favicon.png" type="image/png">
+  <title>Brand Identity</title>
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/thegoodmonolith">
+  <link rel="stylesheet" href="./style.css">
+  <!-- image_structure styles imported for grid/slider integration (file not used) -->
+  <!-- <link rel="stylesheet" href="./image_structure/style.css"> removed because file is empty -->
+  <!-- jQuery removed; no longer required -->
+
+  <!-- loader styles -->
+  <link rel="stylesheet" href="../loader.css" />
+  <!-- Floating menu styles and icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <link rel="stylesheet" href="../../assets/menu/style.css">
+</head>
+<body class="loading">
+
+  <!-- Loader -->
+  <div class="loader">
+    <span>{</span><span>}</span>
+  </div>
+
+  <!-- Floating Menu -->
+  <header>
+    <div class="inner">
+      <nav>
+        <div class="dropholder">
+          <div class="dropdown">
+            <div id="iconbox">
+              <div class="icon-container" id="homepic">
+                <i class="fas fa-home ic" id="pic1" data-frame="home-frame"></i>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="codepic">
+                <i class="fas fa-user ic" id="pic2"></i>
+                <ul class="menu code-menu">
+                  <li data-frame="aboutme-frame"><i class="fas fa-user-circle"></i> About me</li>
+                  <li data-frame="timeline-frame"><i class="fas fa-history"></i> Timeline</li>
+                </ul>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="workpic">
+                <i class="fas fa-laptop-code ic" id="pic3"></i>
+                <ul class="menu work-menu">
+                  <li data-frame="portfolio-frame" onclick="window.location.href='../portfolio/index.html'"><i class="fas fa-laptop-code"></i> Portfolio</li>
+                  <li data-frame="logo-frame" onclick="window.location.href='../logo_design/index.html'"><i class="fas fa-paint-brush"></i> Brand Identity</li>
+                  <li class="has-submenu" data-frame="graphic-frame" onclick="window.location.href='../graphic_design/index.html'"><i class="fas fa-pencil-alt"></i> Graphic Design
+                    <ul class="submenu">
+                      <li onclick="window.location.href='../youtube_thumbnails/index.html'">Youtube Thumbnail</li>
+                      <li onclick="window.location.href='../flyer/index.html'">Flyer Design</li>
+                      <li onclick="window.location.href='../photo_editing/index.html'">Photo Editing</li>
+                      <li class="has-submenu" onclick="window.location.href='../design_extras/index.html'">Design Extras
+                        <ul class="submenu">
+                          <li onclick="window.location.href='../spec_design/index.html'">Spec Design</li>
+                          <li onclick="window.location.href='../hand-drawn/index.html'">Hand-Drawn Illustration</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li data-frame="website-frame" onclick="window.location.href='../websites/index.html'"><i class="fas fa-globe"></i> Websites</li>
+                  <li class="has-submenu" data-frame="social-frame" onclick="window.location.href='../social_media/index.html'"><i class="fas fa-share-alt"></i> Social Media
+                    <ul class="submenu">
+                      <li onclick="window.location.href='../posts/index.html'">Post Designs</li>
+                      <li onclick="window.location.href='../reels/index.html'">Reel Designs</li>
+                    </ul>
+                  </li>
+                  <li data-frame="appdesigns-frame" onclick="window.location.href='../smartphone/index.html'"><i class="fas fa-mobile-alt"></i> App Design</li>
+              <li data-frame="video-frame" onclick="window.location.href='../video_editing/index.html'" style="display:none;"><i class="fas fa-video"></i> Video Editing</li>
+                </ul>
+              </div>
+              <div class="separator"></div>
+              <div class="icon-container" id="studypic">
+                <i class="fas fa-envelope ic" id="pic4"></i>
+                <ul class="menu study-menu">
+                  <li data-frame="contact-frame"><i class="fas fa-paper-plane"></i> Contact</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div id="gallery-container">
+        <!--
+             each container can specify an independent "portada" image via
+             the data-cover attribute. the URL may point to any file and does
+             not need to be part of the gallery content.
+
+             the script now also provides a fallback: if a group has no
+             explicit cover, the first anchor's image will be used automatically
+             and the element will still receive the `has-cover` class. this
+             ensures **every** container displays a tile even if you haven't
+             manually added covers.
+
+             additionally, containers with a cover receive an overlay that
+             fades out on hover (the same opacity effect that was previously
+             applied to the first-anchor image). this gives a unified mouseover
+             experience no matter how the cover is supplied.
+
+             example with explicit cover:
+        -->
+  <!-- two new attributes allow full control over the overlay box that sits
+       behind the text. values are read from each group independently so
+       changing one does not affect the others.
+
+       * `data-box-color` – any valid CSS color for the box (hex, named, etc.)
+       * `data-box-opacity` – a number between 0 and 1 controlling transparency
+
+       the script combines color+opacity when both are supplied. example:
+       data-box-color="#ff0" data-box-opacity="0.4" -->
+  <div class="gallery-container group" id="gallery-holidays" data-cover="./images/holidays/holidays_cover.jpg" data-content-pos="center-left" data-title-size="80px" data-paragraph-size="16px" data-padding-vertical="1%" data-padding-horizontal="10%" data-title-text-color="#422817" data-paragraph-text-color="#422817" data-box-color="#ffff00" data-box-opacity="0.4">
+          <a href="./images/holidays/space_1920x1080.mp4"
+             data-title="Holidays 1"
+             data-paragraph="Texto único para la imagen Holidays 1"
+             data-thumb="./images/holidays/holidays_1.jpg"><img alt="holidays-1" src="./images/holidays/holidays_cover.jpg" /></a>
+          <a href="./images/holidays/body_1920x1080.mp4" class="hidden-image"
+             data-thumb="./images/holidays/holidays_2.jpg"
+             data-title="Holidays 2"
+             data-paragraph="Texto único para la imagen Holidays 2"><img src="./images/holidays/holidays_2.jpg" alt="" /></a>
+          <a href="./images/holidays/spiderman_1920x1080.mp4" class="hidden-image"
+             data-thumb="./images/holidays/holidays_3.jpg"
+             data-title="Holidays 3"
+             data-paragraph="Texto único para la imagen Holidays 3"><img src="./images/holidays/holidays_3.jpg" alt="" /></a>
+          <a href="./images/holidays/holidays_4.jpg" class="hidden-image"
+             data-thumb="./images/holidays/holidays_4.jpg"
+             data-title="Holidays 4"
+             data-paragraph="Texto único para la imagen Holidays 4"><img src="./images/holidays/holidays_4.jpg" alt="" /></a>
+          <a href="./images/holidays/holidays_5.jpg" class="hidden-image"
+             data-thumb="./images/holidays/holidays_5.jpg"
+             data-title="Holidays 5"
+             data-paragraph="Texto único para la imagen Holidays 5"><img src="./images/holidays/holidays_5.jpg" alt="" /></a>
+          <a href="./images/holidays/holidays_6.jpg" class="hidden-image"
+             data-thumb="./images/holidays/holidays_6.jpg"
+             data-title="Holidays 6"
+             data-paragraph="Texto único para la imagen Holidays 6"><img src="./images/holidays/holidays_6.jpg" alt="" /></a>
+          <a href="./images/holidays/holidays_7.jpg" class="hidden-image"
+             data-thumb="./images/holidays/holidays_7.jpg"
+             data-title="Holidays 7"
+             data-paragraph="Texto único para la imagen Holidays 7"><img src="./images/holidays/holidays_7.jpg" alt="" /></a>
+          <a href="./images/holidays/holidays_8.jpg" class="hidden-image"
+             data-thumb="./images/holidays/holidays_8.jpg"
+             data-title="Holidays 8"
+             data-paragraph="Texto único para la imagen Holidays 8"><img src="./images/holidays/holidays_8.jpg" alt="" /></a>
+          <a href="./images/holidays/holidays_9.jpg" class="hidden-image"
+             data-thumb="./images/holidays/holidays_9.jpg"
+             data-title="Holidays 9"
+             data-paragraph="Texto único para la imagen Holidays 9"><img src="./images/holidays/holidays_9.jpg" alt="" /></a>
+        </div>
+  <div class="gallery-container group" id="gallery-dhv" data-cover="./images/dhv/dhv_cover.jpg" data-title-size="80px" data-paragraph-size="16px" data-padding-vertical="8%" data-padding-horizontal="10%" data-title-text-color="#f0f0f0" data-paragraph-text-color="#f0f0f0" data-box-color="#0000ff" data-box-opacity="0.4">
+         <a href="./images/dhv/dhv_1.jpg"
+            data-title="DHV 2"
+            data-paragraph="Texto único DHV 2"><img alt="dhv-2" src="./images/dhv/dhv_1.jpg" /></a>     
+         <a href="./images/dhv/dhv_2.jpg"
+            data-title="DHV 1"
+            data-paragraph="Texto único DHV 2"><img alt="dhv-2" src="./images/dhv/dhv_2.jpg" /></a>
+         <a href="./images/dhv/dhv_3.jpg" class="hidden-image" data-thumb="./images/dhv/dhv_3.jpg"
+            data-title="DHV 3"
+            data-paragraph="Texto único DHV 3"><img src="./images/dhv/dhv_3.jpg" alt="" /></a>
+         <a href="./images/dhv/dhv_4.jpg" class="hidden-image" data-thumb="./images/dhv/dhv_4.jpg"
+            data-title="DHV 4"
+            data-paragraph="Texto único DHV 4"><img src="./images/dhv/dhv_4.jpg" alt="" /></a>
+         <a href="./images/dhv/dhv_5.jpg" class="hidden-image" data-thumb="./images/dhv/dhv_5.jpg"
+            data-title="DHV 5"
+            data-paragraph="Texto único DHV 5"><img src="./images/dhv/dhv_5.jpg" alt="" /></a>
+         <a href="./images/dhv/dhv_6.jpg" class="hidden-image" data-thumb="./images/dhv/dhv_6.jpg"
+            data-title="DHV 6"
+            data-paragraph="Texto único DHV 6"><img src="./images/dhv/dhv_6.jpg" alt="" /></a>
+         <a href="./images/dhv/dhv_7.jpg" class="hidden-image" data-thumb="./images/dhv/dhv_7.jpg"
+            data-title="DHV 7"
+            data-paragraph="Texto único DHV 7"><img src="./images/dhv/dhv_7.jpg" alt="" /></a>
+         <a href="./images/dhv/dhv_8.jpg" class="hidden-image" data-thumb="./images/dhv/dhv_8.jpg"
+            data-title="DHV 8"
+            data-paragraph="Texto único DHV 8"><img src="./images/dhv/dhv_8.jpg" alt="" /></a>
+         <a href="./images/dhv/dhv_9.jpg" class="hidden-image" data-thumb="./images/dhv/dhv_9.jpg"
+            data-title="DHV 9"
+            data-paragraph="Texto único DHV 9"><img src="./images/dhv/dhv_9.jpg" alt="" /></a>
+        </div>
+  <div class="gallery-container group" id="gallery-opera_deli" data-cover="./images/opera_deli/opera_deli_cover.jpg" data-title-size="80px" data-paragraph-size="16px" data-padding-vertical="8%" data-padding-horizontal="10%" data-title-text-color="#f0f0f0" data-paragraph-text-color="#f0f0f0" data-box-color="#ff0000" data-box-opacity="0.4">
+         <a href="./images/opera_deli/opera_1.jpg"
+            data-title="Opera Deli 1"
+            data-paragraph="Texto único Opera Deli 1"><img alt="opera_deli-1" src="./images/opera_deli/opera_deli_cover.jpg" /></a>
+         <a href="./images/opera_deli/opera_2.jpg" class="hidden-image"
+            data-thumb="./images/opera_deli/opera_2.jpg"
+            data-title="Opera Deli 2"
+            data-paragraph="Texto único Opera Deli 2"><img src="./images/opera_deli/opera_2.jpg" alt="" /></a>
+         <a href="./images/opera_deli/opera_3.jpg" class="hidden-image"
+            data-thumb="./images/opera_deli/opera_3.jpg"
+            data-title="Opera Deli 3"
+            data-paragraph="Texto único Opera Deli 3"><img src="./images/opera_deli/opera_3.jpg" alt="" /></a>
+         <a href="./images/opera_deli/opera_4.jpg" class="hidden-image"
+            data-thumb="./images/opera_deli/opera_4.jpg"
+            data-title="Opera Deli 4"
+            data-paragraph="Texto único Opera Deli 4"><img src="./images/opera_deli/opera_4.jpg" alt="" /></a>
+         <a href="./images/opera_deli/opera_5.jpg" class="hidden-image"
+            data-thumb="./images/opera_deli/opera_5.jpg"
+            data-title="Opera Deli 5"
+            data-paragraph="Texto único Opera Deli 5"><img src="./images/opera_deli/opera_5.jpg" alt="" /></a>
+         <a href="./images/opera_deli/opera_6.jpg" class="hidden-image"
+            data-thumb="./images/opera_deli/opera_6.jpg"
+            data-title="Opera Deli 6"
+            data-paragraph="Texto único Opera Deli 6"><img src="./images/opera_deli/opera_6.jpg" alt="" /></a>
+         <a href="./images/opera_deli/opera_7.jpg" class="hidden-image"
+            data-thumb="./images/opera_deli/opera_7.jpg"
+            data-title="Opera Deli 7"
+            data-paragraph="Texto único Opera Deli 7"><img src="./images/opera_deli/opera_7.jpg" alt="" /></a>
+         <a href="./images/opera_deli/opera_8.jpg" class="hidden-image"
+            data-thumb="./images/opera_deli/opera_8.jpg"
+            data-title="Opera Deli 8"
+            data-paragraph="Texto único Opera Deli 8"><img src="./images/opera_deli/opera_8.jpg" alt="" /></a>
+         <a href="./images/opera_deli/opera_9.jpg" class="hidden-image"
+            data-thumb="./images/opera_deli/opera_9.jpg"
+            data-title="Opera Deli 9"
+            data-paragraph="Texto único Opera Deli 9"><img src="./images/opera_deli/opera_9.jpg" alt="" /></a>
+        </div>
+  <div class="gallery-container group" id="gallery-insa" data-cover="./images/insa/insa_cover.jpg" data-title-size="80px" data-paragraph-size="16px" data-padding-vertical="8%" data-padding-horizontal="10%" data-title-text-color="#f0f0f0" data-paragraph-text-color="#f0f0f0" data-box-color="#ffa500" data-box-opacity="0.4">
+         <a href="./images/insa/insa_1.jpg"
+            data-title="INSA 1"
+            data-paragraph="Texto INSA 1"><img alt="insa-1" src="./images/insa/insa_1.jpg" /></a>
+         <a href="./images/insa/insa_2.jpg" class="hidden-image" data-thumb="./images/insa/insa_2.jpg"
+            data-title="INSA 2"
+            data-paragraph="Texto INSA 2"><img src="./images/insa/insa_2.jpg" alt="" /></a>
+         <a href="./images/insa/insa_3.jpg" class="hidden-image" data-thumb="./images/insa/insa_3.jpg"
+            data-title="INSA 3"
+            data-paragraph="Texto INSA 3"><img src="./images/insa/insa_3.jpg" alt="" /></a>
+         <a href="./images/insa/insa_4.jpg" class="hidden-image" data-thumb="./images/insa/insa_4.jpg"
+            data-title="INSA 4"
+            data-paragraph="Texto INSA 4"><img src="./images/insa/insa_4.jpg" alt="" /></a>
+         <a href="./images/insa/insa_5.jpg" class="hidden-image" data-thumb="./images/insa/insa_5.jpg"
+            data-title="INSA 5"
+            data-paragraph="Texto INSA 5"><img src="./images/insa/insa_5.jpg" alt="" /></a>
+         <a href="./images/insa/insa_6.jpg" class="hidden-image" data-thumb="./images/insa/insa_6.jpg"
+            data-title="INSA 6"
+            data-paragraph="Texto INSA 6"><img src="./images/insa/insa_6.jpg" alt="" /></a>
+         <a href="./images/insa/insa_7.jpg" class="hidden-image" data-thumb="./images/insa/insa_7.jpg"
+            data-title="INSA 7"
+            data-paragraph="Texto INSA 7"><img src="./images/insa/insa_7.jpg" alt="" /></a>
+         <a href="./images/insa/insa_8.jpg" class="hidden-image" data-thumb="./images/insa/insa_8.jpg"
+            data-title="INSA 8"
+            data-paragraph="Texto INSA 8"><img src="./images/insa/insa_8.jpg" alt="" /></a>
+         <a href="./images/insa/insa_9.jpg" class="hidden-image" data-thumb="./images/insa/insa_9.jpg"
+            data-title="INSA 9"
+            data-paragraph="Texto INSA 9"><img src="./images/insa/insa_9.jpg" alt="" /></a>
+        </div>
+  <div class="gallery-container group" id="gallery-enfant_kids" data-cover="./images/enfant_kids/enfant_kids_cover.jpg" data-title-size="80px" data-paragraph-size="16px" data-padding-vertical="8%" data-padding-horizontal="10%" data-title-text-color="#f0f0f0" data-paragraph-text-color="#f0f0f0" data-box-color="#808080" data-box-opacity="0.4">
+         <a href="./images/enfant_kids/enfant_kids_1.jpg"
+            data-title="Enfant Kids 1"
+            data-paragraph="Texto Enfant Kids 1"><img alt="enfant_kids-1" src="./images/enfant_kids/enfant_kids_1.jpg" /></a>
+         <a href="./images/enfant_kids/enfant_kids_2.jpg" class="hidden-image" data-thumb="./images/enfant_kids/enfant_kids_2.jpg"
+            data-title="Enfant Kids 2"
+            data-paragraph="Texto Enfant Kids 2"><img src="./images/enfant_kids/enfant_kids_2.jpg" alt="" /></a>
+         <a href="./images/enfant_kids/enfant_kids_3.jpg" class="hidden-image" data-thumb="./images/enfant_kids/enfant_kids_3.jpg"
+            data-title="Enfant Kids 3"
+            data-paragraph="Texto Enfant Kids 3" ><img src="./images/enfant_kids/enfant_kids_3.jpg" alt="" /></a>
+         <a href="./images/enfant_kids/enfant_kids_4.jpg"
+             data-title="Enfant Kids 4"
+             data-paragraph="Texto Enfant Kids 4"><img alt="enfant_kids-4" src="./images/enfant_kids/enfant_kids_4.jpg" /></a>
+         <a href="./images/enfant_kids/enfant_kids_5.jpg" class="hidden-image" data-thumb="./images/enfant_kids/enfant_kids_5.jpg"
+             data-title="Enfant Kids 5"
+             data-paragraph="Texto Enfant Kids 5"><img src="./images/enfant_kids/enfant_kids_5.jpg" alt="" /></a>
+         <a href="./images/enfant_kids/enfant_kids_6.jpg" class="hidden-image" data-thumb="./images/enfant_kids/enfant_kids_6.jpg"
+             data-title="Enfant Kids 6"
+             data-paragraph="Texto Enfant Kids 6"><img src="./images/enfant_kids/enfant_kids_6.jpg" alt="" /></a>
+         <a href="./images/enfant_kids/enfant_kids_7.jpg"
+             data-title="Enfant Kids 7"
+             data-paragraph="Texto Enfant Kids 7"><img alt="enfant_kids-7" src="./images/enfant_kids/enfant_kids_7.jpg" /></a>
+         <a href="./images/enfant_kids/enfant_kids_8.jpg" class="hidden-image" data-thumb="./images/enfant_kids/enfant_kids_8.jpg"
+             data-title="Enfant Kids 8"
+             data-paragraph="Texto Enfant Kids 8"><img src="./images/enfant_kids/enfant_kids_8.jpg" alt="" /></a>
+         <a href="./images/enfant_kids/enfant_kids_9.jpg" class="hidden-image" data-thumb="./images/enfant_kids/enfant_kids_9.jpg"
+             data-title="Enfant Kids 9"
+             data-paragraph="Texto Enfant Kids 9"><img src="./images/enfant_kids/enfant_kids_9.jpg" alt="" /></a>
+         </div>
+  <div class="gallery-container group" id="gallery-lili_skincare" data-cover="./images/lili_skincare/lili_skincare_cover.jpg" data-title-size="80px" data-paragraph-size="16px" data-padding-vertical="8%" data-padding-horizontal="10%" data-title-text-color="#f0f0f0" data-paragraph-text-color="#f0f0f0" data-box-color="#008080" data-box-opacity="0.4">
+         <a href="./images/lili_skincare/lili_skincare_1.jpg"
+            data-title="Lili Skincare 1"
+            data-paragraph="Texto Lili Skincare 1"><img alt="lili_skincare-1" src="./images/lili_skincare/lili_skincare_1.jpg" /></a>
+         <a href="./images/lili_skincare/lili_skincare_2.jpg" class="hidden-image" data-thumb="./images/lili_skincare/lili_skincare_2.jpg"
+            data-title="Lili Skincare 2"
+            data-paragraph="Texto Lili Skincare 2"><img src="./images/lili_skincare/lili_skincare_2.jpg" alt="" /></a>
+         <a href="./images/lili_skincare/lili_skincare_3.jpg" class="hidden-image" data-thumb="./images/lili_skincare/lili_skincare_3.jpg"
+            data-title="Lili Skincare 3"
+            data-paragraph="Texto Lili Skincare 3"><img src="./images/lili_skincare/lili_skincare_3.jpg" alt="" /></a>
+         <a href="./images/lili_skincare/lili_skincare_4.jpg" class="hidden-image" data-thumb="./images/lili_skincare/lili_skincare_4.jpg"
+            data-title="Lili Skincare 4"
+            data-paragraph="Texto Lili Skincare 4"><img src="./images/lili_skincare/lili_skincare_4.jpg" alt="" /></a>
+         <a href="./images/lili_skincare/lili_skincare_5.jpg" class="hidden-image" data-thumb="./images/lili_skincare/lili_skincare_5.jpg"
+            data-title="Lili Skincare 5"
+            data-paragraph="Texto Lili Skincare 5"><img src="./images/lili_skincare/lili_skincare_5.jpg" alt="" /></a>
+         <a href="./images/lili_skincare/lili_skincare_6.jpg" class="hidden-image" data-thumb="./images/lili_skincare/lili_skincare_6.jpg"
+            data-title="Lili Skincare 6"
+            data-paragraph="Texto Lili Skincare 6"><img src="./images/lili_skincare/lili_skincare_6.jpg" alt="" /></a>
+         <a href="./images/lili_skincare/lili_skincare_7.jpg" class="hidden-image" data-thumb="./images/lili_skincare/lili_skincare_7.jpg"
+            data-title="Lili Skincare 7"
+            data-paragraph="Texto Lili Skincare 7"><img src="./images/lili_skincare/lili_skincare_7.jpg" alt="" /></a>
+         <a href="./images/lili_skincare/lili_skincare_8.jpg" class="hidden-image" data-thumb="./images/lili_skincare/lili_skincare_8.jpg"
+            data-title="Lili Skincare 8"
+            data-paragraph="Texto Lili Skincare 8"><img src="./images/lili_skincare/lili_skincare_8.jpg" alt="" /></a>
+         <a href="./images/lili_skincare/lili_skincare_9.jpg" class="hidden-image" data-thumb="./images/lili_skincare/lili_skincare_9.jpg"
+            data-title="Lili Skincare 9"
+            data-paragraph="Texto Lili Skincare 9"><img src="./images/lili_skincare/lili_skincare_9.jpg" alt="" /></a>
+        </div>
+  <div class="gallery-container group" id="gallery-la_colmena" data-cover="./images/la_colmena/la_colmena_cover.jpg" data-title-size="80px" data-paragraph-size="16px" data-padding-vertical="8%" data-padding-horizontal="10%" data-title-text-color="#f0f0f0" data-paragraph-text-color="#f0f0f0" data-box-color="#800080" data-box-opacity="0.4">
+         <a href="./images/la_colmena/la_colmena_1.jpg"
+            data-title="La Colmena 1"
+            data-paragraph="Texto La Colmena 1"><img alt="la_colmena-1" src="./images/la_colmena/la_colmena_cover.jpg" /></a>
+         <a href="./images/la_colmena/la_colmena_2.jpg" class="hidden-image" data-thumb="./images/la_colmena/la_colmena_2.jpg"
+            data-title="La Colmena 2"
+            data-paragraph="Texto La Colmena 2"><img src="./images/la_colmena/la_colmena_2.jpg" alt="" /></a>
+         <a href="./images/la_colmena/la_colmena_3.jpg" class="hidden-image" data-thumb="./images/la_colmena/la_colmena_3.jpg"
+            data-title="La Colmena 3"
+            data-paragraph="Texto La Colmena 3"><img src="./images/la_colmena/la_colmena_3.jpg" alt="" /></a>
+         <a href="./images/la_colmena/la_colmena_4.jpg"
+            data-title="La Colmena 4"
+            data-paragraph="Texto La Colmena 4"><img alt="la_colmena-4" src="./images/la_colmena/la_colmena_4.jpg" /></a>
+         <a href="./images/la_colmena/la_colmena_5.jpg" class="hidden-image" data-thumb="./images/la_colmena/la_colmena_5.jpg"
+            data-title="La Colmena 5"
+            data-paragraph="Texto La Colmena 5"><img src="./images/la_colmena/la_colmena_5.jpg" alt="" /></a>
+         <a href="./images/la_colmena/la_colmena_6.jpg" class="hidden-image" data-thumb="./images/la_colmena/la_colmena_6.jpg"
+            data-title="La Colmena 6"
+            data-paragraph="Texto La Colmena 6"><img src="./images/la_colmena/la_colmena_6.jpg" alt="" /></a>
+         <a href="./images/la_colmena/la_colmena_7.jpg"
+            data-title="La Colmena 7"
+            data-paragraph="Texto La Colmena 7"><img alt="la_colmena-7" src="./images/la_colmena/la_colmena_7.jpg" /></a>
+         <a href="./images/la_colmena/la_colmena_8.jpg" class="hidden-image" data-thumb="./images/la_colmena/la_colmena_8.jpg"
+            data-title="La Colmena 8"
+            data-paragraph="Texto La Colmena 8"><img src="./images/la_colmena/la_colmena_8.jpg" alt="" /></a>
+         <a href="./images/la_colmena/la_colmena_9.jpg" class="hidden-image" data-thumb="./images/la_colmena/la_colmena_9.jpg"
+            data-title="La Colmena 9"
+            data-paragraph="Texto La Colmena 9"><img src="./images/la_colmena/la_colmena_9.jpg" alt="" /></a>
+        </div>
+  <div class="gallery-container group" id="gallery-altavista" data-cover="./images/altavista/altavista_cover.jpg" data-title-size="80px" data-paragraph-size="16px" data-padding-vertical="8%" data-padding-horizontal="10%" data-title-text-color="#f0f0f0" data-paragraph-text-color="#f0f0f0" data-box-color="#00ff00" data-box-opacity="0.4">
+         <a href="./images/altavista/altavista_1.jpg"
+            data-title="Altavista 1"
+            data-paragraph="Texto Altavista 1"><img alt="altavista-1" src="./images/altavista/altavista_1.jpg" /></a>
+         <a href="./images/altavista/altavista_2.jpg" class="hidden-image" data-thumb="./images/altavista/altavista_2.jpg"
+            data-title="Altavista 2"
+            data-paragraph="Texto Altavista 2"><img src="./images/altavista/altavista_2.jpg" alt="" /></a>
+         <a href="./images/altavista/altavista_3.jpg" class="hidden-image" data-thumb="./images/altavista/altavista_3.jpg"
+            data-title="Altavista 3"
+            data-paragraph="Texto Altavista 3"><img src="./images/altavista/altavista_3.jpg" alt="" /></a>
+         <a href="./images/altavista/altavista_4.jpg" class="hidden-image" data-thumb="./images/altavista/altavista_4.jpg"
+            data-title="Altavista 4"
+            data-paragraph="Texto Altavista 4"><img src="./images/altavista/altavista_4.jpg" alt="" /></a>
+         <a href="./images/altavista/altavista_5.jpg" class="hidden-image" data-thumb="./images/altavista/altavista_5.jpg"
+            data-title="Altavista 5"
+            data-paragraph="Texto Altavista 5"><img src="./images/altavista/altavista_5.jpg" alt="" /></a>
+         <a href="./images/altavista/altavista_6.jpg" class="hidden-image" data-thumb="./images/altavista/altavista_6.jpg"
+            data-title="Altavista 6"
+            data-paragraph="Texto Altavista 6"><img src="./images/altavista/altavista_6.jpg" alt="" /></a>
+         <a href="./images/altavista/altavista_7.jpg" class="hidden-image" data-thumb="./images/altavista/altavista_7.jpg"
+            data-title="Altavista 7"
+            data-paragraph="Texto Altavista 7"><img src="./images/altavista/altavista_7.jpg" alt="" /></a>
+         <a href="./images/altavista/altavista_8.jpg" class="hidden-image" data-thumb="./images/altavista/altavista_8.jpg"
+            data-title="Altavista 8"
+            data-paragraph="Texto Altavista 8"><img src="./images/altavista/altavista_8.jpg" alt="" /></a>
+         <a href="./images/altavista/altavista_9.jpg" class="hidden-image" data-thumb="./images/altavista/altavista_9.jpg"
+            data-title="Altavista 9"
+            data-paragraph="Texto Altavista 9"><img src="./images/altavista/altavista_9.jpg" alt="" /></a>
+        </div>
+  <div class="gallery-container group" id="gallery-outletmix" data-cover="./images/outletmix/outletmix_cover.jpg" data-title-size="80px" data-paragraph-size="16px" data-padding-vertical="8%" data-padding-horizontal="10%" data-title-text-color="#f0f0f0" data-paragraph-text-color="#f0f0f0" data-box-color="#808080" data-box-opacity="0.4">
+         <a href="./images/outletmix/outletmix_1.jpg"
+            data-title="outletmix 1"
+            data-paragraph="Texto outletmix 1"><img alt="outletmix-1" src="./images/outletmix/outletmix_cover.jpg" /></a>
+         <a href="./images/outletmix/outletmix_2.jpg" class="hidden-image" data-thumb="./images/outletmix/outletmix_2.jpg"
+            data-title="outletmix 2"
+            data-paragraph="Texto outletmix 2"><img src="./images/outletmix/outletmix_2.jpg" alt="" /></a>
+         <a href="./images/outletmix/outletmix_3.jpg" class="hidden-image" data-thumb="./images/outletmix/outletmix_3.jpg"
+            data-title="outletmix 3"
+            data-paragraph="Texto outletmix 3" ><img src="./images/outletmix/outletmix_3.jpg" alt="" /></a>
+         <a href="./images/outletmix/outletmix_4.jpg"
+            data-title="outletmix 4"
+            data-paragraph="Texto outletmix 4"><img alt="outletmix-4" src="./images/outletmix/outletmix_4.jpg" /></a>
+         <a href="./images/outletmix/outletmix_5.jpg" class="hidden-image" data-thumb="./images/outletmix/outletmix_5.jpg"
+            data-title="outletmix 5"
+            data-paragraph="Texto outletmix 5"><img src="./images/outletmix/outletmix_5.jpg" alt="" /></a>
+         <a href="./images/outletmix/outletmix_6.jpg" class="hidden-image" data-thumb="./images/outletmix/outletmix_6.jpg"
+            data-title="outletmix 6"
+            data-paragraph="Texto outletmix 6" ><img src="./images/outletmix/outletmix_6.jpg" alt="" /></a>
+         <a href="./images/outletmix/outletmix_7.jpg"
+            data-title="outletmix 7"
+            data-paragraph="Texto outletmix 7"><img alt="outletmix-7" src="./images/outletmix/outletmix_7.jpg" /></a>
+         <a href="./images/outletmix/outletmix_8.jpg" class="hidden-image" data-thumb="./images/outletmix/outletmix_8.jpg"
+            data-title="outletmix 8"
+            data-paragraph="Texto outletmix 8"><img src="./images/outletmix/outletmix_8.jpg" alt="" /></a>
+         <a href="./images/outletmix/outletmix_9.jpg" class="hidden-image" data-thumb="./images/outletmix/outletmix_9.jpg"
+            data-title="outletmix 9"
+            data-paragraph="Texto outletmix 9" ><img src="./images/outletmix/outletmix_9.jpg" alt="" /></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- template for image_structure galleries (cloned per container) -->
+  <template id="image-structure-template">
+    <!-- the markup below replicates the content of image_structure/index.html, excluding <head> and <body> tags -->
+    <div class="image-structure-overlay">
+      <!-- loader removed; not needed in individual galleries and previously caused
+           a small blank strip at the top of the overlay -->
+      <div class="container">
+        <div class="grid-container">
+          <div class="grid">
+            <!-- grid-items will be generated dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide layers in stacking order -->
+      <div class="slider-image"></div>
+      <div class="slider-image-bg"></div>
+      <div class="slider-image-next"></div>
+      <div class="transition-overlay" id="transition-overlay"></div>
+
+      <div class="content">
+        <div class="text-wrapper">
+          <h1 class="content-title">
+            <span></span>
+          </h1>
+          <div class="content-paragraph"></div>
+        </div>
+      </div>
+
+      <div class="thumbnails">
+        <!-- thumbnails will be generated dynamically -->
+      </div>
+
+      <div class="switch">
+        <button class="switch-button switch-button-grid switch-button-current">
+          <span class="indicator-dot"></span>
+          GRID
+        </button>
+        <button class="switch-button switch-button-slider">
+          <span class="indicator-dot"></span>
+          SLIDER
+        </button>
+      </div>
+    </div>
+  </template>
+
+  <!-- Scripts -->
+  <!-- GSAP libraries required by image_structure (loaded once globally) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/CustomEase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/Flip.min.js"></script>
+  <script src="./script.js"></script>
+  <script src="../loader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="../../assets/menu/script.js"></script>
+
+  <style>
+    .back-button.replica {
+      position: fixed !important;
+      bottom: 80px !important;
+      right: 0px !important; /* Ajustado al borde derecho */
+      z-index: 999999 !important; /* Por encima del overlay */
+      display: none;
+      opacity: 0.2 !important;
+      transition: opacity 0.3s ease !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      cursor: pointer !important;
+    }
+    .back-button.replica:hover {
+      opacity: 1 !important;
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Crear botón réplica
+      const replicaBtn = document.createElement('div');
+      replicaBtn.id = 'backButtonReplica';
+      replicaBtn.className = 'back-button replica';
+      document.body.appendChild(replicaBtn);
+
+      // Sincronizar contenido y eventos del botón original
+      const syncReplica = () => {
+        const orig = document.getElementById('backButton');
+        if (orig) {
+          replicaBtn.innerHTML = orig.innerHTML;
+          // Copiar clases base pero mantener la clase replica
+          replicaBtn.className = (orig.className || 'back-button') + ' replica';
+          replicaBtn.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (orig) orig.click();
+          };
+        }
+      };
+
+      // Observar cambios en el DOM para detectar el overlay y el botón original
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((m) => {
+          if (m.addedNodes.length) {
+            setTimeout(syncReplica, 0);
+            
+            m.addedNodes.forEach(node => {
+              if (node.classList && node.classList.contains('image-structure-overlay')) {
+                setupOverlayListeners(node);
+              }
+            });
+          }
+          if (m.removedNodes.length) {
+            m.removedNodes.forEach(node => {
+              if (node.classList && node.classList.contains('image-structure-overlay')) {
+                const orig = document.getElementById('backButton');
+                if (orig) orig.style.display = '';
+                replicaBtn.style.display = 'none';
+              }
+            });
+          }
+        });
+      });
+      observer.observe(document.body, { childList: true });
+
+      function setupOverlayListeners(overlay) {
+        const sliderBtn = overlay.querySelector('.switch-button-slider');
+        let transitionTimeout;
+
+        const updateState = (isInitial = false) => {
+          const orig = document.getElementById('backButton');
+          if (orig) syncReplica();
+          
+          clearTimeout(transitionTimeout);
+
+          if (sliderBtn && sliderBtn.classList.contains('switch-button-current')) {
+            // Modo Slider
+            if (orig) orig.style.display = 'none';
+            replicaBtn.style.display = 'none';
+            
+            // Mostrar réplica tras expansión (aprox 1s)
+            transitionTimeout = setTimeout(() => {
+              replicaBtn.style.display = 'flex';
+            }, isInitial ? 0 : 1050);
+          } else {
+            // Modo Grid
+            replicaBtn.style.display = 'none';
+            if (orig) {
+              if (!isInitial) orig.style.display = 'none';
+              transitionTimeout = setTimeout(() => {
+                if (orig) orig.style.display = '';
+              }, isInitial ? 0 : 1050);
+            }
+          }
+        };
+
+        if (sliderBtn) {
+          const btnObserver = new MutationObserver(() => updateState(false));
+          btnObserver.observe(sliderBtn, { attributes: true, attributeFilter: ['class'] });
+          // Verificar estado inicial
+          setTimeout(() => updateState(true), 100);
+        }
+      }
+      
+      // Intento inicial de sincronización
+      syncReplica();
+    });
+  </script>
+</body>
+</html>
