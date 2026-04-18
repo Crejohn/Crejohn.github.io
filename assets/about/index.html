@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Crejohn Design</title>
+    <link rel="icon" href="../../favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://public.codepenassets.com/css/reset-2.0.min.css">
+    <!-- Font Awesome 6.7.2 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="../loader.css">
+    <link rel="stylesheet" href="./style.css">
+    <!-- PDF Modal Styles (integrated in style.css) -->
+    <!-- Estilos image-hover como background -->
+    <style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+    @import url(https://fonts.googleapis.com/css?family=Pacifico);
+    .gallery-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .gallery {
+      margin: 0 auto;
+      white-space: nowrap;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: rgba(66, 66, 66, 0.5) url("images/john_quintero_2.avif") repeat fixed;
+      background-position: 50% 100%;
+      background-size: cover;
+      position: relative;
+      z-index: 1;
+      font-size: 0;
+    }
+    .gallery .image {
+      width: calc(100vw / 40);
+      height: 100%;
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+      padding: 2px;
+      transition: all 1.3s ease-in-out;
+      background: rgba(66, 66, 66, 0.5) url("images/john_quintero_1.avif") repeat fixed;
+      background-size: cover;
+      background-position: 50% 100%;
+      border-radius: 0%;
+    }
+    .gallery .image.active {
+      transition: all 0s linear;
+      opacity: 0;
+    }
+    </style>
+      <!-- Menú flotante CSS -->
+      <link rel="stylesheet" href="../menu/style.css">
+      <style>
+        .pdf-link {
+          text-decoration: none !important;
+          transition: color 0.2s;
+        }
+        .pdf-link:hover, .pdf-link:focus {
+          color: #d95e00 !important;
+          outline: none;
+        }
+      </style>
+  </head>
+    
+  <body class="loading">
+      <!-- Loader -->
+      <div class="loader">
+        <span>{</span><span>}</span>
+      </div>
+
+      <!-- Menú flotante (dropholder) -->
+      <header style="display:block">
+        <div class="inner">
+          <nav>
+            <div class="dropholder">
+              <div class="dropdown">
+                <div id="iconbox">
+                  <div class="icon-container" id="homepic">
+                    <i class="fas fa-home ic" id="pic1"></i>
+                  </div>
+                  <div class="separator"></div>
+                  <div class="icon-container" id="codepic">
+                    <i class="fas fa-user ic" id="pic2"></i>
+                    <ul class="menu code-menu">
+                      <li data-frame="aboutme-frame"><i class="fas fa-user-circle"></i> About me</li>
+                    </ul>
+                  </div>
+                  <div class="separator"></div>
+                  <div class="icon-container" id="workpic">
+                    <i class="fas fa-laptop-code ic" id="pic3"></i>
+                    <ul class="menu work-menu">
+                      <li data-frame="portfolio-frame" onclick="window.location.href='../portfolio/index.html'"><i class="fas fa-laptop-code"></i> Portfolio</li>
+                      <li data-frame="logo-frame" onclick="window.location.href='../branding/index.html'"><i class="fas fa-paint-brush"></i> Brand Identity</li>
+                      <li class="has-submenu" data-frame="graphic-frame" onclick="window.location.href='../graphic_design/index.html'"><i class="fas fa-pencil-alt"></i> Graphic Design
+                        <ul class="submenu">
+                          <li onclick="window.location.href='../youtube_thumbnails/index.html'">Youtube Thumbnail</li>
+                          <li onclick="window.location.href='../flyer/index.html'">Flyer Design</li>
+                          <li onclick="window.location.href='../photo_editing/index.html'">Photo Editing</li>
+                          <li class="has-submenu" onclick="window.location.href='../design_extras/index.html'">Design Extras
+                            <ul class="submenu">
+                              <li onclick="window.location.href='../spec_design/index.html'">Spec Design</li>
+                              <li onclick="window.location.href='../hand-drawn/index.html'">Hand-Drawn Illustration</li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                      <li data-frame="website-frame" onclick="window.location.href='../websites/index.html'"><i class="fas fa-globe"></i> Websites</li>
+                      <li class="has-submenu" data-frame="social-frame" onclick="window.location.href='../social_media/index.html'"><i class="fas fa-share-alt"></i> Social Media
+                        <ul class="submenu">
+                          <li onclick="window.location.href='../posts/index.html'">Post Designs</li>
+                          <li onclick="window.location.href='../reels/index.html'">Reel Designs</li>
+                        </ul>
+                      </li>
+                      <li data-frame="appdesigns-frame" onclick="window.location.href='../smartphone/index.html'"><i class="fas fa-mobile-alt"></i> App Design</li>
+                      <li data-frame="video-frame" onclick="window.location.href='../video_editing/index.html'" style="display:none;"><i class="fas fa-video"></i> Video Editing</li>
+                    </ul>
+                  </div>
+                  <div class="separator"></div>
+                  <div class="icon-container" id="studypic">
+                    <i class="fas fa-envelope ic" id="pic4"></i>
+                    <ul class="menu study-menu">
+                      <li data-frame="contact-frame" onclick="window.location.href='../contact/contact_form/index.html'"><i class="fas fa-paper-plane"></i> Contact</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+     <!-- Fondo image-hover como background -->
+    <div class="gallery">
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+      <div class="image"></div>
+    </div>
+    <!-- Fin fondo image-hover -->
+    <div id="popup-modal-skills" class="popup-modal">
+      <div class="popup-header">
+        <span class="popup-title">Skills</span>
+        <div class="popup-controls">
+          <i class="fa-regular fa-square-minus popup-minimize" title="Minimizar"></i>
+          <i class="fa fa-times popup-close" title="Cerrar"></i>
+        </div>
+      </div>
+      <div class="popup-content">
+        <ul class="skills-bar-container">
+          <li>
+            <div class="progressbar-title">
+              <span style="font-weight:bold;">Adobe CC</span>
+              <br><br><h3>Photoshop</h3>
+              <span class="percent" id="photoshop-percent"></span>
+            </div>
+            <div class="bar-container">
+              <span class="progressbar progressred" id="progress-photoshop"></span>
+            </div>
+          </li>
+          <li>
+            <div class="progressbar-title">
+              <h3>Illustrator</h3>
+              <span class="percent" id="illustrator-percent"></span>
+            </div>
+            <div class="bar-container">
+              <span class="progressbar progressblue" id="progress-illustrator"></span>
+            </div>
+          </li>
+          <li>
+            <div class="progressbar-title">
+              <h3>InDesign</h3>
+              <span class="percent" id="indesign-percent"></span>
+            </div>
+            <div class="bar-container">
+              <span class="progressbar progresspink" id="progress-indesign"></span>
+            </div>
+          </li>
+          <li>
+            <div class="progressbar-title">
+              <h3>After Effects</h3>
+              <span class="percent" id="aftereffects-percent"></span>
+            </div>
+            <div class="bar-container">
+              <span class="progressbar progresspurple" id="progress-aftereffects"></span>
+            </div>
+          </li>
+          <li>
+            <div class="progressbar-title">
+              <h3>Premiere Pro</h3>
+              <span class="percent" id="premierepro-percent"></span>
+            </div>
+            <div class="bar-container">
+              <span class="progressbar progressorange" id="progress-premierepro"></span>
+            </div>
+          </li>
+          <li>
+            <div class="progressbar-title">
+              <h3>Audition</h3>
+              <span class="percent" id="audition-percent"></span>
+            </div>
+            <div class="bar-container">
+              <span class="progressbar progressgreen" id="progress-audition"></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Nuevo popup-modal para Platforms -->
+    <div id="popup-modal-platforms" class="popup-modal">
+      <div class="popup-header">
+        <span class="popup-title">Platforms</span>
+        <div class="popup-controls">
+          <i class="fa-regular fa-square-minus popup-minimize" title="Minimizar"></i>
+          <i class="fa fa-times popup-close" title="Cerrar"></i>
+        </div>
+      </div>
+      <div class="popup-content">
+        <ul class="skills-bar-container">
+          <li>
+            <div class="progressbar-title">
+              <span style="font-weight:bold;">Workflow</span>
+              <br><br><h3>Trello</h3>
+              <span class="percent" id="platform-trello-percent"></span>
+            </div>
+            <div class="bar-container">
+              <span class="progressbar progressred" id="platform-progress-trello"></span>
+            </div>
+          </li>
+          <li>
+            <div class="progressbar-title">
+              <h3>Slack</h3>
+              <span class="percent" id="platform-slack-percent"></span>
+            </div>
+            <div class="bar-container">
+              <span class="progressbar progresspurple" id="platform-progress-slack"></span>
+            </div>
+          </li>
+          <li>
+            <div class="progressbar-title">
+              <span style="font-weight:bold;">AI</span>
+              <br><br><h3>Gemini</h3>
+              <span class="percent" id="platform-ai-percent"></span>
+            </div>
+            <div class="bar-container">
+              <span class="progressbar progressred" id="platform-progress-ai"></span>
+            </div>
+          </li>
+          <li>
+            <div class="progressbar-title">
+              <h3>Nano Banana</h3>
+              <span class="percent" id="platform-nanobanana-percent"></span>
+            </div>
+            <div class="bar-container">
+              <span class="progressbar progresspurple" id="platform-progress-nanobanana"></span>
+            </div>
+          </li>
+          <li>
+            <div class="progressbar-title">
+              <h3>Deepseek</h3>
+              <span class="percent" id="platform-deepseek-percent"></span>
+            </div>
+            <div class="bar-container">
+              <span class="progressbar progresspurple" id="platform-progress-deepseek"></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="popup-modal-interests-main" class="popup-modal">
+      <div class="popup-header">
+        <span class="popup-title">Interests</span>
+        <div class="popup-controls">
+          <i class="fa-regular fa-square-minus popup-minimize" title="Minimizar"></i>
+          <i class="fa fa-times popup-close" title="Cerrar"></i>
+        </div>
+      </div>
+      <div class="popup-content">
+        <p>This is a popup window for the 'Interests' (main menu) option.</p>
+      </div>
+    </div>
+  <!-- Popup Modal fuera del nav para stacking correcto -->
+  <div id="popup-modal-bio" class="popup-modal">
+    <div class="popup-header">
+      <span class="popup-title">Bio</span>
+      <div class="popup-controls">
+        <i class="fa-regular fa-square-minus popup-minimize" title="Minimizar"></i>
+        <i class="fa fa-times popup-close" title="Cerrar"></i>
+      </div>
+    </div>
+    <div class="popup-content">
+      <p>I'm John Quintero a <a href="#" class="download-link open-pdf pdf-link" data-pdf="./files/john_quintero_resume_2026.pdf" style="font-weight:bold; color: #F7941D; cursor:pointer;" aria-label="Abrir archivo Graphic Designer en modal">multidisciplinary Graphic Designer</a> with a passion for transforming complex ideas into impactful visual stories. Originally from Caracas, Venezuela, and now operating globally, I’ve spent over a decade honing a versatile skill set that bridges the gap between traditional branding and modern digital experiences.
+         <br><br>My journey in design began with an Associate’s Degree, followed by specialized training in motion graphics and web tools at Posa Studio Creativo. This foundation allowed me to cultivate a diverse career-moving from the fast-paced environment of advertising agencies to the technical world of software development and the high-energy entertainment industry. Whether I’m building a brand identity from the ground up, designing intuitive UX/UI for mobile apps, or crafting digital assets from different e-commerce platforms, I approach every project with a problem-solving mindset and a sharp eye for aesthetics.
+         <br><br>What makes my work unique is my adaptability. I am a lifelong learner, constantly evolving alongside the industry by Implementing emerging technologies such as Generative AI and staying at the forefront of new digital platforms and applications. Having navigated various industries, including nutrition, tech maintenance, and live entertainment. I’ve learned how to speak the visual language of any audience. I’m a firm believer that great design isn’t just about looking good; it’s about clear communication and creating a seamless connection between a brand and its community.
+         <br><br>When I’m not in front of my monitors, you’ll likely find me diving into the latest tech hardware or exploring my interest in gourmet cooking. I’m always looking for the next creative challenge where I can apply my technical expertise and collaborative spirit to bring a vision to life.</p>
+    </div>
+  </div>
+  <div id="popup-modal-interests" class="popup-modal">
+    <div class="popup-header">
+      <span class="popup-title">Interests</span>
+      <div class="popup-controls">
+        <i class="fa-regular fa-square-minus popup-minimize" title="Minimizar"></i>
+        <i class="fa fa-times popup-close" title="Cerrar"></i>
+      </div>
+    </div>
+    <div class="popup-content">
+      <p>My professional journey is fueled by a deep curiosity for the intersection of technology and art. I am constantly exploring new ways to enhance creative workflows and ensure that every visual solution is backed by high-performance technical standards.</p>
+      <br>
+      <ul style="margin-left: 19.2px; margin-bottom: 0; padding: 0;">
+        <li style="list-style: none; position: relative; padding-left: 24px; margin-bottom: 3px;">
+          <span style="position: absolute; left: 0; color: #F7941D; font-size: 18px;">&#x2B9E;</span>
+          <span style="font-weight:bold;">Generative AI & Photo Editing:</span> I am actively exploring the potential of high-fidelity generative AI, focusing on photorealistic image and video synthesis. I enjoy integrating it with traditional photo editing techniques to streamline creative workflows and discover new aesthetic possibilities.
+        </li>
+        <li style="list-style: none; position: relative; padding-left: 24px; margin-bottom: 3px;">
+          <span style="position: absolute; left: 0; color: #F7941D; font-size: 18px;">&#x2B9E;</span>
+          <span style="font-weight:bold;">UI/UX Design for Mobile & Web:</span> I have a strong interest in user-centric design, specifically creating intuitive interfaces for mobile applications and optimizing digital experiences to ensure they are both functional and visually compelling.
+        </li>
+        <li style="list-style: none; position: relative; padding-left: 24px; margin-bottom: 3px;">
+          <span style="position: absolute; left: 0; color: #F7941D; font-size: 18px;">&#x2B9E;</span>
+          <span style="font-weight:bold;">Motion Graphics & Post-Production:</span> I am fascinated by the art of movement and frequently work with After Effects to add depth and narrative to static designs. My interest lies in using sophisticated motion graphics and video editing to create more engaging visual stories.
+        </li>
+        <li style="list-style: none; position: relative; padding-left: 24px; margin-bottom: 3px;">
+          <span style="position: absolute; left: 0; color: #F7941D; font-size: 18px;">&#x2B9E;</span>
+          <span style="font-weight:bold;">Illustration:</span> I maintain a dedicated interest in illustration as a core creative outlet. I enjoy exploring different styles and techniques to complement broader design projects and bring a unique, hand-crafted feel to visual concepts.
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="popup-modal-professional" class="popup-modal">
+    <div class="popup-header">
+      <span class="popup-title">Professional</span>
+      <div class="popup-controls">
+        <i class="fa-regular fa-square-minus popup-minimize" title="Minimizar"></i>
+        <i class="fa fa-times popup-close" title="Cerrar"></i>
+      </div>
+    </div>
+    <div class="popup-content">
+      <p>With over a decade in the creative industry, my path has been defined by a constant drive to adapt. I’ve transitioned from the high-pressure world of traditional advertising to the precision of UI/UX and the autonomy of international freelancing.
+
+        <br><br><span style="font-weight:bold;">The Independent Era & Digital Strategy</span> <span style="font-weight:bold; font-size: 14.4px;"><span style="font-size:12.8px;">| 2021 – Present</span></span>
+        <br><br>Currently, I operate as a multidisciplinary designer for a global clientele. My focus has shifted toward high-fidelity visual content and brand identity, but I’ve also taken on the role of a digital architect. I specialize in helping brands migrate their ecosystems to platforms like Shopify and Kajabi, ensuring that their visual identity remains cohesive while optimizing for user conversion. During this time, I also collaborated with NutriWhite, where I acted as a lead visual architect for the nutritional health sector, balancing corporate presentations with high-impact social media campaigns.
+
+        <br><br><span style="font-weight:bold;">Entertainment & High-Traffic Design</span> <span style="font-weight:bold; font-size: 14.4px;"><span style="font-size:12.8px;">| 2019 – 2021</span></span>
+        <br><br>At Ticketmundo, I stepped into the fast-paced world of large-scale entertainment. Here, design was about more than aesthetics; it was about utility. I focused on improving the user journey by creating interactive maps and digital ticketing assets, ensuring that complex key art translated perfectly across web and social platforms for thousands of users.
+
+        <br><br><span style="font-weight:bold;">Corporate Precision & Technical Clarity</span> <span style="font-weight:bold; font-size: 14.4px;"><span style="font-size:12.8px;">| 2015 – 2018</span></span>
+        <br><br>Working with GSM Venezuela, I learned to bridge the gap between technical industrial concepts and professional marketing. I managed visual communication for the thermo-electric sector, creating bilingual corporate presentations and materials that resonated with both national and international stakeholders.
+
+        <br><br><span style="font-weight:bold;">The Digital Shift: UI/UX & Media</span> <span style="font-weight:bold; font-size: 14.4px;"><span style="font-size:12.8px;">| 2015</span></span>
+        <br><br>My time at Koiosoft was a pivotal moment where I pivoted toward UI/UX design. Collaborating closely with developers, I focused on crafting intuitive interfaces for mobile applications. Simultaneously, I expanded my horizons into streaming media with the "Estilo de Vida" project, where I balanced graphic design with production logistics.
+
+        <br><br><span style="font-weight:bold;">The Foundation: Advertising & Branding</span> <span style="font-weight:bold; font-size: 14.4px;"><span style="font-size:12.8px;">| 2012 – 2014</span></span>
+        <br><br>My journey began at Bunker Publicitario, a high-volume agency where I learned the fundamentals of the craft. From mastering typography and brand identity to overseeing large-scale print production, this era gave me the discipline to manage projects from the first glimmer of a concept to the final delivery.
+      </p>
+    </div>
+  </div>
+  <div id="popup-modal-projects" class="popup-modal">
+    <div class="popup-header">
+      <span class="popup-title">Projects</span>
+      <div class="popup-controls">
+        <i class="fa-regular fa-square-minus popup-minimize" title="Minimizar"></i>
+        <i class="fa fa-times popup-close" title="Cerrar"></i>
+      </div>
+    </div>
+    <div class="popup-content">
+
+      <span style="font-weight:bold;">Cinex Mobile: UI/UX Development</span>
+        <br><br><p>Beyond my long-term roles, I have spearheaded several key initiatives that highlight my multidisciplinary approach. These projects represent the intersection of technical execution and creative strategy, ranging from the intricacies of mobile interface design to the dynamic environment of live media production.</p>
+         <br><ul style="margin-left: 1.2em; margin-bottom: 0;">
+             <li style="list-style: none; position: relative; padding-left: 24px; margin-bottom: 3px;">
+             <span style="position: absolute; left: 0; color: #F7941D; font-size: 18px;">&#x2B9E;</span>
+      <span style="font-weight:bold;">The Challenge:</span> To create a seamless, high-traffic interface that allowed users to browse showtimes and purchase tickets effortlessly.
+           </li>
+             <li style="list-style: none; position: relative; padding-left: 24px; margin-bottom: 3px;">
+             <span style="position: absolute; left: 0; color: #F7941D; font-size: 18px;">&#x2B9E;</span>
+      <span style="font-weight:bold;">The Result:</span> A polished, user-centric interface that bridged the gap between complex backend data and an intuitive consumer experience, ensuring brand consistency across the mobile ecosystem.
+           </li>
+         </ul>
+
+      <br><span style="font-weight:bold;">Estilo de Vida: Radio & Media Production</span>
+        <br><br><p>As part of a collaborative venture into the entertainment industry, I served as a Graphic Designer and Production Assistant for the streaming radio project Estilo de Vida. This role required a unique blend of visual artistry and technical logistics.</p>
+         <br><ul style="margin-left: 1.2em; margin-bottom: 0;">
+             <li style="list-style: none; position: relative; padding-left: 24px; margin-bottom: 3px;">
+             <span style="position: absolute; left: 0; color: #F7941D; font-size: 18px;">&#x2B9E;</span>
+      <span style="font-weight:bold;">The Challenge:</span> Developed the project's visual language, creating promotional assets and digital branding that resonated with a lifestyle-focused audience.
+           </li>
+             <li style="list-style: none; position: relative; padding-left: 24px; margin-bottom: 3px;">
+             <span style="position: absolute; left: 0; color: #F7941D; font-size: 18px;">&#x2B9E;</span>
+      <span style="font-weight:bold;">Technical Execution:</span> Beyond design, I managed the research and physical equipment setup for live broadcasts, ensuring that the production met professional standards for both audio quality and visual presentation in a streaming format.
+           </li>
+         </ul>
+
+    </div>
+  </div>
+  <nav id="side-nav" class="sidebar width">
+    <a id="logo" href="#"><img src="crejohn_isotype.png" alt="Logo" style="height: 28px; width: auto;"></a>
+    <ul class="sidebar-menu">
+      <li class="sidebar-item">
+        <a class="sidebar-link" href="#">
+          <i class="fa fa-solid fa-user"></i>
+          <span>About<i class="fa fa-angle-up submenu-icon"></i></span></a>
+          <ul class="sidebar-submenu">
+            <li><a href="#">Bio</a></li>
+            <li><a href="#">Interests</a></li>
+          </ul>
+      </li>
+      <li class="sidebar-item">
+        <a class="sidebar-link" href="#">
+          <i class="fa fa-solid fa-briefcase"></i>
+          <span>Experience<i class="fa fa-angle-up submenu-icon"></i></span></a>
+          <ul class="sidebar-submenu">
+            <li><a href="#">Professional</a></li>
+            <li><a href="#">Projects</a></li>
+          </ul>
+      </li>
+      <li class="sidebar-item">
+        <a class="sidebar-link" href="#">
+          <i class="fa fa-solid fa-paintbrush"></i>
+          <span>Skills<i class="fa fa-angle-up submenu-icon"></i></span></a>
+          <ul class="sidebar-submenu">
+            <li><a href="#" class="skills-modal-trigger">Software</a></li>
+            <li><a href="#">Platforms</a></li>
+          </ul>
+      </li>
+    <!-- Opción de menú sin submenú 
+      <li class="sidebar-item">
+        <a class="sidebar-link" href="#">
+          <i class="fa fa-solid fa-gear"></i>
+          <span>Interests</span></a>
+      </li>
+    -->
+      <li class="sidebar-item sidebar-item--toggle">
+        <a id="toggle" class="sidebar-link sidebar-link--toggle" href="#">
+          <i class="fa fa-solid fa-caret-right"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  
+  <script src="./script.js"></script>
+  <script src="../loader.js"></script>
+    <!-- jQuery necesario para el menú flotante -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+    // image-hover background logic
+    document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('.gallery .image');
+    images.forEach(image => {
+      let timeoutId;
+      image.addEventListener('mouseenter', function() {
+        this.classList.add('active');
+        timeoutId = setTimeout(() => {
+          this.classList.remove('active');
+        }, 1000);
+      });
+      image.addEventListener('mouseleave', function() {
+        clearTimeout(timeoutId);
+        this.classList.remove('active');
+      });
+    });
+    });
+    </script>
+  <!-- PDF modal markup and script -->
+  <div id="pdf-modal" class="pdf-modal" aria-hidden="true">
+    <div class="pdf-modal-content" role="dialog" aria-modal="true" aria-label="PDF Viewer">
+      <button class="pdf-modal-close" aria-label="Cerrar visor PDF">✕</button>
+      <iframe id="pdf-frame" src="" title="PDF Viewer"></iframe>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const openers = document.querySelectorAll('.open-pdf');
+      const modal = document.getElementById('pdf-modal');
+      const frame = document.getElementById('pdf-frame');
+      const closeBtn = modal.querySelector('.pdf-modal-close');
+
+      function openPDF(url){
+        if(!url) return;
+        frame.src = url;
+        modal.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
+
+      function closePDF(){
+        modal.setAttribute('aria-hidden','true');
+        frame.src = '';
+        document.body.style.overflow = '';
+      }
+
+      openers.forEach(function(op){
+        op.addEventListener('click', function(e){
+          e.preventDefault();
+          const file = op.getAttribute('data-pdf');
+          openPDF(file);
+        });
+      });
+
+      closeBtn.addEventListener('click', closePDF);
+      modal.addEventListener('click', function(e){
+        if(e.target === modal) closePDF();
+      });
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false'){
+          closePDF();
+        }
+      });
+    })();
+  </script>
+  </body>
+    <!-- Menú flotante JS -->
+    <script src="../menu/script.js"></script>
+  
+</html>
